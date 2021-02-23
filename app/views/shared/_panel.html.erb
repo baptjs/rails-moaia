@@ -1,8 +1,8 @@
 <div class="panel">
-  <div class="photo"></div>
+  <div class="photo" style="background-image: url('<%= cl_image_path spot.photos.first.key %>')"></div>
   <div class="panel-details">
     <div class="panel-text">
-    <h2>Pemuteran</h2>
+    <h2> <%= spot.name %> </h2>
     <h4>Bali region</h4>
     </div>
     <div class="tags-list">
