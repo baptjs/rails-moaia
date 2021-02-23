@@ -1,5 +1,4 @@
 .photo {
-  background-image: url("https://subocea.com/uploads/media/default/0001/05/fe95bd48c535ca34168f1abb9bf71f3631e0d623.jpeg");
   height: 60%;
   background-size: cover;
   background-position: center;
@@ -9,19 +8,20 @@
 
 .panels {
   width: 50%; 
+  margin: 16px;
   
 }
 
 .panel {
   height: 300px; 
-  margin: 8px;
+  margin-bottom: 16px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   transition: transform .2s;
   position: relative;
 }
 
 .panel:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
   }
 
 .panel-details {

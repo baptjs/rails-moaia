@@ -1,13 +1,18 @@
-
-
 <div class="index-container">
 
   <div class="panels">
-    <%= render "/shared/panel" %>
+    <% @spots.each do |spot| %>
+      <%= link_to spot_path(spot, current_user), style: 'text-decoration:none' do %>
+        <%= render "/shared/panel", spot: spot %>
+      <% end %>
+    <% end %>
   </div>
 
+
+
+
   <div class="map">
-   sdfsf 
+ 
   </div>
 
 
