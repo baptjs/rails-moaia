@@ -1,0 +1,74 @@
+.photo {
+  background-image: url("https://subocea.com/uploads/media/default/0001/05/fe95bd48c535ca34168f1abb9bf71f3631e0d623.jpeg");
+  height: 60%;
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.panels {
+  width: 50%; 
+  
+}
+
+.panel {
+  height: 300px; 
+  margin: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: transform .2s;
+  position: relative;
+}
+
+.panel:hover {
+  transform: scale(1.05);
+  }
+
+.panel-details {
+  background-color: white;
+  height: 40%;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 16px;
+
+  
+
+}
+
+.panel-text {
+  display: flex;
+  margin-bottom: 8px;
+  align-items: flex-end;
+
+  h2 {
+    margin-bottom: 0px;
+  }
+
+  h4 {
+    font-style: italic;
+    color: rgba(150, 150, 150, 0.8);
+    margin-bottom: 0px;
+    margin-left: 16px;
+    padding-bottom: 3px;
+  }
+
+}
+
+.tags-list {
+  display: flex;
+}
+
+.tag {
+  padding: 4px 8px;
+  background-color: #00B9E7;
+  color: white;
+  border-radius: 4px;
+  margin: 4px;
+
+}
+
+.panel-rating {
+  position: absolute;
+  bottom: 16px; right: 16px;
+
+}
