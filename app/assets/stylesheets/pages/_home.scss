@@ -1,4 +1,85 @@
 // Specific CSS for your home-page
-.body {
-  background-image: url("https://www.blogduvoyage.fr/wp-content/uploads/2018/06/9670848492_7b322d9f22_z.jpg");
+
+body,html{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    }
+    h1 {
+      margin-top: -220px;
+    }
+
+.background{
+    background-image: url(https://images.pexels.com/photos/6406224/pexels-photo-6406224.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260);
+    background-position: center;
+    background-size: cover;
 }
+
+    .searchbar{
+    margin-bottom: auto;
+    margin-top: auto;
+    height: 60px;
+    background-color: #353b48;
+    border-radius: 30px;
+    padding: 10px;
+
+    }
+
+    .search_input{
+    color: white;
+    border: 0;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color:transparent;
+    line-height: 40px;
+    transition: width 0.4s linear;
+    margin-bottom: 10px;
+
+    }
+
+    .searchbar:hover .search_input{
+    padding: 0 10px;
+    width: 450px;
+    caret-color:red;
+    transition: width 0.4s linear;
+
+    }
+
+    .searchbar:hover .search_icon{
+    background: white;
+    color: #e74c3c;
+    }
+
+    .search_icon{
+    height: 40px;
+    width: 40px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color:white;
+    text-decoration:none;
+    padding-top: 10px;
+    }
+
+    .find {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding-bottom: 10px;
+        border: 1px none #000;
+        font-family: 'Frank Ruhl Libre', serif;
+        color: white;
+        font-size: 20px;
+        line-height: 6px;
+        font-weight: 800;
+
+    }
+
+    h1 {
+      font-family: 'Frank Ruhl Libre', serif;
+    }
