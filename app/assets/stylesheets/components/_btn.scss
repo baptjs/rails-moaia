@@ -1,0 +1,12 @@
+.btn-submit {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #2A9D8F;
+  transition: background 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  &:hover {
+    background: #2A9D8F;
+    color: white;
+  }
+}

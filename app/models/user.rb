@@ -7,5 +7,7 @@ class User < ApplicationRecord
   has_many :spots
   has_many :review
 
+  # validates :nickname, presence: true, uniqueness: true
+
 
 end
