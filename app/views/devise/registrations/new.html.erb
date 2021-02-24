@@ -4,6 +4,26 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+
+
+        <%= f.input :nickname,
+                required: true,
+                autofocus: true %>
+
+    <%= f.input :first_name,
+                required: true,
+                autofocus: true %>
+
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true %>
+    <%= f.input :age,
+                required: true,
+                autofocus: true %>
+    <%= f.input :avatar_url, as: :file, label: "Upload your pic:" %>
+    <%= f.input :city,
+                required: true,
+                autofocus: true %>
     <%= f.input :email,
                 required: true,
                 autofocus: true,
