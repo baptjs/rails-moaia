@@ -6,7 +6,8 @@ class SpotsController < ApplicationController
       {
         lat: spot.latitude,
         lng: spot.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { spot: spot })
+        infoWindow: render_to_string(partial: "info_window", locals: { spot: spot }),
+        spotId: spot.id
       }
     end
   end
