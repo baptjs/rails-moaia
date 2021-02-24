@@ -1,14 +1,22 @@
+
 <div class="container-home">
   <div class="background h-100">
-  <div class="container find h-100" >
-      <h1  style="">Find your next spot</h1>
+    <div class="container find h-100" >
+      <h1  style="">Choose your next escape : </h1>
+        <div style="height: 15px"></div>
       <div class="d-flex justify-content-center">
         <div class="container">
-          <input type="text" placeholder="Search..." class="inputsearch">
-          <div class="search"></div>
+          <div class="input-group-btn search-panel open">
+          <form action="/spots" accept-charset="UTF-8" method="get">
+            <input type="text" name="query" id="query" class="inputsearch" placeholder="Spots, species...">
+            <div class="search"></div>
+          </form>
         </div>
-      </div>
       </div>
     </div>
   </div>
 </div>
+</div>
+
+
+
