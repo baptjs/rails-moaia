@@ -16,16 +16,32 @@ user_4 = User.create!(first_name: "Alexandre", last_name: "Madeleine", age: 21, 
 
 
 puts "Creating spots..."
+Spot.destroy_all
+
 file = URI.open('https://subocea.com/uploads/media/default/0001/05/fe95bd48c535ca34168f1abb9bf71f3631e0d623.jpeg')
 file2 = URI.open('https://c6bo-plongee-blog.fr/wp-content/uploads/2019/04/mer-rouge-plongeurs-retour-egypte-c6bo-voyage-blog-plongee-couv.jpg')
-spot_1 = Spot.new(name: "Pemuteran", latitude: -8.132946072696015, longitude: 115.3738184530749, description: "very cool spot", user: user_1 )
-spot_2 = Spot.new(name: "Coco", latitude: -8.332946072696015, longitude: 115.4738184530749, description: "nice spot", user: user_2 )
+
+file3 = URI.open('https://subocea.com/uploads/media/default/0001/05/fe95bd48c535ca34168f1abb9bf71f3631e0d623.jpeg')
+file4 = URI.open('https://c6bo-plongee-blog.fr/wp-content/uploads/2019/04/mer-rouge-plongeurs-retour-egypte-c6bo-voyage-blog-plongee-couv.jpg')
+file5 = URI.open('https://subocea.com/uploads/media/default/0001/05/fe95bd48c535ca34168f1abb9bf71f3631e0d623.jpeg')
+spot_1 = Spot.new(name: "Pemuteran", latitude: -8.132946072696015, longitude: 115.3738184530749, description: "very cool spot", user_id: 1 )
+spot_2 = Spot.new(name: "Coco", latitude: -8.332946072696015, longitude: 115.4738184530749, description: "nice spot", user_id: 1 )
+spot_3 = Spot.new(name: "Bohol", latitude: -8.452946072696015, longitude: 115.538184530749, description: "nice spot", user_id: 1 )
+spot_4 = Spot.new(name: "Palawan", latitude: -8.392946072696015, longitude: 115.5738184530749, description: "nice spot", user_id: 1 )
+spot_5 = Spot.new(name: "Koh Tao", latitude: -8.452946072696015, longitude: 115.2638184530749, description: "nice spot", user_id: 1 )
+
 
 spot_1.photos.attach(io: file, filename:'file.jpeg')
 spot_2.photos.attach(io: file2, filename:'file.jpeg')
+spot_3.photos.attach(io: file3, filename:'file.jpeg')
+spot_4.photos.attach(io: file4, filename:'file.jpeg')
+spot_5.photos.attach(io: file5, filename:'file.jpeg')
 
 spot_1.save!
 spot_2.save!
+spot_3.save!
+spot_4.save!
+spot_5.save!
 
   puts "Cleaning Fish database..."
   Fish.destroy_all
