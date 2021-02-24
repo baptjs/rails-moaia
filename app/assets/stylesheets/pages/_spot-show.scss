@@ -1,15 +1,47 @@
-.container-spot-show {
+.container-spot-show-header {
+  background-color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   width: 80%;
   margin: 20px auto;
 
-  .spot-show-main-content {
+  .spot-show-header-main-content {
+    max-width: 500px;
     flex-grow: 1;
 
     h1 {
       text-align: center;
     }
 
+    .lat-long {
+      text-align: right;
+      margin-bottom: 20px;
+    }
+
+    p {
+      text-align: justify;
+    }
   }
+}
+
+
+.container-spot-show-body {
+  background-color: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 40px auto;
+
+  .map{
+  margin: 20px;
+  width: 500px;
+  height: 300px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+
+
 }

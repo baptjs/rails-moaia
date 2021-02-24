@@ -1,5 +1,4 @@
-<div class="container-spot-show">
-
+<div class="container-spot-show-header">
 <!-- Select only the 5 first photos -->
   <% if @spot.photos.count >= 5 %>
     <% carousel_photos = @spot.photos.first(5) %>
@@ -15,8 +14,10 @@
 
 
 
-  <div class="spot-show-main-content">
+  <div class="spot-show-header-main-content">
     <h1><%= @spot.name %></h1>
+    <p class="lat-long"><em>[lat: <%= @spot.latitude %>°, long: <%= @spot.longitude %>°]</em></p>
+    <p><%= @spot.description %></p>
   </div>
 
   <div class="slider">
@@ -26,10 +27,26 @@
     <% end %>
     </figure>
   </div>
+</div>
 
 
+<div class="container-spot-show-body">
 
+  <div class="map">
+    <div id="map"
+      style="width: 100%; height: 100%;"
+      data-markers="<%= @markers.to_json %>"
+      data-zoom="0"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+<% raise %>
+  <div class="spotted-species">
+    <% @spot.reviews.each do |review| %>
+      <%= @review.fishes %>
 
+    <% end %>
+  </div>
 
 </div>
 

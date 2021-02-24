@@ -13,6 +13,15 @@ class SpotsController < ApplicationController
 
   def show
     @spot = Spot.find(params[:id])
+    @spots = []
+    @spots << @spot
+    @markers = @spots.map do |spot|
+      {
+        lat: spot.latitude,
+        lng: spot.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { spot: spot })
+      }
+    end
   end
 
   def new
