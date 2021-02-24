@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
 
   def show
+    @review = Review.find(params[:id])
   end
 
   def new
@@ -9,11 +10,12 @@ class ReviewsController < ApplicationController
   end
 
   def create
-  @review = Review.new(review_params)
-  @review.user_id = current_user.id
-
+    @spot = Spot.find(params[:spot_id])
+    @review = Review.new(review_params)
+    @review.user = current_user
+    @review.spot = @spot
     if @review.save
-      redirect_to review_path(@review)
+      redirect_to spot_path(@spot)
     else
       render :new
     end
@@ -22,7 +24,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:date , :content, :tips , rating: [])
+    params.require(:review).permit(:date, :content, :tips, :rating)
   end
 
 end
