@@ -3,14 +3,10 @@
   <div class="panels">
     <% @spots.each do |spot| %>
       
-      <%= render "/shared/panel", spot: spot, whereami: "spots" %>
+      <%= render "/shared/panel", spot: spot, whereami: "likes" %>
 
     <% end %>
   </div>
-
-
-
-
   <div class="mapp">
     <div id="map"
       style="width: 100%; height: 100%;"
