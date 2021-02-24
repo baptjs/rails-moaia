@@ -24,6 +24,9 @@
 
     display: flex;
     margin-bottom: 10px;
+      position: absolute;
+    top: 60px;
+    right: 10px;
 
 
   }
@@ -37,7 +40,7 @@
   height: 150px;
   background-image: left;
   position: absolute;
-  top: 180px;
+  top: 100px;
   right: 300px;
 
 }
@@ -45,7 +48,7 @@
 .species-type {
 
   position: absolute;
-  top: 350px;
+  top: 270px;
   right: 360px;
   font-size: 10px;
   line-height: 3px;
@@ -83,6 +86,24 @@
   right: 120px;
   font-size: 10px;
   line-height: 3px;
+
+}
+
+.review-spotted-user {
+    margin-top: 20px;
+    margin-left: 5px;
+    background-color: white;
+    height: 188px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    width: 550px;
+    display: flex;
+    margin-bottom: 10px;
+    position: absolute;
+    top: 470px;
+    right: 10px;
 
 }
 
