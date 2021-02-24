@@ -1,2 +1,23 @@
-<h1>Spots#index</h1>
-<p>Find me in app/views/spots/index.html.erb</p>
+<div class="index-container">
+
+  <div class="panels">
+    <% @spots.each do |spot| %>
+      <%= link_to spot_path(spot, current_user), style: 'text-decoration:none' do %>
+        <%= render "/shared/panel", spot: spot %>
+      <% end %>
+    <% end %>
+  </div>
+
+
+
+
+  <div class="mapp">
+    <div id="map"
+      style="width: 100%; height: 100%;"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  </div>
+
+
+</div>

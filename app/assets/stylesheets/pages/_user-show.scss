@@ -1,0 +1,91 @@
+ .user_show {
+    margin-top: 20px;
+
+    background-color: white;
+    height: 600px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    width: 680px;
+    margin-left: 25px;
+  }
+
+ .species_left {
+    margin-top: 20px;
+    margin-left: 5px;
+    background-color: white;
+    height: 400px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding: 15px;
+    width: 550px;
+
+    display: flex;
+    margin-bottom: 10px;
+
+
+  }
+
+.container-user-profile {
+  display: flex;
+  justify-content: space-between;
+}
+
+.img-species-profile {
+  height: 150px;
+  background-image: left;
+  position: absolute;
+  top: 180px;
+  right: 300px;
+
+}
+
+.species-type {
+
+  position: absolute;
+  top: 350px;
+  right: 360px;
+  font-size: 10px;
+  line-height: 3px;
+
+}
+
+.card-photo-user {
+    margin-top: 20px;
+    margin-left: 10px;
+    background-color: white;
+    height: 400px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    padding: 20px;
+    width: 1260px;
+    margin-bottom: 10px;
+    display: flex;
+
+}
+
+.img-species-profile-two {
+  height: 150px;
+  background-image: left;
+  position: absolute;
+  top: 180px;
+  right: 60px;
+
+}
+
+.species-type-two {
+
+  position: absolute;
+  top: 350px;
+  right: 120px;
+  font-size: 10px;
+  line-height: 3px;
+
+}
+
+head {
+font-family: 'Bitter', serif;
+}
