@@ -1,2 +1,24 @@
-<h1>Spots#index</h1>
-<p>Find me in app/views/spots/index.html.erb</p>
+<div class="index-container">
+
+  <div class="panels">
+    <% @spots.each do |spot| %>
+      <%= link_to spot_path(spot, current_user), style: 'text-decoration:none' do %>
+        <%= render "/shared/panel", spot: spot %>
+      <% end %>
+    <% end %>
+  </div>
+
+
+
+
+  <div class="map">
+ 
+  </div>
+
+
+
+
+
+
+
+</div>
