@@ -11,7 +11,7 @@
         <div class="long"><%= f.input :longitude %></div>
       </div>
       <%= f.input :description %>
-      <%= f.input :photo, as: :file, input_html: { multiple: true } %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
       <div class="btn-container"><%= f.button :submit, label: "Add this spot!", class: 'btn-submit' %></div>
     <% end %>
@@ -20,3 +20,6 @@
 
 
 </div>
+
+
+

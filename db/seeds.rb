@@ -1,3 +1,4 @@
+
 require 'json'
 require 'open-uri'
 
@@ -38,4 +39,5 @@ spot_2.save!
   # ALL_SPECIES = species["Species Name"]
 
 puts "Finish ! :)"
+
 

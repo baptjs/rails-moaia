@@ -1,29 +1,36 @@
-<h1>Spots#show</h1>
-<p>Find me in app/views/spots/show.html.erb</p>
+<div class="container-spot-show">
+
+<!-- Select only the 5 first photos -->
+  <% if @spot.photos.count >= 5 %>
+    <% carousel_photos = @spot.photos.first(5) %>
+  <% else %>
+    <% carousel_photos = @spot.photos.first(@spot.photos.count) %>
+    <% i = 0 %>
+    <% (5-@spot.photos.count).times do %>
+      <% carousel_photos << @spot.photos[i] %>
+      <% (i+1 == @spot.photos.count) ? i = 0 : i+=1 %>
+    <% end %>
+  <% end %>
+  <!-- ---------------------------- -->
+
+
+
+  <div class="spot-show-main-content">
+    <h1><%= @spot.name %></h1>
+  </div>
+
+  <div class="slider">
+    <figure>
+      <% carousel_photos.first(5).each do |photo| %>
+        <%= cl_image_tag photo.key %>
+    <% end %>
+    </figure>
+  </div>
 
 
 
 
 
+</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<% @spot.photos.each do |photo| %>
-  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
-<% end %>

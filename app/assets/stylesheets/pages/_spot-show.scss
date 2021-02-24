@@ -1,0 +1,15 @@
+.container-spot-show {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 20px auto;
+
+  .spot-show-main-content {
+    flex-grow: 1;
+
+    h1 {
+      text-align: center;
+    }
+
+  }
+}
