@@ -10,6 +10,16 @@ class SpotsController < ApplicationController
         spotId: spot.id
       }
     end
+    if params[:query].present?
+      sql_query = " \
+        spots.name @@ :query \
+        OR fish.name @@ :query \
+        OR fish.family @@ :query \
+      "
+      @spots = Spot.joins(reviews: { spottings: :fish }).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @spots = Spot.all
+    end
   end
 
   def show

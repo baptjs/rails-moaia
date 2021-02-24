@@ -2,7 +2,7 @@
   justify-content: space-between;
   background: transparent;
  box-shadow: 1px 1px 12px #555;
- color: #2A9D8F !important;
+ color: $success !important;
 
 
 }
@@ -16,5 +16,5 @@
 }
 
 .navbar-light .navbar-nav .nav-link {
-    color:#2A9D8F!important;
+    color: $success!important;
 }
