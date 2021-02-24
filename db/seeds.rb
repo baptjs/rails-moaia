@@ -1,6 +1,6 @@
-require "open-uri"
+require 'json'
+require 'open-uri'
 
-#User.destroy_all
 
 puts "Creating users..."
 
@@ -22,4 +22,20 @@ spot_2.photos.attach(io: file2, filename:'file.jpeg')
 spot_1.save!
 spot_2.save!
 
+  puts "Cleaning Fish database..."
+  Fish.destroy_all
+
+  species_url = "https://www.fishwatch.gov/api/species"
+  species_serialized = open(species_url).read
+  species = JSON.parse(species_serialized)
+
+
+  species.each do |specie|
+    Fish.create!(name: specie["Species Name"])
+    Fish.create!(photo_url: specie["Species Illustration Photo"]['src'])
+  end
+
+  # ALL_SPECIES = species["Species Name"]
+
 puts "Finish ! :)"
+
