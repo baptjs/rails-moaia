@@ -1,2 +1,20 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path "auelvkeqlturd553avr1", cloud_name: "djngsqazo" , crop: :fill %>'); background-size: cover; background-position: 50% 45%;">
+
+  <div class="spot-new-container">
+    <h1>Add a new review!</h1>
+
+
+    <%= simple_form_for [@spot, @review] do |f| %>
+      <%= f.input :date, label: "review" %>
+      <%= f.input :content %>
+      <%= f.input :rating %>
+      <%= f.input :tips %>
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+
+      <div class="btn-container"><%= f.button :submit, label: "Add this spot!", class: 'btn-submit' %></div>
+    <% end %>
+
+  </div>
+
+
+</div>
