@@ -33,6 +33,7 @@ document.addEventListener('turbolinks:load', () => {
 
   initMapbox();
   const markers = document.querySelectorAll('.mapboxgl-marker')
+  console.log(markers)
   markers.forEach(marker => {
     marker.addEventListener('click', (e) => {
       if (document.querySelector('.selected')) {

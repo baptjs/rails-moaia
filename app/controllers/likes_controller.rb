@@ -18,7 +18,6 @@ class LikesController < ApplicationController
         spotId: spot.id
       }
     end
-
   end
 
   def create
@@ -44,7 +43,7 @@ class LikesController < ApplicationController
   end
 
   def like_params
-    params.permit(:spot_id)
+    params.permit(:spot_id, :latitude, :longitude, :name, :description, photos: [])
   end
 
 
