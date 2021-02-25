@@ -20,6 +20,7 @@ const addMarkersToMap = (map, markers) => {
   });
 };
 
+
 const fitMapToMarkers = (map, markers, maxZoom) => {
   const bounds = new mapboxgl.LngLatBounds();
   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
@@ -30,12 +31,22 @@ const initMapbox = () => {
   const mapElement = document.getElementById('map');
   if (mapElement) {
     const map = buildMap(mapElement);
+    console.log(map);
     const markers = JSON.parse(mapElement.dataset.markers);
+    console.log(markers);
     const maxZoom = parseInt(mapElement.dataset.zoom, 10);
-    console.log(maxZoom);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers, maxZoom);
+    map.addControl(
+      new mapboxgl.GeolocateControl({
+      positionOptions: {
+      enableHighAccuracy: true
+      },
+      trackUserLocation: true
+      })
+      );
   }
+   
 };
 
 export { initMapbox };

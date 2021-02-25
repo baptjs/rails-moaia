@@ -1,4 +1,3 @@
-
 require 'json'
 require 'open-uri'
 
@@ -95,3 +94,4 @@ end
 
 puts "Done ! :)"
 puts "Don't forget to db:drop, db:create, db:migrate, db:seed ! ;)"
+
