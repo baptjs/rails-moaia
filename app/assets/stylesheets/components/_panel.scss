@@ -7,13 +7,13 @@
 }
 
 .panels {
-  width: 50%; 
+  width: 50%;
   margin: 16px;
-  
+
 }
 
 .panel {
-  height: 300px; 
+  height: 300px;
   margin-bottom: 16px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   transition: transform .2s;
@@ -31,7 +31,7 @@
   border-bottom-right-radius: 5px;
   padding: 16px;
 
-  
+
 
 }
 
@@ -70,6 +70,10 @@
 .panel-rating {
   position: absolute;
   bottom: 16px; right: 16px;
+
+  .fa-star {
+    color: $yellow;
+  }
 }
 
 .notfav {

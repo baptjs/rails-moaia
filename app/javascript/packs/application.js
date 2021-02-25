@@ -25,6 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
+import { dynamicRating } from "../plugins/stars_in_review_form";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -37,7 +38,7 @@ document.addEventListener('turbolinks:load', () => {
     marker.addEventListener('click', (e) => {
       if (document.querySelector('.selected')) {
         document.querySelector('.selected').classList.remove('selected')
-      }; 
+      };
       const spotId = marker.dataset.markerId;
       const spot = document.querySelector(`#spot_${spotId}`);
       spot.scrollIntoView({block: "center"});
@@ -45,6 +46,8 @@ document.addEventListener('turbolinks:load', () => {
 
     })
   });
+
+  dynamicRating();
 
 
 });

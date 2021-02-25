@@ -11,7 +11,7 @@
         <div class="tag">Epave</div>
         <div class="tag">Coraux</div>
       </div>
-      <div class="panel-rating"><i class="far fa-star"></i> 4.5 (126) </div>
+      <div class="panel-rating"><i class="far fa-star"></i> <%= spot.reviews.average(:rating).round(1) %> (<%= spot.reviews.count %>) </div>
     </div>
   <% end %>
   <% like = Like.find_by(user_id: current_user.id, spot_id: spot.id) %>
@@ -24,7 +24,7 @@
         <div class="fav"><i class="fas fa-heart"></i></div>
     <% end %>
   <% end %>
-      
-    
+
+
 </div>
 
