@@ -4,7 +4,7 @@
 
 .container-spot-show-header {
   // background-color: white;
-  // box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  // box-shadow: 0 10px 30px rgba(0,0,0,.3);
   padding: 20px;
   display: flex;
   justify-content: space-between;
@@ -31,36 +31,21 @@
 }
 
 
-.container-spot-show-body {
-  // background-color: white;
-  // box-shadow: 0 10px 30px rgba(0,0,0,.5);
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin: 0 auto;
-
-  .map{
-  margin: 20px;
-  width: 300px;
-  height: 300px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.5);
-}
-
-.container-spotted-species{
-  width: 700px;
-  height: 300px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.5);
-  margin: 20px 20px;
+.container-spotted-species {
+  width: 100%;
+  height: 400px;
+  // box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  // margin: 20px 20px;
   padding: 20px;
 
   h1 {
     text-align: center;
+    margin-bottom: 20px;
   }
 }
 
 .spotted-species {
-  height: 80%;
+  height: 250px;
   display: flex;
   align-items: center;
   // overflow: hidden;
@@ -68,12 +53,57 @@
   overflow-x: auto;
 
   .fish {
-    flex: 0 0 auto;
+    // flex: 0 0 auto;
     width: 200px ;
-    height: 80%;
+    height: 200px;
     border: solid;
-    margin-right: 20px;
+    // margin-right: 20px;
+    p {
+      text-align: center;
+    }
+  }
 
+  .fish-name {
+    // border: solid;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .fish-img, .fish-properties {
+    // border: solid;
+    width: 90%;
+    height: 130px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+
+    img {
+
+      width: 100%;
+      // height: 100%;
+      margin: 0 auto;
+      // object-fit: cover;
+    }
+  }
+}
+
+.container-spot-show-body {
+  width: 80%;
+  height: 350px;
+  // background-color: white;
+  // box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+
+  .map{
+    margin: 20px;
+    width: 300px;
+    height: 300px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
   }
 
   p {
@@ -81,21 +111,60 @@
   }
 }
 
-.fish-img {
 
-  width: 90%;
-  height: 100px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  img {
 
-    width: 100%;
-    // height: 100%;
-    margin: 0 auto;
-    // object-fit: cover;
 
-  }
+
+
+
+
+
+
+
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+  // background-color: transparent;
+  flex: 0 0 auto;
+  margin-right: 20px;
+  width: 200px;
+  height: 200px;
+  border: 1px solid #fff;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+
 }
 
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
 }
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+
+}
+
+/* Style the back side */
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+
