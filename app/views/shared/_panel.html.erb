@@ -1,5 +1,6 @@
 <div class="panel">
-  <div class="photo" style="background-image: url('<%= cl_image_path spot.photos.first.key %>')"></div>
+  <% photo_key = spot.photos.count.zero? ? 'g800mew8nhinkxmg6uok92ssk1en' : spot.photos.first.key %>
+  <div class="photo" style="background-image: url('<%= cl_image_path photo_key %>')"></div>
   <div class="panel-details">
     <div class="panel-text">
     <h2> <%= spot.name %> </h2>
