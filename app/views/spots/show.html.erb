@@ -1,36 +1,63 @@
 <div class="container-spot-show">
-
-<!-- Select only the 5 first photos -->
-  <% if @spot.photos.count >= 5 %>
-    <% carousel_photos = @spot.photos.first(5) %>
-  <% else %>
-    <% carousel_photos = @spot.photos.first(@spot.photos.count) %>
-    <% i = 0 %>
-    <% (5-@spot.photos.count).times do %>
-      <% carousel_photos << @spot.photos[i] %>
-      <% (i+1 == @spot.photos.count) ? i = 0 : i+=1 %>
+  <div class="container-spot-show-header">
+  <!-- Select only the 5 first photos -->
+    <% if @spot.photos.count >= 5 %>
+      <% carousel_photos = @spot.photos.first(5) %>
+    <% else %>
+      <% carousel_photos = @spot.photos.first(@spot.photos.count) %>
+      <% i = 0 %>
+      <% (5-@spot.photos.count).times do %>
+        <% carousel_photos << @spot.photos[i] %>
+        <% (i+1 == @spot.photos.count) ? i = 0 : i+=1 %>
+      <% end %>
     <% end %>
-  <% end %>
-  <!-- ---------------------------- -->
+    <!-- ---------------------------- -->
 
 
+    <div class="spot-show-header-main-content">
+      <h1><%= @spot.name %></h1>
+      <p class="lat-long"><em>[lat: <%= @spot.latitude %>°, long: <%= @spot.longitude %>°]</em></p>
+      <p><%= @spot.description %></p>
+    </div>
 
-  <div class="spot-show-main-content">
-    <h1><%= @spot.name %></h1>
+    <div class="slider">
+      <figure>
+        <% carousel_photos.first(5).each do |photo| %>
+          <%= cl_image_tag photo.key %>
+      <% end %>
+      </figure>
+    </div>
   </div>
 
-  <div class="slider">
-    <figure>
-      <% carousel_photos.first(5).each do |photo| %>
-        <%= cl_image_tag photo.key %>
-    <% end %>
-    </figure>
+
+  <div class="container-spot-show-body">
+
+    <div class="map">
+      <div id="map"
+        style="width: 100%; height: 100%;"
+        data-markers="<%= @markers.to_json %>"
+        data-zoom="0"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+
+
+    <div class="container-spotted-species">
+      <h1>Spotted species:</h1>
+      <div class="spotted-species">
+        <% @spot.reviews.each do |review| %>
+          <% review.fishes.each do |fish| %>
+            <div class="fish">
+              <p><%= fish.name %></p>
+              <div class="fish-img">
+                <img src="<%= fish.photo_url %>" alt="<%= fish.name %>">
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
-
-
 
 
 </div>
-
-
