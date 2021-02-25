@@ -6,8 +6,19 @@ class SpotsController < ApplicationController
       {
         lat: spot.latitude,
         lng: spot.longitude,
-        infoWindow: render_to_string(partial: "info_window", locals: { spot: spot })
+        infoWindow: render_to_string(partial: "info_window", locals: { spot: spot }),
+        spotId: spot.id
       }
+    end
+    if params[:query].present?
+      sql_query = " \
+        spots.name @@ :query \
+        OR fish.name @@ :query \
+        OR fish.family @@ :query \
+      "
+      @spots = Spot.joins(reviews: { spottings: :fish }).where(sql_query, query: "%#{params[:query]}%")
+    else
+      @spots = Spot.all
     end
   end
 

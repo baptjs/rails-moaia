@@ -3,23 +3,17 @@
   <div class="panels">
     <% @spots.each do |spot| %>
       
-      <%= render "/shared/panel", spot: spot, whereami: "spots" %>
+      <%= render "/shared/panel", spot: spot, whereami: "likes" %>
 
     <% end %>
   </div>
-
-
-
-
   <div class="mapp">
     <div id="map"
       style="width: 100%; height: 100%;"
       data-markers="<%= @markers.to_json %>"
-      data-zoom="15"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
   </div>
 
 
 </div>
-

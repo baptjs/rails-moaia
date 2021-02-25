@@ -32,4 +32,19 @@ import { initMapbox } from '../plugins/init_mapbox';
 document.addEventListener('turbolinks:load', () => {
 
   initMapbox();
+  const markers = document.querySelectorAll('.mapboxgl-marker')
+  markers.forEach(marker => {
+    marker.addEventListener('click', (e) => {
+      if (document.querySelector('.selected')) {
+        document.querySelector('.selected').classList.remove('selected')
+      }; 
+      const spotId = marker.dataset.markerId;
+      const spot = document.querySelector(`#spot_${spotId}`);
+      spot.scrollIntoView({block: "center"});
+      spot.classList.add("selected");
+
+    })
+  });
+
+
 });

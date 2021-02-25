@@ -70,5 +70,26 @@
 .panel-rating {
   position: absolute;
   bottom: 16px; right: 16px;
+}
 
+.notfav {
+  position: absolute;
+  top: 16px; right: 24px;
+  color: white;
+  z-index: 100;
+  &:hover {
+    color: #e32434;
+  }
+}
+
+.fav {
+  color: #e32434;
+  z-index: 100;
+  position: absolute;
+  top: 16px; right: 24px;
+}
+
+
+.selected {
+  transform: scale(1.02);
 }

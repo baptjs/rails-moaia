@@ -1,15 +1,30 @@
-<div class="panel">
+<div class="panel" id="spot_<%=spot.id%>">
   <% photo_key = spot.photos.count.zero? ? 'g800mew8nhinkxmg6uok92ssk1en' : spot.photos.first.key %>
   <div class="photo" style="background-image: url('<%= cl_image_path photo_key %>')"></div>
-  <div class="panel-details">
-    <div class="panel-text">
-    <h2> <%= spot.name %> </h2>
-    <h4>Bali region</h4>
+  <%= link_to spot_path(spot, current_user), style: 'text-decoration: none;' do %>
+    <div class="panel-details">
+      <div class="panel-text">
+      <h2> <%= spot.name %> </h2>
+      <h4>Bali region</h4>
+      </div>
+      <div class="tags-list">
+        <div class="tag">Epave</div>
+        <div class="tag">Coraux</div>
+      </div>
+      <div class="panel-rating"><i class="far fa-star"></i> 4.5 (126) </div>
     </div>
-    <div class="tags-list">
-      <div class="tag">Epave</div>
-      <div class="tag">Coraux</div>
-    </div>
-    <div class="panel-rating"><i class="far fa-star"></i> 4.5 (126) </div>
-  </div>
+  <% end %>
+  <% like = Like.find_by(user_id: current_user.id, spot_id: spot.id) %>
+  <% if like.nil? %>
+    <%= link_to likes_path(spot_id: spot.id, whereami: whereami), method: :post, remote: true do %>
+      <div class="notfav"><i class="fas fa-heart"></i></div>
+    <% end %>
+  <% else %>
+    <%= link_to like_path(like, whereami: whereami), method: :delete, remote: true do %>
+        <div class="fav"><i class="fas fa-heart"></i></div>
+    <% end %>
+  <% end %>
+      
+    
 </div>
+
