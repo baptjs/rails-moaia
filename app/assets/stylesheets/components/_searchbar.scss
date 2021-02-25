@@ -12,7 +12,7 @@
     left: 0;
     width: 80px;
     height: 80px;
-    background: $success;
+    background: white;
     border-radius: 50%;
     transition: all 1s;
     z-index: 4;
@@ -30,7 +30,7 @@
       left: 22px;
       width: 12px;
       height: 2px;
-      background: white;
+      background: $success;
       transform: rotate(45deg);
       transition: all .5s;
     }
@@ -45,12 +45,12 @@
       width: 25px;
       height: 25px;
       border-radius: 50%;
-      border: 2px solid white;
+      border: 2px solid $success;
       transition: all .5s;
     }
   }
   .inputsearch {
-    font-family: 'Inconsolata', monospace;
+    font-family: 'Libre Franklin', 'sans-serif';
     position: absolute;
     margin: auto;
     top: 0;
@@ -62,8 +62,8 @@
     outline: none;
     border: none;
     background: $success;
-    color: white;
-    text-shadow: 0 0 10px $success;
+    text: black;
+    color: $success;
     padding: 0 80px 0 20px;
     border-radius: 30px;
     box-shadow: 0 0 25px 0 $success,
@@ -83,7 +83,7 @@
     }
     &:focus ~ .search {
       right: -250px;
-      background: #151515;
+      background: white;
       z-index: 6;
       &::before {
         top: 0;
@@ -96,7 +96,7 @@
         width: 25px;
         height: 2px;
         border: none;
-        background: white;
+        background: $success;
         border-radius: 0%;
         transform: rotate(-45deg);
       }

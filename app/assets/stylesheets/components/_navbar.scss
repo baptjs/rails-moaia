@@ -4,6 +4,9 @@
  box-shadow: 1px 1px 12px #555;
  color: $success !important;
 
+.navbar-lewagon:hover {
+  background-color: black;
+}
 
 }
 
@@ -18,5 +21,10 @@
 .navbar-light .navbar-nav .nav-link {
     color: $success!important;
 
+
 }
 
+.active:hover {
+  color: white !important;
+  opacity: 0.40;
+}
