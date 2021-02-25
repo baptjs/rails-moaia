@@ -4,9 +4,11 @@
   margin: 0px auto;
   padding-top: 20px;
   color: white;
-  h1 {
+  h1, h5, p {
     text-align: center;
-
+  }
+  h5 {
+    margin-bottom: 20px;
   }
 }
 

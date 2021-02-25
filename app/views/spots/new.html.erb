@@ -1,8 +1,8 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path "auelvkeqlturd553avr1", cloud_name: "djngsqazo" , crop: :fill %>'); background-size: cover; background-position: 50% 45%;">
 
   <div class="spot-new-container">
-    <h1>Add a new spot!</h1>
-
+    <h1>You've found an incredible diving spot?</h1>
+    <h5>Share it here</h5>
 
     <%= simple_form_for @spot do |f| %>
       <%= f.input :name, label: "Spot name" %>
@@ -13,9 +13,9 @@
       <%= f.input :description %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
-      <div class="btn-container"><%= f.button :submit, label: "Add this spot!", class: 'btn-submit' %></div>
+      <div class="btn-container"><%= f.button :submit, "Add this spot!", class: 'btn-submit' %></div>
     <% end %>
-
+    <p><em>(and don't forget to review it as well...)</em></p>
   </div>
 
 
