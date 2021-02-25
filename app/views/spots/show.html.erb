@@ -12,7 +12,7 @@
       <% end %>
     <% end %>
     <!-- ---------------------------- -->
-
+<% raise %>
 
     <div class="spot-show-header-main-content">
       <h1><%= @spot.name %></h1>
@@ -35,14 +35,48 @@
       <div class="spotted-species">
         <% @spot.reviews.each do |review| %>
           <% review.fishes.each do |fish| %>
-            <div class="fish">
+
+           <!--  <div class="fish">
               <div class="fish-name">
                 <div><%= fish.name %></div>
               </div>
               <div class="fish-img">
                 <img src="<%= fish.photo_url %>" alt="<%= fish.name %>">
               </div>
+            </div> -->
+
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="fish">
+                    <div class="fish-name">
+                      <div><%= fish.name %></div>
+                    </div>
+                    <div class="fish-img">
+                      <img src="<%= fish.photo_url %>" alt="<%= fish.name %>">
+                    </div>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="fish">
+                    <div class="fish-name">
+                      <div><%= fish.name %></div>
+                    </div>
+                    <div class="fish-properties">
+                      <div>
+                        <% number_of_spotters = Spotting.where(fish_id: fish).select{|spotting| spotting.review.spot == @spot}.count %>
+                        <% number_of_reviewers = @spot.reviews.count  %>
+                        <% reviewer_s = number_of_spotters>1 ? "reviewers" : "reviewer" %>
+                        <% percentage = number_of_spotters.fdiv(number_of_reviewers)*100.round(0)  %>
+                        <p>Spotted by <%= number_of_spotters %> <%= reviewer_s %> out of <%= number_of_reviewers %> (<%= percentage %> %) </p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
+
           <% end %>
         <% end %>
       </div>
@@ -62,5 +96,8 @@
 
     </div>
   </div>
+
+
+
 
 </div>
