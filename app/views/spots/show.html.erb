@@ -16,7 +16,7 @@
 
     <div class="spot-show-header-main-content">
       <h1><%= @spot.name %></h1>
-      <p class="lat-long"><em>[lat: <%= @spot.latitude %>°, long: <%= @spot.longitude %>°]</em></p>
+      <p class="lat-long"><em>[lat: <%= @spot.latitude.round(2) %>°, long: <%= @spot.longitude.round(2) %>°]</em></p>
       <p><%= @spot.description %></p>
     </div>
 
@@ -30,25 +30,15 @@
   </div>
 
 
-  <div class="container-spot-show-body">
-
-    <div class="map">
-      <div id="map"
-        style="width: 100%; height: 100%;"
-        data-markers="<%= @markers.to_json %>"
-        data-zoom="0"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div>
-
-
-    <div class="container-spotted-species">
+  <div class="container-spotted-species">
       <h1>Spotted species:</h1>
       <div class="spotted-species">
         <% @spot.reviews.each do |review| %>
           <% review.fishes.each do |fish| %>
             <div class="fish">
-              <p><%= fish.name %></p>
+              <div class="fish-name">
+                <div><%= fish.name %></div>
+              </div>
               <div class="fish-img">
                 <img src="<%= fish.photo_url %>" alt="<%= fish.name %>">
               </div>
@@ -59,5 +49,18 @@
     </div>
   </div>
 
+  <div class="container-spot-show-body">
+    <div class="map">
+      <div id="map"
+        style="width: 100%; height: 100%;"
+        data-markers="<%= @markers.to_json %>"
+        data-zoom="0"
+        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
+    <div class="tips">
+
+    </div>
+  </div>
 
 </div>
