@@ -4,9 +4,12 @@
   border-radius: 4px;
   background: $success;
   transition: background 0.3s ease;
-  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+  box-shadow: 0 5px 10px rgba(0,0,0,.3);
+
   &:hover {
     background: $success;
     color: white;
+    font-weight: 600;
+    text-decoration: none;
   }
 }
