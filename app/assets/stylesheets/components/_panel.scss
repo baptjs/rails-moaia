@@ -60,16 +60,27 @@
 
 .tag {
   padding: 4px 8px;
-  background-color: #00B9E7;
   color: white;
   border-radius: 4px;
   margin: 4px;
 
 }
 
+.tag-blue {
+  background-color: darkblue;
+}
+
+.tag-orange {
+  background-color: orange;
+}
+
+.tag-green {
+  background-color: lightgreen;
+}
+
 .panel-rating {
   position: absolute;
-  bottom: 16px; right: 16px;
+  top: 208px; right: 48px;
 
   .fa-star {
     color: $yellow;
@@ -78,8 +89,8 @@
 
 .notfav {
   position: absolute;
-  top: 16px; right: 24px;
-  color: white;
+  top: 208px; right: 16px;
+  color: grey;
   z-index: 100;
   &:hover {
     color: #e32434;
@@ -90,7 +101,7 @@
   color: #e32434;
   z-index: 100;
   position: absolute;
-  top: 16px; right: 24px;
+  top: 208px; right: 16px;
 }
 
 
