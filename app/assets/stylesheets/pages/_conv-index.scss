@@ -1,0 +1,27 @@
+.messagerie {
+  margin: 16px;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+}
+
+.conv-panels {
+  width: 40%;
+  border: solid 0.5px;
+}
+
+.c-panel {
+  display: flex;
+  padding: 8px 16px;
+}
+
+.text-panel {
+  margin-left: 16px;
+  border-bottom: 0.3px solid black;
+  width: 100%;
+
+  h3 {
+    font-weight: bold;
+  }
+}
+

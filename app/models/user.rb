@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :spots, dependent: :destroy
-  has_many :review, dependent: :destroy
+  has_many :reviews, dependent: :destroy
+  has_many :messages
 
   # validates :nickname, presence: true, uniqueness: true
 
