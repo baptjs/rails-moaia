@@ -1,8 +1,13 @@
 .navbar-lewagon {
   justify-content: space-between;
   background: transparent;
- box-shadow: 1px 1px 12px #555;
- color: $success !important;
+  box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.2);
+  color: $success !important;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+
 
 .navbar-lewagon:hover {
   background-color: black;
@@ -12,19 +17,23 @@
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
+
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 30px;
+
 }
 
 .navbar-light .navbar-nav .nav-link {
     color: $success!important;
-
 
 }
 
 .active:hover {
   color: white !important;
   opacity: 0.40;
+
 }
+
+
