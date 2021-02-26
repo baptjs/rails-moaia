@@ -90,25 +90,67 @@
 }
 
 .container-spot-show-body {
-  width: 80%;
-  height: 350px;
-  // background-color: white;
-  // box-shadow: 0 10px 30px rgba(0,0,0,.3);
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
+
+  .container-flex {
+    width: 80%;
+    height: 350px;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
 
   .map{
-    margin: 20px;
     width: 300px;
     height: 300px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    margin-right: 50px;
   }
 
-  p {
+  p, h1 {
     text-align: center;
   }
+
+  .tips{
+    // border:solid;
+    width: 800px;
+    height: 300px;
+    // background-color: white;
+    // box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+
+  .reviews{
+    // border:solid;
+    width: 80%;
+    height: 350px;
+    padding: 0 20px;
+    margin: 0 auto;
+    // background-color: white;
+    // box-shadow: 0 5px 10px rgba(0,0,0,.1);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+
+    .btn-submit{
+      width: 200px;
+      text-align: center;
+    }
+
+    .reviews-header{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .review-cards{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+
 }
 
 

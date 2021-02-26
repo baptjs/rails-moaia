@@ -43,7 +43,7 @@ AREAS.each do |area|
 
     spot = Spot.create!(name: spot_name, latitude: spot_lat, longitude: spot_long, user_id: rand(1..4), description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, dignissimos quos magnam. Commodi corrupti nisi reprehenderit sequi, quibusdam nostrum vitae minus. Rerum, quas, nihil. Rem veniam cupiditate magni doloremque. Pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, dignissimos quos magnam. Commodi corrupti nisi reprehenderit sequi, quibusdam nostrum vitae minus. Rerum, quas, nihil. Rem veniam cupiditate magni doloremque. Pariatur.")
 
-    number_of_packs_of_reviews = rand(1..30) # 1 'pack' = 3 reviews
+    number_of_packs_of_reviews = rand(1..10) # 1 'pack' = 3 reviews
     number_of_packs_of_reviews.times do
       Review.create!(spot_id: spot_id, user_id: 1, date: Time.local(2020, 6, 11), content: "Amazing spot! I saw tens of species, including turtles <3", rating: 5, tips: "Breathe")
       Review.create!(spot_id: spot_id, user_id: 2, date: Time.local(2020, 12, 4), content: "Awful! A shark tried to attack me, I almost died!!! (although my friends say it was a goldfish...)", rating: 1, tips: "Don't go")
@@ -72,11 +72,14 @@ puts "Creating fishes..."
 species_url = "https://www.fishwatch.gov/api/species"
 species_serialized = open(species_url).read
 species = JSON.parse(species_serialized)
-puts "#{species.count} fishes found"
 
+species_in_db = []
 species.each do |specie|
+  next if species_in_db.include? specie["Species Name"]
+  species_in_db << specie["Species Name"]
   Fish.create!(name: specie["Species Name"], photo_url: specie["Species Illustration Photo"]['src'])
 end
+puts "#{species_in_db.count} fishes found"
 
 # # --------------- SPOTTINGS ---------------
 
@@ -87,7 +90,7 @@ puts "Creating spottings..."
 Review.all.each do |review|
   number_of_spottings = rand(1..10)
   number_of_spottings.times do
-    Spotting.create!(review_id: review.id, fish_id: rand(1..113), number: rand(1..100))
+    Spotting.create!(review_id: review.id, fish_id: rand(1..species_in_db.count), number: rand(1..100))
   end
 end
 

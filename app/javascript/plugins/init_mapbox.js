@@ -16,7 +16,7 @@ const addMarkersToMap = (map, markers) => {
       .setLngLat([ marker.lng, marker.lat ])
       .setPopup(popup)
       .addTo(map)
-      mark.getElement().dataset.markerId = marker.spotId
+      mark.getElement().dataset.markerId = marker.spotId;
   });
 };
 

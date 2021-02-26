@@ -29,21 +29,14 @@
     </div>
   </div>
 
-
   <div class="container-spotted-species">
       <h1>Spotted species:</h1>
       <div class="spotted-species">
+        <% spotted_fishes = [] %>
         <% @spot.reviews.each do |review| %>
           <% review.fishes.each do |fish| %>
-
-           <!--  <div class="fish">
-              <div class="fish-name">
-                <div><%= fish.name %></div>
-              </div>
-              <div class="fish-img">
-                <img src="<%= fish.photo_url %>" alt="<%= fish.name %>">
-              </div>
-            </div> -->
+            <% next if spotted_fishes.include? fish  %>
+            <% spotted_fishes << fish %>
 
             <div class="flip-card">
               <div class="flip-card-inner">
@@ -64,10 +57,14 @@
                     </div>
                     <div class="fish-properties">
                       <div>
-                        <% number_of_spotters = Spotting.where(fish_id: fish).select{|spotting| spotting.review.spot == @spot}.count %>
+                        <% spottings = Spotting.includes(:review).where(fish_id: fish)%>
+                        <% reviews = Review.includes(:spot).where(spot_id: @spot.id) %>
+                        <% reviews_ids = reviews.map{|review| review.id} %>
+                        <% spottings = spottings.select{ |spotting| reviews_ids.include? spotting.review_id } %>
+                        <% number_of_spotters = spottings.count %>
                         <% number_of_reviewers = @spot.reviews.count  %>
                         <% reviewer_s = number_of_spotters>1 ? "reviewers" : "reviewer" %>
-                        <% percentage = number_of_spotters.fdiv(number_of_reviewers)*100.round(0)  %>
+                        <% percentage = (number_of_spotters.fdiv(number_of_reviewers)*100).round %>
                         <p>Spotted by <%= number_of_spotters %> <%= reviewer_s %> out of <%= number_of_reviewers %> (<%= percentage %> %) </p>
 
                       </div>
@@ -76,7 +73,6 @@
                 </div>
               </div>
             </div>
-
           <% end %>
         <% end %>
       </div>
@@ -84,20 +80,58 @@
   </div>
 
   <div class="container-spot-show-body">
-    <div class="map">
-      <div id="map"
-        style="width: 100%; height: 100%;"
-        data-markers="<%= @markers.to_json %>"
-        data-zoom="0"
-        data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    <div class="container-flex">
+      <div class="map">
+        <div id="map"
+          style="width: 100%; height: 100%;"
+          data-markers="<%= @markers.to_json %>"
+          data-zoom="0"
+          data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+        </div>
+      </div>
+
+      <div class="tips">
+        <h1>Tips: </h1>
+        <ul>
+          <% @spot.reviews.each do |review| %>
+            <li><%= review.tips %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
-    <div class="tips">
 
+
+    <div class="reviews">
+      <div class="reviews-header">
+        <h3> <%= @spot.reviews.count %> reviews have been submitted for this spot: </h3>
+        <%= link_to "Add a review", new_spot_review_path(@spot), class: "btn-submit" %>
+      </div>
+      <div class="review-cards">
+        <% @spot.reviews.each do |review| %>
+
+
+
+
+
+
+
+
+
+
+
+        <% end %>
+
+      </div>
     </div>
+
   </div>
-
-
-
-
 </div>
+
+
+<!-- These lines are necessary so that the markers be displayed on the map -->
+<script>
+  document.querySelector('.map').style.display = 'none';
+  document.querySelector('.map').style.display = 'block';
+</script>
+
+

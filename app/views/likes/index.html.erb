@@ -2,7 +2,7 @@
 
   <div class="panels">
     <% @spots.each do |spot| %>
-      
+
       <%= render "/shared/panel", spot: spot, whereami: "likes" %>
 
     <% end %>
@@ -19,3 +19,11 @@
 
 
 </div>
+
+
+
+<!-- These lines are necessary so that the markers be displayed on the map -->
+<script>
+  document.querySelector('.mapp').style.display = 'none';
+  document.querySelector('.mapp').style.display = 'block';
+</script>
