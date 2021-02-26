@@ -6,13 +6,15 @@
 
     <%= simple_form_for @spot do |f| %>
       <%= f.input :name, label: "Spot name" %>
-      <%= f.input :country, label: "Spot name" %>
+      <%= f.input :region  %>
       <div class="coordinates">
         <div class="lat"><%= f.input :latitude %></div>
         <div class="long"><%= f.input :longitude %></div>
       </div>
       <%= f.input :description %>
+      <%= f.input :spot, :as => :hidden, :input_html => { :value => @spot }  %>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+
 
       <div class="btn-container"><%= f.button :submit, "Add this spot!", class: 'btn-submit' %></div>
     <% end %>
