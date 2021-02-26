@@ -1,7 +1,36 @@
 class SpotsController < ApplicationController
   def index
-    @spots = Spot.all
+    # Search (from home page)
+    if params[:query].present?
+      sql_query = " \
+        spots.name @@ :query \
+        OR spots.country @@ :query \
+        OR fish.name @@ :query \
+      "
+      @spots = Spot.joins(reviews: { spottings: :fish }).where(sql_query, query: "%#{params[:query]}%").uniq
 
+    else
+      @spots = Spot.all
+    end
+
+    # Search filters
+    # @spots = @spots.where.not(latitude: nil, longitude: nil)
+
+    spots_filter = params[:flats_filter]
+
+    if spots_filter.present?
+      if spots_filter[:search].present?
+        sql_query = " \
+        spots.name @@ :query \
+        OR spots.country @@ :query \
+        OR fish.name @@ :query \
+      "
+      @spots = Spot.joins(reviews: { spottings: :fish }).where(sql_query, query: "%#{params[:query]}%").uniq
+      end
+    end
+
+
+    # Mapbox markers
     @markers = @spots.map do |spot|
       {
         lat: spot.latitude,
@@ -9,16 +38,6 @@ class SpotsController < ApplicationController
         infoWindow: render_to_string(partial: "info_window", locals: { spot: spot }),
         spotId: spot.id
       }
-    end
-    if params[:query].present?
-      sql_query = " \
-        spots.name @@ :query \
-        OR fish.name @@ :query \
-        OR fish.family @@ :query \
-      "
-      @spots = Spot.joins(reviews: { spottings: :fish }).where(sql_query, query: "%#{params[:query]}%")
-    else
-      @spots = Spot.all
     end
   end
 
@@ -44,7 +63,8 @@ class SpotsController < ApplicationController
     @spot.user_id = current_user.id
 
     if @spot.save
-      redirect_to spot_path(@spot)
+      # redirect_to spot_path(@spot)
+      redirect_to new_spot_review_path(@spot)
     else
       render :new
     end

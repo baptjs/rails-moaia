@@ -4,13 +4,20 @@
   <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "manta-ray-shape.png" %>
   <% end %>
+
+
+
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active left"><%= link_to "Discover", spots_path, class: "nav-link" %></li>
+       <% if user_signed_in? %>
+      <li class="nav-item active left <%= 'active' if current_page?(spots_path) %>"><%= link_to "Discover", spots_path, class: "nav-link" %></li>
       <li class="nav-item active left"><%= link_to "Friends", "#", class: "nav-link" %></li>
-      <li class="nav-item active left"><%= link_to "Favorites", "#", class: "nav-link" %></li>
+      <li class="nav-item active left <%= 'active' if current_page?(new_spot_path) %>"><%= link_to "Favorites", likes_path, class: "nav-link" %></li>
+      <li class="nav-item active left <%= 'active' if current_page?(new_spot_path) %>"><%= link_to "Add a new spot", new_spot_path, class: "nav-link" %></li>
+    <% else %>
+      <li class="nav-item active left <%= 'active' if current_page?(spots_path) %>"><%= link_to "Discover", spots_path, class: "nav-link" %></li>
+      <% end %>
     </ul>
   </div>
-
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
@@ -34,3 +41,5 @@
     </ul>
   </div>
 </div>
+
+<div style="height: 60px;"></div>
