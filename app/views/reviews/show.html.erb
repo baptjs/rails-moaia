@@ -1,0 +1,39 @@
+<div class=container-reviews>
+  <div class=avatar-review></div>
+    <div class="review-show-header-main-content">
+      <h1><%= @review.content %></h1>
+      <p class="date"><em><%= @review.date %></em></p>
+      <p class="rating"><em><%= @review.rating %></em></p>
+      <p class="tips"><em>tips: <%= @review.tips %></em></p>
+      <p><%= @review.content %></p>
+    </div>
+</div>
+
+<div class="container-spotted-species">
+  <h1>Observed species:</h1>
+  <div class="spotted-species">
+  </div>
+</div>
+
+<div id="review-photos" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <% @review.photos.each_with_index do |photo, index| %>
+      <li data-target="#review-photos" data-slide-to="<%= index %>" class=<%= index.zero? ? "active" : '' %> ></li>
+    <% end %>
+  </ol>
+  <div class="carousel-inner">
+  <% @review.photos.each_with_index do |photo, index| %>
+    <div class="carousel-item <%= index.zero? ? "active" : '' %>">
+      <%= cl_image_tag(photo.key, :class => "carousel-img d-block w-100") %>
+    </div>
+  <% end %>
+
+  <a class="carousel-control-prev" href="#review-photos" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#review-photos" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>

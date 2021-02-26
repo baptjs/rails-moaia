@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
 
   def create
     @spot = Spot.find(params[:spot_id])
-    @review = Review.new(review_params)
+    @review = Review.new(review_params[:spot_id])
     @review.user = current_user
     @review.spot = @spot
     if @review.save
@@ -24,7 +24,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:date, :content, :tips, :rating, :photos)
+    params.require(:review).permit(:date, :content, :tips, :rating, photos: [])
   end
 
 end
