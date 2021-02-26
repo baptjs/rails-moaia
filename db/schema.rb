@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_152211) do
+ActiveRecord::Schema.define(version: 2021_02_26_135637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,6 +82,15 @@ ActiveRecord::Schema.define(version: 2021_02_25_152211) do
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
+  create_table "spot_tags", force: :cascade do |t|
+    t.bigint "spot_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["spot_id"], name: "index_spot_tags_on_spot_id"
+    t.index ["tag_id"], name: "index_spot_tags_on_tag_id"
+  end
+
   create_table "spots", force: :cascade do |t|
     t.float "latitude"
     t.float "longitude"
@@ -90,6 +99,7 @@ ActiveRecord::Schema.define(version: 2021_02_25_152211) do
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "country"
     t.index ["user_id"], name: "index_spots_on_user_id"
   end
 
@@ -101,6 +111,12 @@ ActiveRecord::Schema.define(version: 2021_02_25_152211) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["fish_id"], name: "index_spottings_on_fish_id"
     t.index ["review_id"], name: "index_spottings_on_review_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -129,6 +145,8 @@ ActiveRecord::Schema.define(version: 2021_02_25_152211) do
   add_foreign_key "messages", "users"
   add_foreign_key "reviews", "spots"
   add_foreign_key "reviews", "users"
+  add_foreign_key "spot_tags", "spots"
+  add_foreign_key "spot_tags", "tags"
   add_foreign_key "spots", "users"
   add_foreign_key "spottings", "fish"
   add_foreign_key "spottings", "reviews"

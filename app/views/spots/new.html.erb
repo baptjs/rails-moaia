@@ -6,6 +6,7 @@
 
     <%= simple_form_for @spot do |f| %>
       <%= f.input :name, label: "Spot name" %>
+      <%= f.input :country, label: "Spot name" %>
       <div class="coordinates">
         <div class="lat"><%= f.input :latitude %></div>
         <div class="long"><%= f.input :longitude %></div>
@@ -15,7 +16,7 @@
 
       <div class="btn-container"><%= f.button :submit, "Add this spot!", class: 'btn-submit' %></div>
     <% end %>
-    <p><em>(and don't forget to review it as well...)</em></p>
+    <!-- <p><em>(and don't forget to review it as well...)</em></p> -->
   </div>
 
 

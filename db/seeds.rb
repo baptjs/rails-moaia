@@ -22,7 +22,7 @@ Review.destroy_all
 puts "Creating spots & reviews..."
 
 AREAS = [
-  {name: "Bali", lat: -8.65, lng: 115.22, dist: 50},
+  {name: "Indonesia", lat: -8.65, lng: 115.22, dist: 50},
   {name: "Egypt", lat: 27.40, lng: 33.68, dist: 50},
   {name: "Mexico", lat: 20.63, lng: -87.08, dist: 12}
 ]
@@ -38,16 +38,17 @@ AREAS.each do |area|
   dive_sites.each do |dive_site|
     spot_id += 1
     spot_name = dive_site["name"].encode('UTF-8', invalid: :replace, undef: :replace,  replace: "'" )
+    spot_country = area[:name]
     spot_lat = dive_site["lat"].to_f
     spot_long = dive_site["lng"].to_f
 
-    spot = Spot.create!(name: spot_name, latitude: spot_lat, longitude: spot_long, user_id: rand(1..4), description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, dignissimos quos magnam. Commodi corrupti nisi reprehenderit sequi, quibusdam nostrum vitae minus. Rerum, quas, nihil. Rem veniam cupiditate magni doloremque. Pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, dignissimos quos magnam. Commodi corrupti nisi reprehenderit sequi, quibusdam nostrum vitae minus. Rerum, quas, nihil. Rem veniam cupiditate magni doloremque. Pariatur.")
+    spot = Spot.create!(name: spot_name, country: spot_country, latitude: spot_lat, longitude: spot_long, user_id: rand(1..4), description: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, dignissimos quos magnam. Commodi corrupti nisi reprehenderit sequi, quibusdam nostrum vitae minus. Rerum, quas, nihil. Rem veniam cupiditate magni doloremque. Pariatur. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt, dignissimos quos magnam. Commodi corrupti nisi reprehenderit sequi, quibusdam nostrum vitae minus. Rerum, quas, nihil. Rem veniam cupiditate magni doloremque. Pariatur.")
 
     number_of_packs_of_reviews = rand(1..10) # 1 'pack' = 3 reviews
     number_of_packs_of_reviews.times do
-      Review.create!(spot_id: spot_id, user_id: 1, date: Time.local(2020, 6, 11), content: "Amazing spot! I saw tens of species, including turtles <3", rating: 5, tips: "Breathe")
-      Review.create!(spot_id: spot_id, user_id: 2, date: Time.local(2020, 12, 4), content: "Awful! A shark tried to attack me, I almost died!!! (although my friends say it was a goldfish...)", rating: 1, tips: "Don't go")
-      Review.create!(spot_id: spot_id, user_id: 3, date: Time.local(2021, 1, 10), content: "I recomment this spot if, like me, you looove starfishes", rating: 4, tips: "Look at the starfishes")
+      Review.create!(spot_id: spot_id, user_id: 1, date: Time.local(2020, 6, 11), content: "Amazing spot! I saw tens of species, including turtles <3", rating: rand(1..5))
+      Review.create!(spot_id: spot_id, user_id: 2, date: Time.local(2020, 12, 4), content: "Awful! A shark tried to attack me, I almost died!!! (although my friends say it was a goldfish...)", rating: rand(1..5))
+      Review.create!(spot_id: spot_id, user_id: 3, date: Time.local(2021, 1, 10), content: "I recomment this spot if, like me, you looove starfishes", rating: rand(1..5))
     end
   end
 end
@@ -92,6 +93,44 @@ Review.all.each do |review|
   number_of_spottings.times do
     Spotting.create!(review_id: review.id, fish_id: rand(1..species_in_db.count), number: rand(1..100))
   end
+end
+
+# # --------------- TAGS ---------------
+
+puts "Cleaning TAGS database..."
+Tag.destroy_all
+
+puts "Creating tags..."
+TAGS = ["Boat Dive", "Shore Dive", "Night Dive", "Salt Water", "Fresh Water", "Snorkling", "Beginner", "Intermediate", "Advanced", "Technical", "Caves/Mines", "Ruins", "Wrecks", "Walls", "Natural Reefs", "Artificial Reefs", "Fishing"]
+TAGS.each { |tag| Tag.create!(name: tag)}
+
+# # --------------- SPOT_TAGS ---------------
+
+puts "Cleaning SPOT_TAGS database..."
+SpotTag.destroy_all
+
+puts "Creating spot_tags..."
+Spot.all.each do |spot|
+  type_tags_ids = Tag.first(6).map { |tag| tag.id } # to ensure that there won't be the same tag twice for a given spot
+  difficulty_tags_ids = Tag.all[6,4].map { |tag| tag.id }
+  attractions_tags_ids = Tag.all[10,7].map { |tag| tag.id }
+  number_of_type_tags = rand(0..3) # number of tags to be created for this spot
+
+  # Type of dive
+  number_of_type_tags.times do
+    tag_id = type_tags_ids[rand(0..type_tags_ids.count - 1)]
+    type_tags_ids.delete(tag_id)
+    SpotTag.create!(spot_id: spot.id, tag_id: tag_id)
+  end
+
+  # Difficulty
+  tag_id = difficulty_tags_ids[rand(0..difficulty_tags_ids.count - 1)]
+  SpotTag.create!(spot_id: spot.id, tag_id: tag_id)
+
+  # Attractions
+  tag_id = attractions_tags_ids[rand(0..attractions_tags_ids.count - 1)]
+  SpotTag.create!(spot_id: spot.id, tag_id: tag_id)
+
 end
 
 

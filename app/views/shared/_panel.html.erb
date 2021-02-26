@@ -5,19 +5,28 @@
     <div class="panel-details">
       <div class="panel-text">
       <h2> <%= spot.name %> </h2>
-      <h4>Bali region</h4>
+      <h4><%= spot.country %></h4>
       </div>
       <div class="tags-list">
-        <div class="tag">Epave</div>
-        <div class="tag">Coraux</div>
+        <% spot.tags.each do |tag| %>
+          <% if tag.id < 7 %>
+            <div class="tag tag-blue"><%= tag.name %></div>
+          <% elsif tag.id < 11 %>
+            <div class="tag tag-orange"><%= tag.name %></div>
+          <% else %>
+            <div class="tag tag-green"><%= tag.name %></div>
+          <% end %>
+        <% end %>
+
       </div>
-      <div class="panel-rating"><i class="far fa-star"></i> <%= spot.reviews.average(:rating).round(1) %> (<%= spot.reviews.count %>) </div>
+      <% average_rating = spot.reviews.empty? ? '-' : spot.reviews.average(:rating).round(1) %>
+      <div class="panel-rating"><i class="fas fa-star"></i> <%= average_rating %> (<%= spot.reviews.count %>) </div>
     </div>
   <% end %>
   <% like = Like.find_by(user_id: current_user.id, spot_id: spot.id) %>
   <% if like.nil? %>
     <%= link_to likes_path(spot_id: spot.id, whereami: whereami), method: :post, remote: true do %>
-      <div class="notfav"><i class="fas fa-heart"></i></div>
+      <div class="notfav"><i class="far fa-heart"></i></div>
     <% end %>
   <% else %>
     <%= link_to like_path(like, whereami: whereami), method: :delete, remote: true do %>
