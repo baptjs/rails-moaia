@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       resources :spottings, only: [:new, :create]
     end
   end
-
+  resources :conversations
   resources :users, only: [:show]
   resources :likes, only: [:index, :create, :destroy]
 
