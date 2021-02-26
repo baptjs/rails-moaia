@@ -10,3 +10,43 @@
     padding: 20px;
     width: 300px;
   }
+
+  .card-comment {
+    margin: 10px;
+    background-color: white;
+    height: 200px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0 0 0.3px rgba(0,0,0,0.2);
+    padding: 20px;
+    width: 40%;
+    position: relative;
+
+
+    p {
+      margin-top:16px;
+    }
+
+    .date {
+      font-style: italic;
+      opacity: 0.6;
+      position: absolute;
+      top: 20px; right: 20px;
+    }
+    .link-review {
+      position: absolute;
+      bottom: 20px; right: 20px;
+    }
+  }
+
+.top-part {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+
+  h3 {
+    margin-left: 16px;
+  }
+
+ 
+}

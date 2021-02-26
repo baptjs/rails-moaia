@@ -49,9 +49,14 @@ AREAS.each do |area|
       Review.create!(spot_id: spot_id, user_id: 1, date: Time.local(2020, 6, 11), content: "Amazing spot! I saw tens of species, including turtles <3", rating: rand(1..5))
       Review.create!(spot_id: spot_id, user_id: 2, date: Time.local(2020, 12, 4), content: "Awful! A shark tried to attack me, I almost died!!! (although my friends say it was a goldfish...)", rating: rand(1..5))
       Review.create!(spot_id: spot_id, user_id: 3, date: Time.local(2021, 1, 10), content: "I recomment this spot if, like me, you looove starfishes", rating: rand(1..5))
+
     end
+      Review.create!(spot_id: spot_id, user_id: 1, date: Time.local(2020, 6, 11), content: "Amazing spot! I saw tens of species, including turtles <3", rating: 5, tips: "Plusieurs couples de murènes sont nichés dans les rochers !! ")
+      Review.create!(spot_id: spot_id, user_id: 2, date: Time.local(2020, 12, 4), content: "Awful! A shark tried to attack me, I almost died!!! (although my friends say it was a goldfish...)", rating: 1, tips: "Ya des poulpes près des falaises")
+      Review.create!(spot_id: spot_id, user_id: 4, date: Time.local(2021, 1, 10), content: "I recomment this spot if, like me, you looove starfishes", rating: 4, tips: "Attention à la mouuusse !")
   end
 end
+
 # # --------------- BALI ---------------
 tulamben = Spot.find_by(name: "Tulamben")
 puts "Attaching photos to Tulamben spot (id: #{tulamben.id})"
