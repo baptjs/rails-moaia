@@ -10,9 +10,12 @@ class ReviewsController < ApplicationController
   end
 
   def create
+
     @spot = Spot.find(params[:spot_id])
-    @review = Review.new(review_params[:spot_id])
+    # raise
+    @review = Review.new(review_params)
     @review.user = current_user
+    # spot = @spot.nil? ? spot : @spot
     @review.spot = @spot
     if @review.save
       redirect_to spot_path(@spot)

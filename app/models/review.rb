@@ -2,7 +2,7 @@ class Review < ApplicationRecord
   belongs_to :user
   belongs_to :spot
   has_many :spottings, dependent: :destroy
-  has_many :fish, through: :spottings
+  has_many :fishes, through: :spottings
 
   validates :date, presence: true
   validates :content, presence: true

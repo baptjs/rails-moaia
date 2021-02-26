@@ -4,7 +4,7 @@ class SpotsController < ApplicationController
     if params[:query].present?
       sql_query = " \
         spots.name @@ :query \
-        OR spots.country @@ :query \
+        OR spots.region @@ :query \
         OR fish.name @@ :query \
       "
       @spots = Spot.joins(reviews: { spottings: :fish }).where(sql_query, query: "%#{params[:query]}%").uniq
@@ -22,7 +22,7 @@ class SpotsController < ApplicationController
       if spots_filter[:search].present?
         sql_query = " \
         spots.name @@ :query \
-        OR spots.country @@ :query \
+        OR spots.region @@ :query \
         OR fish.name @@ :query \
       "
       @spots = Spot.joins(reviews: { spottings: :fish }).where(sql_query, query: "%#{params[:query]}%").uniq
@@ -73,6 +73,6 @@ class SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:latitude, :longitude, :name, :description, photos: [])
+    params.require(:spot).permit(:latitude, :longitude, :name, :region, :description, photos: [])
   end
 end

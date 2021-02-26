@@ -8,7 +8,7 @@ class Spot < ApplicationRecord
   has_many :tags, through: :spot_tags
 
   validates :name, presence: true, uniqueness: true
-  validates :country, presence: true
+  validates :region, presence: true
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :description, presence: true
