@@ -12,6 +12,7 @@ class Spot < ApplicationRecord
   validates :latitude, presence: true
   validates :longitude, presence: true
   validates :description, presence: true
+  validates :photos, presence: true
 
   # pg_search_scope :search_by_spot_name,
   #   against: [ :description, :address ],

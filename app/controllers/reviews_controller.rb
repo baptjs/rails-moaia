@@ -18,7 +18,7 @@ class ReviewsController < ApplicationController
     # spot = @spot.nil? ? spot : @spot
     @review.spot = @spot
     if @review.save
-      redirect_to spot_path(@spot)
+      redirect_to spot_review_path(@review)
     else
       render :new
     end
