@@ -1,17 +1,92 @@
 .spots-filter {
+  // border: dotted;
   margin: 20px;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: space-between;
 
-  .search-bar {
-    width: 500px;
-    height: 100%;
+  #search-bar {
+    width: 300px;
+    .form-control.string {
+      height: 40px;
+      border-radius: 4px;
+      border: 1px solid #aaa;
+    }
   }
 }
 
 
+#tags-filters {
+  margin: 0 10px;
+  flex-grow: 1;
+  width: 300px !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .select2-search__field {
+    display:none;
+  }
+  .select2-selection__choice{
+    color: white;
 
+  }
+
+  #dive-type-filters {
+    width: 230px;
+    position: relative;
+    .select2-selection__choice{
+      background-color: #0F018B;
+
+    }
+    .select2-selection.select2-selection--multiple {
+      min-height: 40px;
+      position: relative;
+
+    }
+  }
+
+  #difficulty-filters {
+    width: 230px;
+    .select2-selection__choice{
+      background-color: #FFA500;
+      z-index: 10;
+    }
+    .select2-selection.select2-selection--multiple {
+      min-height: 40px;
+    }
+  }
+
+  #attractions-filters {
+    width: 230px;
+    .select2-selection__choice{
+      background-color: #8FEE8F;
+    }
+    .select2-selection.select2-selection--multiple {
+      min-height: 40px;
+
+    }
+  }
+
+  #species-filters {
+    width: 230px;
+    .select2-selection__choice{
+      background-color: $success;
+    }
+    .select2-selection.select2-selection--multiple {
+      height: 40px;
+    }
+  }
+
+  .select2-selection__choice__remove{
+    position: absolute;
+    color: transparent;
+    right: -2px;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    border-color: transparent;
+  }
+}
 
 
 
@@ -28,4 +103,14 @@
   position: sticky;
   top: 20px;
 
+}
+
+.no-favs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  p {
+    font-style: italic;
+  }
 }
