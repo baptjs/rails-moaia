@@ -25,7 +25,8 @@ require("channels")
 // External imports
 import "bootstrap";
 import { initMapbox } from '../plugins/init_mapbox';
-import { dynamicRating } from "../plugins/stars_in_review_form";
+import { dynamicRating } from "../plugins/stars_in_review_form"; // for reviews rating with stars
+import { ajaxLikes } from "../plugins/ajax_likes";
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -50,5 +51,6 @@ document.addEventListener('turbolinks:load', () => {
 
   dynamicRating();
 
+  ajaxLikes();
 
-});
+}); // turbolinks closing
