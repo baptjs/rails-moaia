@@ -23,19 +23,19 @@
       </div>
 
       <% average_rating = spot.reviews.empty? ? '-' : spot.reviews.average(:rating).round(1) %>
-      <div class="panel-rating"><i class="fas fa-star"></i> <%= average_rating %> (<%= spot.reviews.count %>) </div>
+      <div class="panel-rating">
+        <i class="fas fa-star"></i> <%= average_rating %> (<%= spot.reviews.count %>)
+      </div>
     </div>
   <% end %>
 
   <% like = Like.find_by(user_id: current_user.id, spot_id: spot.id) %>
 
-
-
   <% if like.nil? %>
-      <div class="notfav"><i class="far fa-heart" data-spotid= "<%= spot.id %>"></i></div>
-    <% else %>
-      <div class="fav"><i class="fas fa-heart" data-spotid= "<%= spot.id %>" data-likeid= "<%= like.id %>"></i></div>
-    <% end %>
+    <div><i class="far fa-heart" data-spotid= "<%= spot.id %>"></i></div>
+  <% else %>
+    <div><i class="fas fa-heart" data-spotid= "<%= spot.id %>" data-likeid= "<%= like.id %>"></i></div>
+  <% end %>
 
 </div>
 
