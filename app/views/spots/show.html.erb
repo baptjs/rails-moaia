@@ -136,7 +136,7 @@
             <p> <%= review.content %></p>
             <div class="date"> <%= review.date %>  </div>
             <div class="link-review">
-              <%= link_to spot_review_path(review), style: 'text-decoration: none' do %>
+              <%= link_to spot_review_path(@spot, review), style: 'text-decoration: none' do %>
                   See full review
               <% end %>
             </div>
