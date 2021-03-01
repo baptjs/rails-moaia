@@ -92,19 +92,22 @@
 
       <div class="tips">
         <h1>Tips: </h1>
+        <% if @spot.reviews.map { |review| review.tips } == @spot.reviews.map { |review| "" } %>
+          <p id="no-tips">No tip has been submitted yet...</p>
+          <% else %>
+          <% @spot.reviews.each do |review| %>
+            <% unless review.tips.blank? %>
+              <div class="tips-panel">
+                <img src=" <%= review.user.avatar_url %> " alt="" class="avatar">
+                <div class="tips-text-panel">
+                  <%= link_to user_path(review.user), style: 'text-decoration: none !important;' do %>
+                    <h3><%= review.user.first_name %></h3>
+                  <% end %>
 
-        <% @spot.reviews.each do |review| %>
-          <% unless review.tips.nil? %>
-            <div class="tips-panel">
-              <img src=" <%= review.user.avatar_url %> " alt="" class="avatar">
-              <div class="tips-text-panel">
-                <%= link_to user_path(review.user), style: 'text-decoration: none !important;' do %>
-                  <h3><%= review.user.first_name %></h3>
-                <% end %>
-
-                <p> <%= review.tips %></p>
+                  <p> <%= review.tips %></p>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
 
@@ -114,7 +117,8 @@
 
     <div class="reviews">
       <div class="reviews-header">
-        <h3> <%= @spot.reviews.count %> reviews have been submitted for this spot: </h3>
+        <% review_s = @spot.reviews.count>1 ? "reviews have" : "review has" %>
+        <h3> <%= @spot.reviews.count %> <%= review_s %> been submitted for this spot: </h3>
         <%= link_to "Add a review", new_spot_review_path(@spot), class: "btn-submit" %>
       </div>
     </div>
@@ -130,9 +134,9 @@
             </div>
 
             <p> <%= review.content %></p>
-            <div class="date"> le <%= review.date %>  </div>
+            <div class="date"> <%= review.date %>  </div>
             <div class="link-review">
-              <%= link_to spot_review_path(review), style: 'text-decoration: none' do %>
+              <%= link_to spot_review_path(@spot, review), style: 'text-decoration: none' do %>
                   See full review
               <% end %>
             </div>

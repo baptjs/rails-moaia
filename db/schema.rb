@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_151209) do
+ActiveRecord::Schema.define(version: 2021_02_27_235603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 2021_02_26_151209) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "country"
     t.string "region"
+    t.text "init_tags", default: [], array: true
     t.index ["user_id"], name: "index_spots_on_user_id"
   end
 

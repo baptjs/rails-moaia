@@ -1,45 +1,62 @@
-<h2>Sign up</h2>
+<div class="container" style="width: 80%; margin-top: 20px;">
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <h2>Sign up</h2>
+  <br>
 
-  <div class="form-inputs">
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs d-flex" style="justify-content: space-between">
+      <div class="first-row" style="width:100%; margin-right: 40px;">
+
+      <%= f.input :nickname,
+                  required: true,
+                  autofocus: true %>
+
+      <%= f.input :first_name,
+                  required: true,
+                  autofocus: true %>
+
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true %>
+      <br>
+      <%= f.input :age,
+                  required: true,
+                  autofocus: true %>
+      <%= f.input :avatar_url, as: :file, label: "Upload your pic:" %>
+
+      </div>
 
 
-        <%= f.input :nickname,
-                required: true,
-                autofocus: true %>
+      <div class="second-row" style="width:100%">
 
-    <%= f.input :first_name,
-                required: true,
-                autofocus: true %>
+      <%= f.input :city,
+                  required: true,
+                  autofocus: true %>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
 
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true %>
-    <%= f.input :age,
-                required: true,
-                autofocus: true %>
-    <%= f.input :avatar_url, as: :file, label: "Upload your pic:" %>
-    <%= f.input :city,
-                required: true,
-                autofocus: true %>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+      </div>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up", class:"btn-submit" %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <br>
+  <br>
+
+  <%= render "devise/shared/links" %>
+
+</div>

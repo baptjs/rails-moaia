@@ -1,4 +1,5 @@
 class Spot < ApplicationRecord
+  after_create :init_spot_tags
   # include PgSearch::Model
   belongs_to :user
   has_many :reviews, dependent: :destroy
@@ -9,14 +10,17 @@ class Spot < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :region, presence: true
-  validates :latitude, presence: true
-  validates :longitude, presence: true
+  validates :latitude, presence: true, inclusion: {in: 0..90}
+  validates :longitude, presence: true, inclusion: {in: 0..180}
   validates :description, presence: true
+  validates :photos, presence: true
 
-  # pg_search_scope :search_by_spot_name,
-  #   against: [ :description, :address ],
-  #   using: {
-  #     tsearch: { prefix: true }
-    # }
+  private
+
+  def init_spot_tags
+    self.init_tags.each do |tag_id|
+      SpotTag.create(tag: Tag.find(tag_id), spot: self)
+    end
+  end
 
 end

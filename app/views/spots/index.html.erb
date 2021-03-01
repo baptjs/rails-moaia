@@ -1,8 +1,20 @@
-
+<div class="spots-filter-container">
+  <%= simple_form_for :spots_filter, url: spots_path, method: :get do |f| %>
+    <div class="spots-filter">
+      <div class="search-bar"> <%= f.input :search, label: "Search by site name or country", value: params.dig(:spots_filter, :search) %> </div>
+      <%= f.input :tags1, as: :select, label: "Type of dive", collection: Tag.first(6), input_html: { multiple: true, class: 'multiple-select' }, value: params.dig(:spots_filter, :tags1) %>
+      <%= f.input :tags2, label: "Difficulty", collection: Tag.all[6,4], input_html: { multiple: true, class: 'multiple-select'  }, include_hidden: false %>
+      <%= f.input :tags3, label: "Attractions", collection: Tag.all[10,7], input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
+      <%= f.input :fish, label: "Species", collection: Fish.all.sort_by{|fish| fish.name}, input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
+      <%= f.submit "Search", class: "btn-submit" %>
+    </div>
+  <% end %>
+</div>
 
 
 <div class="index-container">
   <div class="panels">
+
     <% @spots.each do |spot| %>
 
       <%= render "/shared/panel", spot: spot, whereami: "spots" %>

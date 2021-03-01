@@ -13,6 +13,11 @@
       </div>
       <%= f.input :description %>
       <%= f.input :spot, :as => :hidden, :input_html => { :value => @spot }  %>
+      <div class="tags">
+        <%= f.input :init_tags, label: "Type of dive", required: true, collection: Tag.first(6), input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
+        <%= f.input :init_tags, label: "Difficulty", required: true, collection: Tag.all[6,4], input_html: { multiple: true, class: 'multiple-select'  }, include_hidden: false %>
+        <%= f.input :init_tags, label: "Attractions", required: true, collection: Tag.all[10,7], input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
+      </div>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
 
