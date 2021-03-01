@@ -8,14 +8,14 @@
       <h4><%= spot.region %></h4>
       </div>
       <div class="tags-list">
-        <% spot.tags.each do |tag| %>
-          <% if tag.id < 7 %>
-            <div class="tag tag-blue"><%= tag.name %></div>
-          <% elsif tag.id < 11 %>
+        <% spot.dive_type_tags.each do |tag| %>
+          <div class="tag tag-blue"><%= tag.name %></div>
+        <% end %>
+        <% spot.difficulty_tags.each do |tag| %>
             <div class="tag tag-orange"><%= tag.name %></div>
-          <% else %>
+        <% end %>
+        <% spot.attractions_tags.each do |tag| %>
             <div class="tag tag-green"><%= tag.name %></div>
-          <% end %>
         <% end %>
 
       </div>
