@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :spots, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :messages
+  # has_one_attached :photo
 
   # validates :nickname, presence: true, uniqueness: true
 
