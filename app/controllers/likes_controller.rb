@@ -24,27 +24,28 @@ class LikesController < ApplicationController
     @like = Like.new(like_params)
     @like.user_id = current_user.id
     @like.save!
-    if params[:whereami] == "spots"
-      redirect_to spots_path
-    elsif params[:whereami] == "likes"
-      redirect_to likes_path
-    end
+    render json: { success: true, like_id: @like.id}
+    # if params[:whereami] == "spots"
+    #   redirect_to spots_path
+    # elsif params[:whereami] == "likes"
+    #   redirect_to likes_path
+    # end
 
   end
 
   def destroy
     @like = Like.find(params[:id])
     @like.destroy
-    if params[:whereami] == "spots"
-      redirect_to spots_path
-    elsif params[:whereami] == "likes"
-      redirect_to likes_path
-    end
+    render json: { success: true}
+    # if params[:whereami] == "spots"
+    #   redirect_to spots_path
+    # elsif params[:whereami] == "likes"
+    #   redirect_to likes_path
+    # end
   end
 
   def like_params
     params.permit(:spot_id, :latitude, :longitude, :name, :description, photos: [])
+    params.require(:like).permit(:spot_id)
   end
-
-
 end
