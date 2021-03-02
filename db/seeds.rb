@@ -56,6 +56,14 @@ end
 
 
 # # --------------- REVIEWS ---------------
+file = URI.open('https://i.pinimg.com/564x/a2/02/49/a202498ee42f8f99ae5fb4128e444c4a.jpg')
+file1 = URI.open('https://i.pinimg.com/564x/a7/0b/d2/a70bd22e3f039e3831f1a31ec04f6074.jpg')
+review = Review.create!(spot_id: 1, user_id: 1, date: Time.local(2020, 6, 11), content: "Wow, what an amazing spot !! ", rating: 5)
+review.photos.attach(io: file, filename: 'nes.png', content_type: 'image/jpg')
+review.photos.attach(io: file1, filename: 'nes.png', content_type: 'image/jpg')
+
+
+
 
 Spot.all.each do |spot|
   number_of_packs_of_reviews = rand(1..5) # 1 'pack' = 3 reviews
