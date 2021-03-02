@@ -8,3 +8,24 @@
     margin-right: 20px;
   }
 }
+
+.form-group.check_boxes.optional.review_spottings {
+  // border:solid;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  .image-select {
+    // border: dashed;
+    width: 200px;
+    // object-cover:fit;
+    img {
+      width: 200px;
+      height: 200px;
+      object-fit: contain;
+    }
+  }
+}
+
+
