@@ -10,6 +10,16 @@
   h5 {
     margin-bottom: 20px;
   }
+
+  .tags {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .tag {
+      width: 250px;
+    }
+  }
 }
 
 

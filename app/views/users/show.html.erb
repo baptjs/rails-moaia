@@ -1,58 +1,97 @@
 
-
-<div class="container-user-profile">
-  <div class="row">
-    <div class="user-show text-center">
-      <div class="user_show">
-        <img class="avatar-large-bordered" src="<%=@user.avatar_url%>"  alt="user avatar">
-  <div style="height: 25px"></div>
-
-    <h2> <%=@user.nickname%></h2>
-    <h6> <%=@user.age%></h6>
-    <h6><%=@user.city%></h6>
-
-    <div style="height: 5px"></div>
-    <hr style="height: 2px; color:  #2a9d8f; background-color:  #2a9d8f; width: 50%; border: none;">
-    <div style="height: 10px"></div>
-        <p><%=@user.description%></p>
+<div class="container-profile-user">
+  <div class="container-user-profile">
+    <div class="row-header-user">
+      <div class="user-show">
+        <div class="user_show">
+          <div style="height: 50px"></div>
+          <img class="avatar-large-bordered-user" src="<%=@user.avatar_url%>"  alt="user avatar">
+            <div class="text-center align-text-user">
+              <h2> <%=@user.nickname%> </h2>
+              <h6> <%=@user.age%> ans</h6>
+              <h6><%=@user.city%>, France</h6>
+              <div style="height: 5px"></div>
+              <hr style="height: 2px; color:  #2a9d8f; background-color:  #2a9d8f; width: 80%; border: none;">
+              <div style="height: 10px"></div>
+              <p><%=@user.description%></p>
+            </div>
+          <div style="height: 30px"></div>
+        </div>
+      </div>
     </div>
-</div>
-</div>
-
-
-<div class="row">
-<div class="species_left">
-
-
-<h4 class="text-center">Species observed :</h4>
-
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Green_turtle_in_Kona_2008.jpg" alt="" class="img-species-profile" style="text-align: right">
-      <div class="species-type">
-
-      <h5>Species name</h5>
-        <p>Species family :</p>
-        <p>Deeth : </p>
-         <p>Size : </p>
-      </div>
   </div>
-</div>
 
-    <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Green_turtle_in_Kona_2008.jpg" alt="" class="img-species-profile-two" style="text-align: right">
-      <div class="species-type-two">
-      <h5>Species name</h5>
-        <p>Species family :</p>
-        <p>Deeth : </p>
-         <p>Size : </p>
-      </div>
-      </div>
 
 <div class="row">
- <div class="review-spotted-user">
-   <h4>Review spotted fishes</h4>
+  <div class="species_left">
+    <h4 class="">Species observed :</h4>
+    <div class="container-spotted-species">
+      <div class="spotted-species">
+        <% spotted_fishes = [] %>
+          <% @user.reviews.each do |review| %>
+            <% review.fishes.each do |fish| %>
+              <% next if spotted_fishes.include? fish  %>
+              <% spotted_fishes << fish %>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="fish">
+                    <div class="fish-name">
+                      <div><%= fish.name %></div>
+                    </div>
+                    <div class="fish-img">
+                      <img src="<%= fish.photo_url %>" alt="<%= fish.name %>">
+                    </div>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="fish">
+                    <div class="fish-name">
+                      <div><%= fish.name %></div>
+                    </div>
+                    <div class="fish-properties">
+                      <div>
+                        <% spottings = Spotting.includes(:review).where(fish_id: fish)%>
+                        <%= review.spot.name %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
- </div>
 
-</div>
+
+  <div class="row">
+   <div class="review-spotted-user">
+     <h4>My last review :</h4>
+      <div class="reviews-header-user">
+        <% @user.reviews.limit(3).each do |review| %>
+            <div class="card-comment-user">
+              <div class="top-part">
+                <img src=" <%= review.user.avatar_url %> " alt="" class="avatar">
+                <%= link_to user_path(review.user), style: 'text-decoration: none !important;' do %>
+                  <h3><%= review.user.first_name %></h3>
+                <% end %>
+              </div>
+
+              <p> <%= review.content %></p>
+              <div class="date"> le <%= review.date %>  </div>
+              <div class="link-review">
+                <%= link_to spot_review_path(review), style: 'text-decoration: none' do %>
+                    See full review
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+      </div>
+   </div>
+  </div>
 </div>
 
 </div>

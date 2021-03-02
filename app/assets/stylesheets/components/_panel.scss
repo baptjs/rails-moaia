@@ -1,3 +1,4 @@
+
 .photo {
   height: 60%;
   background-size: cover;
@@ -40,6 +41,7 @@
 
   h2 {
     margin-bottom: 0px;
+    color: $success;
   }
 
   h4 {
@@ -77,17 +79,28 @@
 }
 
 .panel-rating {
+  height: 30px;
+  // display: flex;
+  // align-items: start;
+  color: $success;
   position: absolute;
-  top: 208px; right: 48px;
+  top: 208px; right: 24px;
+  // top: 0px; right: 48px;
 
   .fa-star {
     color: $yellow;
+    margin-right: 8px;
   }
+
 }
 
-.notfav {
+.far.fa-heart {
+  height: 30px;
+  // display: flex;
+  // border: solid;
+  // align-items: start;
   position: absolute;
-  top: 208px; right: 16px;
+  top: 256px; right: 32px;
   color: grey;
   z-index: 100;
   &:hover {
@@ -95,11 +108,11 @@
   }
 }
 
-.fav {
+.fas.fa-heart {
   color: #e32434;
   z-index: 100;
   position: absolute;
-  top: 208px; right: 16px;
+  top: 256px; right: 32px;
 }
 
 

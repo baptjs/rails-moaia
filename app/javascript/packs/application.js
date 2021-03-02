@@ -24,12 +24,12 @@ require("channels")
 
 // External imports
 import "bootstrap";
-import { initMapbox } from '../plugins/init_mapbox';
-import { enterSubmit } from '../plugins/enter_to_submit';
-import { dynamicRating } from "../plugins/stars_in_review_form";
 
-// Internal imports, e.g:
-// import { initSelect2 } from '../components/init_select2';
+import { enterSubmit } from '../plugins/enter_to_submit';
+import { initMapbox } from '../plugins/init_mapbox';
+import { dynamicRating } from "../plugins/stars_in_review_form"; // for reviews rating with stars
+import { ajaxLikes } from "../plugins/ajax_likes";
+import { initSelect2 } from '../plugins/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
 
@@ -50,6 +50,11 @@ document.addEventListener('turbolinks:load', () => {
   });
 
   dynamicRating();
+
   // enterSubmit()
 
-});
+  ajaxLikes();
+  initSelect2();
+
+
+}); // turbolinks closing

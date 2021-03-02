@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :messages
   has_many :conversations, through: :messages
+  # has_one_attached :photo
 
   # validates :nickname, presence: true, uniqueness: true
 

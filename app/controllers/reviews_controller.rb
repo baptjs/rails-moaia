@@ -1,7 +1,9 @@
 class ReviewsController < ApplicationController
 
   def show
+    @spot = Spot.find(params[:spot_id])
     @review = Review.find(params[:id])
+    # raise
   end
 
   def new
@@ -18,7 +20,7 @@ class ReviewsController < ApplicationController
     # spot = @spot.nil? ? spot : @spot
     @review.spot = @spot
     if @review.save
-      redirect_to spot_path(@spot)
+      redirect_to spot_review_path(@spot, @review)
     else
       render :new
     end

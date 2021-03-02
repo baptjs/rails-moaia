@@ -6,7 +6,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 10;
+  z-index: 1000;
 
 
 .navbar-lewagon:hover {
@@ -30,10 +30,40 @@
 
 }
 
-.active:hover {
+
+
+.nav-item:hover {
   color: white !important;
   opacity: 0.40;
+}
 
+// .active-link:hover:after {
+//   width: 50%;
+// }
+
+.active-link:after {
+    content: ""; /* This is necessary for the pseudo element to work. */
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* This will center the border. */
+    width: 30%; /* Change this to whatever width you want. */
+    // padding-top: 20px; /* This creates some space between the element and the border. */
+    border: 1px solid ;
 }
 
 
+
+.navbar-brand {
+  margin-left: 16px;
+}
+
+.links-container {
+  width: 700px;
+  margin-left: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .dots{
+    font-size: 24px;
+  }
+}

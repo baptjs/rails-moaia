@@ -1,9 +1,19 @@
+
+.background-review {
+  background-image: url(https://images.pexels.com/photos/2570524/pexels-photo-2570524.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-position: center;
+  background-size: cover;
+}
+
 .container-reviews{
- padding: 20px;
+  background-color: white;
+  padding: 20px;
   display: flex;
   justify-content: flex-start;
   width: 80%;
   margin: 20px auto;
+  border-radius: 15px;
+  box-shadow: 0 10px 6px -6px #777;
 
   .spot-show-header-main-content {
     max-width: 500px;
@@ -16,17 +26,15 @@
 }
 
 .avatar-review{
-  width: 40px;
-  border-radius: 50%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 }
 
-.container-review-show-body {
-  padding: 0 20px;
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-  margin: 0 auto;
-  justify-content: flex-end ;
+
 
   .map{
   margin: 20px;
@@ -34,18 +42,41 @@
   height: 300px;
   box-shadow: 0 10px 30px rgba(0,0,0,.5);
   }
-}
+
 
 #review-photos {
-  margin-left: 50%;
-  width: 700px;
+  margin-left: 45%;
+  width: 500px;
 }
 
 .carousel-img{
-  width: 700px;
-  height: 500px;
+  width: 600px;
+  height: 300px;
   object-fit: cover;
   border-radius: 5px;
 }
 
 
+.card-review {
+    background-color: white;
+    height: 40%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    padding: 16px;
+}
+
+.rating-review {
+  color: #FFC65A;
+}
+
+.container-review-species {
+  width: 100%;
+  height: 400px;
+  padding: 20px;
+  color: white;
+
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+}
