@@ -74,14 +74,13 @@
         <% @user.reviews.limit(3).each do |review| %>
             <div class="card-comment-user">
               <div class="top-part">
-                <img src=" <%= review.user.avatar_url %> " alt="" class="avatar">
                 <%= link_to user_path(review.user), style: 'text-decoration: none !important;' do %>
-                  <h3><%= review.user.first_name %></h3>
+                <h3><%= review.user.first_name %></h3>
                 <% end %>
               </div>
 
               <p> <%= review.content %></p>
-              <div class="date"> le <%= review.date %>  </div>
+              <div class="date"> le <%= review.date %></div>
               <div class="link-review">
                 <%= link_to spot_review_path(review), style: 'text-decoration: none' do %>
                     See full review
