@@ -19,7 +19,7 @@
         <li class="dots">•</li>
         <li class="nav-item active left><%= link_to "Friends", "#", class: "nav-link" %></li>
         <li class="dots">•</li>
-        <li class="nav-item active left "><%= link_to "Messages", "#", class: "nav-link" %></li>
+        <li class="nav-item active left <%= 'active-link' if current_page?(conversations_path) %>"><%= link_to "Messages", "conversations_path", class: "nav-link" %></li>
       <% end %>
        </div>
     </ul>
