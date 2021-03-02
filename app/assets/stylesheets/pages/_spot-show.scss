@@ -127,6 +127,16 @@
     }
   }
 
+  .user-profile-link {
+    text-decoration: none;
+    color: $success;
+
+    &:hover {
+      font-weight: 900;
+      transform: scale(1.1);
+    }
+  }
+
   .reviews {
     // border:solid;
     width: 80%;
@@ -148,18 +158,48 @@
       align-items: center;
       justify-content: space-between;
     }
-
-
   }
+}
 
 
+.container-review-cards {
+  width: 80%;
+  margin: 0 auto;
+  // border:solid;
 }
 
 .review-cards {
+  // border:solid;
+  // width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
+  // margin-left: 200px;
+
+  .card-comment {
+    width: 550px;
+  }
+
+  .avatar:hover {
+    transform: scale(4);
+    transition: transform .5s
+  }
 }
+
+
+
+.full-review-link {
+  text-decoration: none !important;
+  color: $success;
+  font-style: italic;
+
+  &:hover {
+    font-weight: 900;
+    color: $success;
+    font-style: italic;
+  }
+}
+
 
 
 
