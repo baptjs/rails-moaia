@@ -1,3 +1,11 @@
+.spot-new-container {
+  hr {
+    margin: 40px auto;
+    border-top: 1px solid white;
+    width: 50%;
+  }
+}
+
 .container-date-rating {
   display: flex;
   align-items: center;
@@ -9,7 +17,8 @@
   }
 }
 
-.form-group.check_boxes.optional.review_spottings {
+.form-group.check_boxes.optional.review_fishes {
+
   // border:solid;
   display: flex;
   justify-content: space-between;
@@ -18,14 +27,67 @@
 
   .image-select {
     // border: dashed;
+    // object-cover:fit
+    margin-top: 20px;
     width: 200px;
-    // object-cover:fit;
     img {
       width: 200px;
       height: 200px;
-      object-fit: contain;
+      object-fit: cover;
+      margin: 5px;
+
+
+
     }
   }
 }
+
+.species-select-container {
+  height: 500px;
+  overflow-y: scroll;
+  .species-select-container2 { // necessary to apply overflow-x: visible combined with overflow-y: scroll !
+    width: 98%;
+    overflow-x: visible;
+  }
+
+  p {
+      margin-bottom: 0;
+    }
+
+  margin-bottom: 30px;
+}
+
+
+
+// .image-select {
+//   width: 200px;
+//   position: relative;
+//   max-width: 100%;
+//   float: left;
+// }
+
+
+// .image-select::before {
+//     content: "";
+//     position: absolute;
+//     top: 10px;
+//     bottom: 17px;
+//     left: 10px;
+//     right: -10px;
+//     box-shadow: inset 0 0 8px rgba(0,0,0,.6);
+//     -moz-box-shadow: inset 0 0 8px rgba(0,0,0,.6);
+//     -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,.6);
+//     border: solid white;
+// }
+
+// .image-select img {
+//     float: left;
+//     width: 200px;
+//     height: 200px;
+//     object-fit: cover;
+//     margin: 10px;
+//   }
+
+
 
 

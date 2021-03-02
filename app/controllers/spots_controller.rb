@@ -137,6 +137,8 @@ class SpotsController < ApplicationController
         spotId: spot.id
       }
     end
+
+    redirect_to spots_path if @spots.empty?
   end
 
   def show
