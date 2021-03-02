@@ -1,8 +1,9 @@
 require 'json'
 require 'open-uri'
 require './db/photos_seeds'
+require './db/species_seed'
 
-# # --------------- USERS ---------------
+# --------------- USERS ---------------
 
 puts "Cleaning USERS database..."
 User.destroy_all
@@ -51,10 +52,6 @@ AREAS.each do |area|
   end
 end
 
-
-
-
-
 # # --------------- REVIEWS ---------------
 
 Spot.all.each do |spot|
@@ -76,18 +73,9 @@ end
 puts "Cleaning FISHES database..."
 Fish.destroy_all
 
-puts "Creating fishes..."
-species_url = "https://www.fishwatch.gov/api/species"
-species_serialized = open(species_url).read
-species = JSON.parse(species_serialized)
-
-species_in_db = []
-species.each do |specie|
-  next if species_in_db.include? specie["Species Name"]
-  species_in_db << specie["Species Name"]
-  Fish.create!(name: specie["Species Name"], photo_url: specie["Species Illustration Photo"]['src'])
-end
-puts "#{species_in_db.count} fishes found"
+puts "Creating fish..."
+add_fish()
+puts "#{Fish.all.count} fish added"
 
 # # --------------- SPOTTINGS ---------------
 
@@ -98,7 +86,7 @@ puts "Creating spottings..."
 Review.all.each do |review|
   number_of_spottings = rand(1..10)
   number_of_spottings.times do
-    Spotting.create!(review_id: review.id, fish_id: rand(1..species_in_db.count), number: rand(1..100))
+    Spotting.create!(review_id: review.id, fish_id: rand(1..Fish.all.count), number: rand(1..100))
   end
 end
 
