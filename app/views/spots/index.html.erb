@@ -1,12 +1,37 @@
+
+
 <div class="spots-filter-container">
   <%= simple_form_for :spots_filter, url: spots_path, method: :get do |f| %>
     <div class="spots-filter">
-      <div class="search-bar"> <%= f.input :search, label: "Search by site name or country", value: params.dig(:spots_filter, :search) %> </div>
-      <%= f.input :tags1, as: :select, label: "Type of dive", collection: Tag.first(6), input_html: { multiple: true, class: 'multiple-select' }, value: params.dig(:spots_filter, :tags1) %>
-      <%= f.input :tags2, label: "Difficulty", collection: Tag.all[6,4], input_html: { multiple: true, class: 'multiple-select'  }, include_hidden: false %>
-      <%= f.input :tags3, label: "Attractions", collection: Tag.all[10,7], input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
-      <%= f.input :fish, label: "Species", collection: Fish.all.sort_by{|fish| fish.name}, input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
-      <%= f.submit "Search", class: "btn-submit" %>
+      <div id="search-bar"> <%= f.input :search, label: "Search by dive site or country", required: false, value: params.dig(:spots_filter, :search) %> </div>
+
+      <div id="tags-filters">
+        <!-- Dive Type -->
+        <div id="dive-type-filters">
+          <%= f.input :dive_type, label: "Type of dive", required: false, collection: DiveTypeTag.all, input_html: {class: "select2", multiple: ""} %>
+        </div>
+
+        <!-- Difficulty -->
+        <div id="difficulty-filters">
+          <%= f.input :difficulty, label: "Difficulty", required: false, collection: DifficultyTag.all, input_html: {class: "select2", multiple: ""} %>
+        </div>
+
+        <!-- Attractions -->
+        <!-- Dive Type -->
+        <div id="attractions-filters">
+          <%= f.input :attractions, label: "Attractions", required: false, collection: AttractionsTag.all, input_html: {class: "select2", multiple: ""} %>
+        </div>
+
+        <!-- Species -->
+        <!-- Dive Type -->
+        <div id="species-filters">
+          <%= f.input :species, label: "Search by species", required: false, collection: Fish.all, input_html: {class: "select2", multiple: ""} %>
+        </div>
+
+      </div>
+
+
+      <%= f.submit "Search", class: "btn-submit", style:"height: 40px; margin-top: 32px;" %>
     </div>
   <% end %>
 </div>

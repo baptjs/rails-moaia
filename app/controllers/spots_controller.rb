@@ -29,64 +29,98 @@ class SpotsController < ApplicationController
       end
 
       # Tags : type of dive
-      if spots_filter[:tags1].present?
-        array_of_filtered_spots = []
-        result = []
-        spots_filter[:tags1].each do |tag_id|
+      # Option 1: when many tags are selected, we want to display the spots that correspond to EITHER of them
+      if spots_filter[:dive_type].present? && spots_filter[:dive_type] != [""]
+        tags_ids = []
+        spots_filter[:dive_type].each do |tag_id|
           next if tag_id == ""
-          filtered_spots = @spots.joins(:spot_tags).where(spot_tags: {tag_id: tag_id.to_i})
-          array_of_filtered_spots  << filtered_spots
+          tags_ids << tag_id.to_i
         end
-        unless array_of_filtered_spots.empty?
-          array_of_filtered_spots[0].each do |spot|
-            arr = array_of_filtered_spots.map {|filtered_spots| filtered_spots.include? spot }
-            result << spot unless arr.include?(false)
-          end
-          @spots = result
-        end
+          @spots = @spots.joins(:dive_type_taggings).where(dive_type_taggings: {dive_type_tag_id: tags_ids}) unless tags_ids.empty?
       end
+
+      # Option 2: when many tags are selected, we want to display the spots that correspond to ALL of them
+      # if spots_filter[:tags1].present?
+      #   array_of_filtered_spots = []
+      #   result = []
+      #   spots_filter[:tags1].each do |tag_id|
+      #     next if tag_id == ""
+      #     filtered_spots = @spots.joins(:spot_tags).where(spot_tags: {tag_id: tag_id.to_i})
+      #     array_of_filtered_spots  << filtered_spots
+      #   end
+      #   unless array_of_filtered_spots.empty?
+      #     array_of_filtered_spots[0].each do |spot|
+      #       arr = array_of_filtered_spots.map {|filtered_spots| filtered_spots.include? spot }
+      #       result << spot unless arr.include?(false)
+      #     end
+      #     @spots = result
+      #   end
+      # end
 
       # Tags : difficulty
-      if spots_filter[:tags2].present?
-        array_of_filtered_spots = []
-        result = []
-        spots_filter[:tags2].each do |tag_id|
+      # Option 1: when many tags are selected, we want to display the spots that correspond to EITHER of them
+
+      if spots_filter[:difficulty].present? && spots_filter[:difficulty] != [""]
+        tags_ids = []
+        spots_filter[:difficulty].each do |tag_id|
           next if tag_id == ""
-          filtered_spots = @spots.joins(:spot_tags).where(spot_tags: {tag_id: tag_id.to_i})
-          array_of_filtered_spots  << filtered_spots
+          tags_ids << tag_id.to_i
         end
-        unless array_of_filtered_spots.empty?
-          array_of_filtered_spots[0].each do |spot|
-            arr = array_of_filtered_spots.map {|filtered_spots| filtered_spots.include? spot }
-            result << spot unless arr.include?(false)
-          end
-          @spots = result
-        end
+          @spots = @spots.joins(:difficulty_taggings).where(difficulty_taggings: {difficulty_tag_id: tags_ids}) unless tags_ids.empty?
       end
+
+      # Option 2: when many tags are selected, we want to display the spots that correspond to ALL of them
+      # if spots_filter[:tags2].present?
+      #   array_of_filtered_spots = []
+      #   result = []
+      #   spots_filter[:tags2].each do |tag_id|
+      #     next if tag_id == ""
+      #     filtered_spots = @spots.joins(:spot_tags).where(spot_tags: {tag_id: tag_id.to_i})
+      #     array_of_filtered_spots  << filtered_spots
+      #   end
+      #   unless array_of_filtered_spots.empty?
+      #     array_of_filtered_spots[0].each do |spot|
+      #       arr = array_of_filtered_spots.map {|filtered_spots| filtered_spots.include? spot }
+      #       result << spot unless arr.include?(false)
+      #     end
+      #     @spots = result
+      #   end
+      # end
 
       # Tags : attractions
-      if spots_filter[:tags3].present?
-        array_of_filtered_spots = []
-        result = []
-        spots_filter[:tags3].each do |tag_id|
+      # Option 1: when many tags are selected, we want to display the spots that correspond to EITHER of them
+      if spots_filter[:attractions].present? && spots_filter[:attractions] != [""]
+        # raise
+        tags_ids = []
+        spots_filter[:attractions].each do |tag_id|
           next if tag_id == ""
-          filtered_spots = @spots.joins(:spot_tags).where(spot_tags: {tag_id: tag_id.to_i})
-          array_of_filtered_spots  << filtered_spots
+          tags_ids << tag_id.to_i
         end
-        unless array_of_filtered_spots.empty?
-          array_of_filtered_spots[0].each do |spot|
-            arr = array_of_filtered_spots.map {|filtered_spots| filtered_spots.include? spot }
-            result << spot unless arr.include?(false)
-          end
-          @spots = result
-        end
+          @spots = @spots.joins(:attractions_taggings).where(attractions_taggings: {attractions_tag_id: tags_ids}) unless tags_ids.empty?
       end
 
-      # Species
-      if spots_filter[:fish].present?
-        # raise
+      # Option 2: when many tags are selected, we want to display the spots that correspond to ALL of them
+      # if spots_filter[:tags3].present?
+      #   array_of_filtered_spots = []
+      #   result = []
+      #   spots_filter[:tags3].each do |tag_id|
+      #     next if tag_id == ""
+      #     filtered_spots = @spots.joins(:spot_tags).where(spot_tags: {tag_id: tag_id.to_i})
+      #     array_of_filtered_spots  << filtered_spots
+      #   end
+      #   unless array_of_filtered_spots.empty?
+      #     array_of_filtered_spots[0].each do |spot|
+      #       arr = array_of_filtered_spots.map {|filtered_spots| filtered_spots.include? spot }
+      #       result << spot unless arr.include?(false)
+      #     end
+      #     @spots = result
+      #   end
+      # end
 
-        @spots = Spot.joins(reviews: { spottings: :fish }).where(reviews: {spottings: {fish_id: spots_filter[:fish]}})
+      # Species
+      if spots_filter[:fish].present? && spots_filter[:fish] != [""]
+
+        @spots = @spots.joins(reviews: { spottings: :fish }).where(reviews: {spottings: {fish_id: spots_filter[:fish]}})
 
       end
 
@@ -137,7 +171,7 @@ class SpotsController < ApplicationController
   private
 
   def spot_params
-    params.require(:spot).permit(:latitude, :longitude, :name, :region, :description, photos: [], init_tags: [])
+    params.require(:spot).permit(:latitude, :longitude, :name, :region, :description, photos: [], init_dive_type_tags: [], init_difficulty_tags: [], init_attractions_tags: [])
   end
 
 end
