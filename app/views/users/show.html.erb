@@ -1,30 +1,40 @@
 
 <div class="container-profile-user">
   <div class="container-user-profile">
+
+   <!--  <div class="button-user-follow">
+      <p>Follow</p>
+    </div> -->
     <div class="row-header-user">
-      <div class="user-show">
         <div class="user_show">
-          <div style="height: 50px"></div>
           <img class="avatar-large-bordered-user" src="<%=@user.avatar_url%>"  alt="user avatar">
-            <div class="text-center align-text-user">
-              <h2> <%=@user.nickname%> </h2>
-              <h6> <%=@user.age%> ans</h6>
-              <h6><%=@user.city%>, France</h6>
-              <div style="height: 5px"></div>
-              <hr style="height: 2px; color:  #2a9d8f; background-color:  #2a9d8f; width: 80%; border: none;">
-              <div style="height: 10px"></div>
-              <p><%=@user.description%></p>
-            </div>
+          <div class="profile-description">
+            <h2> <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %> </h2>
+            <h6> <%=@user.age%> years old</h6>
+            <h6><%=@user.city%>, France</h6>
+            <div style="height: 5px"></div>
+            <hr style="height: 2px; color:  #2a9d8f; background-color:  #2a9d8f; width: 80%; border: none;">
+            <div style="height: 10px"></div>
+            <p><%=@user.description%></p>
+            <% if user_signed_in? %>
+            <% else %>
+              <p class="btn-submit send-message">Send a message</p>
+            <% end %>
+          </div>
+
+          <% if user_signed_in? %>
+            <%= link_to "Edit profile", edit_user_registration_path, class:"btn-submit user-edit-link"%>
+          <% else %>
+          <% end %>
           <div style="height: 30px"></div>
         </div>
-      </div>
     </div>
   </div>
 
 
-<div class="row">
+
   <div class="species_left">
-    <h4 class="">Species observed :</h4>
+    <h4 class="">Observed species:</h4>
     <div class="container-spotted-species">
       <div class="spotted-species">
         <% spotted_fishes = [] %>
@@ -67,33 +77,53 @@
 
 
 
-  <div class="row">
+
    <div class="review-spotted-user">
-     <h4>My last review :</h4>
+     <h4>My last reviews :</h4>
       <div class="reviews-header-user">
         <% @user.reviews.limit(3).each do |review| %>
             <div class="card-comment-user">
-              <div class="top-part">
-                <%= link_to user_path(review.user), style: 'text-decoration: none !important;' do %>
-                <h3><%= review.user.first_name %></h3>
+              <div class="top-part" style="padding-left: 0 !important">
+                <%= link_to spot_path(review.spot), class:"spot-name-link" do %>
+                  <h3 style="margin-left: 0 !important"><%= review.spot.name %></h3>
                 <% end %>
               </div>
 
-              <p> <%= review.content %></p>
-              <div class="date"> le <%= review.date %></div>
+              <p class="review-content"> <%= review.content %></p>
               <div class="link-review">
                 <%= link_to spot_review_path(review), style: 'text-decoration: none' do %>
-                    See full review
+                    <p class="full-rev">See full review</p>
                 <% end %>
               </div>
             </div>
           <% end %>
       </div>
    </div>
+</div>
+
+
+<div class="card-photo-user" style="padding: 0; margin-top: 20px;">
+  <div id="review-photos-user" class="carousel slide" data-ride="carousel" >
+    <ol class="carousel-indicators">
+      <% @user.photos.each_with_index do |photo, index| %>
+        <li data-target="#review-photos" data-slide-to="<%= index %>" class=<%= index.zero? ? "active" : '' %> ></li>
+      <% end %>
+    </ol>
+
+    <div class="carousel-inner">
+      <% @user.photos.each_with_index do |photo, index| %>
+        <div class="carousel-item <%= index.zero? ? "active" : '' %>">
+          <%= cl_image_tag(photo.key, :class => "carousel-img d-block w-100") %></div>
+      <% end %>
+      <a class="carousel-control-prev" href="#review-photos" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#review-photos" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
 </div>
 
-</div>
-    <div class="card-photo-user">
-      <h1>Photo</h1>
-    </div>

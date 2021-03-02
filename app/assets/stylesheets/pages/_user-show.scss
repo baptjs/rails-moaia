@@ -1,23 +1,48 @@
+
 .user_show {
-  margin-top: 0px;
-  height: 360px;
+  // border:solid;
+  height: 300px;
   color: black;
   padding: 15px;
-  width: 1215px;
-  margin-left: 95px;
-  margin-right: 30px;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  // align-items: center;
+
+  .profile-description {
+    flex-grow: 1;
+    text-align: center;
+    margin-right: 50px;
+    height: 300px;
+    overflow-y: auto;
+  }
+
+  .user-edit-link{
+    width: 300px;
+    height : 40px;
+    text-align: center;
+
+    &:hover {
+      opacity: 80%;
+    }
+  }
+  .send-message {
+    width: 200px;
+    height : 40px;
+    text-align: center;
+    margin-left: 200px;
+
+    &:hover {
+      opacity: 80%;
+    }
+  }
 }
 
-.align-text-user {
-  position: absolute;
-  top: 150px;
-  left: 300px;
-  margin-right: 100px;
-  margin-left: 100px;
-}
+
 
 .species_left {
-  margin-top: 20px;
   background-color: white;
   height: 350px;
   color: black;
@@ -25,9 +50,8 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   padding: 15px;
   margin-bottom: 10px;
-  width: 1215px;
-  margin-left: 45px;
-  margin-right: 30px;
+  width: 90%;
+  margin: auto;
 }
 
 
@@ -53,31 +77,37 @@
 }
 
 .card-photo-user {
-  margin-top: 45px;
-  margin-left: 30px;
+  margin: auto;
   height: 400px;
   color: black;
   border-radius: 4px;
   padding: 20px;
-  width: 1215px;
-  margin-bottom: 10px;
+  width: 90%;
   display: flex;
 }
 
 
 
 .review-spotted-user {
-  margin-top: 20px;
-  margin-left: 5px;
   background-color: white;
   height: 300px;
   color: black;
   border-radius: 4px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   padding: 15px;
-  width: 1215px;
-  margin-left: 60px;
-  margin-bottom: 10px;
+  width: 90%;
+  margin: auto;
+  margin-top: 20px;
+
+  .spot-name-link{
+    text-decoration: none;
+    color: $success;
+    padding-left: 0;
+
+    h3:hover{
+      font-weight: 900;
+    }
+  }
 }
 
 .card-comment-user {
@@ -85,7 +115,7 @@
   background-color: white;
   height: 200px;
   color: black;
-  border-radius: 10px;
+  border-radius: 4px;
   box-shadow: 0 0 0.3px rgba(0,0,0,0.2);
   padding: 20px;
   width: 50%;
@@ -98,16 +128,31 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 1100px;
+  width: 90%;
+
+  p.review-content {
+    font-style: italic;
+  }
+
+  p.full-rev {
+    text-align: right;
+  }
 }
 
-.row-header-user {
-  padding: 10px;
+
+// .row-header-user {
+//   padding: 10px;
+//   display: flex;
+//   justify-content: space-around;
+//   width: 9%;
+
+// }
+
+
+.spot-show-header-main-content {
   display: flex;
-  justify-content: space-around;
-  width: 95%;
-
 }
+
 
 .avatar-large-bordered-user {
   width: 224px;
@@ -117,4 +162,43 @@
   box-shadow: 0 5px 15px rgba(0,0,0,0.8);
   margin: 5px 50px;
 }
+
+
+#review-photos-user {
+  width: 200%;
+  height: 320px;
+}
+
+
+// .button-user-edit {
+
+//   border: none;
+//   color: white !important;
+//   padding-top: 13px;
+//   padding-bottom: 1px;
+//   padding-right: 10px;
+//   padding-left: 10px;
+//   text-shadow: 1px 1px 2px #2a9d8f;
+//   text-align: center;
+//   display: inline-block;
+//   font-size: 16px;
+//   margin-left: 30px;
+
+//   justify-content: center;// to overwrite bootstrap's style
+
+//   .user-edit-link{
+//     text-decoration: none;
+//     color: $success;
+//   }
+// }
+
+.button-user-follow {
+  display: flex;
+  position: absolute;
+  top: 20.9%;
+  left: 100px;
+  text-shadow: 1px 1px 2px ;
+  color: grey;
+}
+
 
