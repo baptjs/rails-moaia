@@ -1,3 +1,8 @@
+
+<div class=avatar-review>
+    <img src="<%= @review.user.avatar_url  %>" alt="" style="width:200px;height:200px; border-radius:50%;margin-top:10px">
+</div>
+
 <div class=container-reviews>
   <div class=avatar-review></div>
     <div class="review-show-header-main-content">
@@ -7,35 +12,98 @@
       <p class="tips"><em>tips: <%= @review.tips %></em></p>
       <p><%= @review.content %></p>
     </div>
-</div>
 
-<div class="container-spotted-species">
-  <h1>Observed species:</h1>
-  <div class="spotted-species">
+
+<div class=container-reviews>
+
+  <div class="text-review">
+    <h1><%= @review.content %></h1>
+    <p class="date"><em><%= @review.date %></em></p>
+    <p class="rating-review">
+        <% (1..5).each do |n| %>
+      <% if n <= @review.rating %>
+      <i class="fas fa-star"></i>
+      <% else  %>
+       <i class="far fa-star"></i>
+      <% end %>
+    <% end %>
+    </p>
+    <p class="tips"><em>tips: <%= @review.tips %></em></p>
+  </div>
+
+
+
+  <div id="review-photos" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <% @review.photos.each_with_index do |photo, index| %>
+        <li data-target="#review-photos" data-slide-to="<%= index %>" class=<%= index.zero? ? "active" : '' %> ></li>
+      <% end %>
+    </ol>
+
+    <div class="carousel-inner">
+      <% @review.photos.each_with_index do |photo, index| %>
+        <div class="carousel-item <%= index.zero? ? "active" : '' %>">
+          <%= cl_image_tag(photo.key, :class => "carousel-img d-block w-100") %>
+        </div>
+      <% end %>
+
+      <a class="carousel-control-prev" href="#review-photos" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#review-photos" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
   </div>
 </div>
 
-<div id="review-photos" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <% @review.photos.each_with_index do |photo, index| %>
-      <li data-target="#review-photos" data-slide-to="<%= index %>" class=<%= index.zero? ? "active" : '' %> ></li>
-    <% end %>
-  </ol>
-  <div class="carousel-inner">
-  <% @review.photos.each_with_index do |photo, index| %>
-    <div class="carousel-item <%= index.zero? ? "active" : '' %>">
-      <%= cl_image_tag(photo.key, :class => "carousel-img d-block w-100") %>
+<div class="container-review-species">
+      <h1>Spotted species:</h1>
+      <div class="spotted-species">
+        <% spotted_fishes = [] %>
+          <% @review.fishes.each do |fish| %>
+            <% next if spotted_fishes.include? fish  %>
+            <% spotted_fishes << fish %>
+            <div class="flip-card">
+              <div class="flip-card-inner">
+                <div class="flip-card-front">
+                  <div class="fish">
+                    <div class="fish-name">
+                      <div><%= fish.name %></div>
+                    </div>
+                    <div class="fish-img">
+                      <img src="<%= fish.photo_url %>" alt="<%= fish.name %>">
+                    </div>
+                  </div>
+                </div>
+                <div class="flip-card-back">
+                  <div class="fish">
+                    <div class="fish-name">
+                      <div><%= fish.name %></div>
+                    </div>
+                    <div class="fish-properties">
+                      <div>
+                        <% spottings = Spotting.includes(:review).where(fish_id: fish)%>
+                        <% reviews = Review.includes(:spot).where(spot_id: @review.spot.id) %>
+                        <% reviews_ids = reviews.map{|review| review.id} %>
+                        <% spottings = spottings.select{ |spotting| reviews_ids.include? spotting.review_id } %>
+                        <% number_of_spotters = spottings.count %>
+                        <% number_of_reviewers = @review.spot.reviews.count  %>
+                        <% reviewer_s = number_of_spotters>1 ? "reviewers" : "reviewer" %>
+                        <% percentage = (number_of_spotters.fdiv(number_of_reviewers)*100).round %>
+                        <p>Spotted by <%= number_of_spotters %> <%= reviewer_s %> out of <%= number_of_reviewers %> (<%= percentage %> %) </p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <a class="carousel-control-prev" href="#review-photos" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#review-photos" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
+  </div>
 </div>
-
 

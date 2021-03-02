@@ -33,6 +33,30 @@
 
   }
 
+
+.container-user-profile {
+  justify-content: space-between;
+}
+
+.img-species-profile {
+  height: 150px;
+  background-image: left;
+  position: absolute;
+  top: 100px;
+  right: 300px;
+
+}
+
+.species-type {
+
+  position: absolute;
+  top: 270px;
+  right: 360px;
+  font-size: 10px;
+  line-height: 3px;
+
+}
+
 .card-photo-user {
     margin-top: 45px;
     margin-left: 30px;
@@ -96,12 +120,7 @@
 
 }
 
-.avatar-large-bordered-user {
-  width: 224px;
-  height: 224px;
-  object-fit: cover;
-  border-radius: 50%;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.8);
-  // border: white 1px solid;
-  margin: 5px 50px;
+
+.spot-show-header-main-content {
+  display: flex;
 }

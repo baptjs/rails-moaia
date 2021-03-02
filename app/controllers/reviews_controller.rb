@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
   def show
     @spot = Spot.find(params[:spot_id])
     @review = Review.find(params[:id])
+    # raise
   end
 
   def new
