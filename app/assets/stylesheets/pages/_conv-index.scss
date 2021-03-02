@@ -1,27 +1,47 @@
 .messagerie {
-  margin: 16px;
+  margin: 16px 0px;
   background-color: white;
   border-radius: 5px;
   display: flex;
+  border-top: 0.3px solid rgba(100, 100, 100 , 0.3);
+  flex-grow: 1;
+  height: 85vh;
+
 }
 
 .conv-panels {
-  width: 40%;
-  border: solid 0.5px;
+  width: 35%;
+  border-right: 0.3px solid rgba(100, 100, 100 , 0.3);
+  border-bottom: 0.3px solid rgba(100, 100, 100 , 0.3);
 }
 
 .c-panel {
   display: flex;
   padding: 8px 16px;
+  border-radius: 4px;
 }
 
 .text-panel {
   margin-left: 16px;
-  border-bottom: 0.3px solid black;
+  // border-bottom: 0.3px solid rgba(100, 100, 100 , 0.3);
   width: 100%;
 
   h3 {
     font-weight: bold;
   }
 }
+
+
+.preview {
+  display: flex;
+}
+
+.c-panel:hover {
+  background-color: #F2F2F2;
+}
+
+.selected-conv {
+  background-color: #EAF3FF;
+} 
+
 
