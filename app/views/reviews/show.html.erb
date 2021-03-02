@@ -1,30 +1,23 @@
 
-<div class=avatar-review>
-    <img src="<%= @review.user.avatar_url  %>" alt="" style="width:200px;height:200px; border-radius:50%;margin-top:10px">
-</div>
-
-<div class=container-reviews>
-  <div class=avatar-review></div>
-    <div class="review-show-header-main-content">
-      <h1><%= @spot.name %></h1>
-      <p class="date"><em><%= @review.date %></em></p>
-      <p class="rating"><em><%= @review.rating %></em></p>
-      <p class="tips"><em>tips: <%= @review.tips %></em></p>
-      <p><%= @review.content %></p>
-    </div>
+<img src="<%= @review.user.avatar_url  %>" alt=""  class="avatar-review">
 
 
 <div class=container-reviews>
 
-  <div class="text-review">
-    <h1><%= @review.content %></h1>
-    <p class="date"><em><%= @review.date %></em></p>
+    <img src="<%= @review.user.avatar_url  %>" class=avatar-review>
+
+
+  <div class="text-review-show">
+    <h3>Review from <%= link_to @review.user.first_name, user_path(@review.user) %> : </h3>
+    <p class="date-review"><em><%= @review.date %></em></p>
+
+    <p>"<%= @review.content %>"</p>
     <p class="rating-review">
         <% (1..5).each do |n| %>
       <% if n <= @review.rating %>
       <i class="fas fa-star"></i>
       <% else  %>
-       <i class="far fa-star"></i>
+      <i class="far fa-star"></i>
       <% end %>
     <% end %>
     </p>
@@ -32,31 +25,6 @@
   </div>
 
 
-
-  <div id="review-photos" class="carousel slide" data-ride="carousel">
-    <ol class="carousel-indicators">
-      <% @review.photos.each_with_index do |photo, index| %>
-        <li data-target="#review-photos" data-slide-to="<%= index %>" class=<%= index.zero? ? "active" : '' %> ></li>
-      <% end %>
-    </ol>
-
-    <div class="carousel-inner">
-      <% @review.photos.each_with_index do |photo, index| %>
-        <div class="carousel-item <%= index.zero? ? "active" : '' %>">
-          <%= cl_image_tag(photo.key, :class => "carousel-img d-block w-100") %>
-        </div>
-      <% end %>
-
-      <a class="carousel-control-prev" href="#review-photos" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#review-photos" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
 </div>
 
 <div class="container-review-species">
@@ -107,3 +75,29 @@
   </div>
 </div>
 
+<div class="contenant-carousel">
+  <div id="review-photos" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+      <% @review.photos.each_with_index do |photo, index| %>
+        <li data-target="#review-photos" data-slide-to="<%= index %>" class=<%= index.zero? ? "active" : '' %> ></li>
+      <% end %>
+    </ol>
+    .
+    <div class="carousel-inner">
+      <% @review.photos.each_with_index do |photo, index| %>
+        <div class="carousel-item <%= index.zero? ? "active" : '' %>">
+          <%= cl_image_tag(photo.key, :class => "carousel-img d-block w-100") %>
+        </div>
+      <% end %>
+
+      <a class="carousel-control-prev" href="#review-photos" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#review-photos" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+</div>
