@@ -100,7 +100,7 @@
               <div class="tips-panel">
                 <img src=" <%= review.user.avatar_url %> " alt="" class="avatar">
                 <div class="tips-text-panel">
-                  <%= link_to user_path(review.user), style: 'text-decoration: none !important;' do %>
+                  <%= link_to user_path(review.user), class: 'user-profile-link' do %>
                     <h3><%= review.user.first_name %></h3>
                   <% end %>
 

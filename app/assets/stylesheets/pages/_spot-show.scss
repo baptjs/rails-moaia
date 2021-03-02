@@ -127,6 +127,16 @@
     }
   }
 
+  .user-profile-link {
+    text-decoration: none;
+    color: $success;
+
+    &:hover {
+      font-weight: 900;
+      transform: scale(1.1);
+    }
+  }
+
   .reviews {
     // border:solid;
     width: 80%;
@@ -170,25 +180,26 @@
     width: 550px;
   }
 
-  .user-profile-link {
-    text-decoration: none;
-    color: $success;
-
-    &:hover {
-      font-weight: 900;
-    }
-  }
-
-  .full-review-link {
-    text-decoration: none;
-    color: $success;
-    font-style: italic;
-
-    &:hover {
-      font-weight: 900;
-    }
+  .avatar:hover {
+    transform: scale(4);
+    transition: transform .5s
   }
 }
+
+
+
+.full-review-link {
+  text-decoration: none !important;
+  color: $success;
+  font-style: italic;
+
+  &:hover {
+    font-weight: 900;
+    color: $success;
+    font-style: italic;
+  }
+}
+
 
 
 
