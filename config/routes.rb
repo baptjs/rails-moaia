@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     end
   end
   resources :conversations
+  resources :messages, only: [:create]
   resources :users, only: [:show]
   resources :likes, only: [:index, :create, :destroy]
 

@@ -1,36 +1,26 @@
-<h1 class="text-center">Mes conversation</h1>
+<h1 class="text-center">My conversations</h1>
 
 <div class="messagerie">
   <div class="conv-panels">
     <h2 class="text-center">Discussions</h2>
-    <div class="c-panel">
-      <img src="https://ca.slack-edge.com/T02NE0241-U01JASARRND-2749c28ba94d-512" alt="" class="avatar-large">
-      <div class="text-panel">
-        <h3>Thomas Moessner</h3>
-        <p>blablablablabla</p>
-      
+    <%@conversations.each do |conversation|%>
+      <% @contact = conversation.users.where.not(id: current_user) %>
+      <div class="c-panel">
+        <img src=" <%= @contact.first.avatar_url%> " alt="" class="avatar-large">
+        <div class="text-panel">
+          <h3><%= @contact.first.first_name%></h3>
+          <div class="preview">
+
+            <p><%=conversation.messages.last.content%><span> · <%=conversation.messages.last.created_at.strftime("%H:%M")%></span> </p>
+          </div>
+        </div>
       </div>
-
-
-    </div>
-
-    <div class="c-panel">
-      <img src="https://ca.slack-edge.com/T02NE0241-U01JASARRND-2749c28ba94d-512" alt="" class="avatar-large">
-      <div class="text-panel">
-        <h2>Thomas Moessner</h2>
-        <p>blablablablabla</p>
-      
-      </div>
-
-
-    </div>
-
-
+    <% end %>
   </div>
 
   <div class="conv-show">
-
-
+    <%# User.last.conversations.join(:messages).order(messages: {updated_at: :desc}) %>
+    
   </div>
 
 </div>
