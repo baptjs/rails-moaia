@@ -1,10 +1,14 @@
 <div class="index-container">
 
   <div class="panels">
-    <% @spots.each do |spot| %>
+    <% if @spots.empty? %>
+      <div class="no-favs"><p>Your favorite dive sites will appear here!</p></div>
+    <% else %>
+      <% @spots.each do |spot| %>
 
-      <%= render "/shared/panel", spot: spot, whereami: "likes" %>
+        <%= render "/shared/panel", spot: spot, whereami: "likes" %>
 
+      <% end %>
     <% end %>
   </div>
   <div class="mapp">
@@ -13,7 +17,7 @@
       data-markers="<%= @markers.to_json %>"
       data-zoom="15"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
-      
+
     </div>
   </div>
 

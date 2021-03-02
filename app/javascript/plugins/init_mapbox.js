@@ -27,16 +27,34 @@ const fitMapToMarkers = (map, markers, maxZoom) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: maxZoom });
 };
 
-const initMapbox = () => {
+const initMapbox = (markersToDelete = []) => {
   const mapElement = document.getElementById('map');
   if (mapElement) {
     const map = buildMap(mapElement);
     console.log(map);
-    const markers = JSON.parse(mapElement.dataset.markers);
+    let markers = JSON.parse(mapElement.dataset.markers);
     console.log(markers);
+    console.log(typeof markers)
+    console.log(markersToDelete)
+
+    if (markersToDelete != []) {
+      markersToDelete.forEach((markerToDelete) => {
+
+        markers = markers.filter(function (marker){
+          // console.log(marker);
+          // console.log(markerToDelete)
+          // console.log(marker.spotId != markerToDelete.spotId)
+          return marker.spotId != markerToDelete.spotId;
+        });
+
+      });
+    }
+
+    console.log(markers)
     const maxZoom = parseInt(mapElement.dataset.zoom, 10);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers, maxZoom);
+    console.log("done!")
     map.addControl(
       new mapboxgl.GeolocateControl({
       positionOptions: {
@@ -46,7 +64,7 @@ const initMapbox = () => {
       })
       );
   }
-   
+
 };
 
 export { initMapbox };
