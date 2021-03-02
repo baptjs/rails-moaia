@@ -149,6 +149,16 @@ Spot.all.each do |spot|
 
 end
 
+puts "Creating conversations..."
+Conversation.create!(name: "Conversation with Baptiste")
+Conversation.create!(name: "Conversation with Cyrielle")
+
+puts "Creating messages..."
+Message.create!(content: "salut", user_id: 1, conversation_id: 1)
+Message.create!(content: "ça va ?", user_id: 2, conversation_id: 1)
+Message.create!(content: "salut", user_id: 2, conversation_id: 2)
+Message.create!(content: "ça va ?", user_id: 3, conversation_id: 2)
+
 
 puts "Done ! :)"
 puts "Don't forget to db:drop, db:create, db:migrate, db:seed ! ;)"

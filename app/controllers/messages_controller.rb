@@ -5,17 +5,22 @@ class MessagesController < ApplicationController
   end
 
   def create
-    @message = Message.new(params[:message])
+    @message = Message.new(message_params)
+    @message.conversation_id = params[:message][:conversation]
     if @message.save
       flash[:success] = "Message successfully created"
-      redirect_to @message
+      redirect_to conversation_path(@message.conversation_id)
     else
       flash[:error] = "Something went wrong"
       render 'new'
     end
   end
   
-  
+  private
+
+  def message_params
+    params.require(:message).permit(:content, :user_id, :conversation_id)
+  end
   
   
 end
