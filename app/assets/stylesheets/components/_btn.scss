@@ -5,6 +5,7 @@
   background: $success;
   transition: background 0.3s ease;
   box-shadow: 0 5px 10px rgba(0,0,0,.3);
+  border-width: 0; // to overwrite bootstrap's style
 
   &:hover {
     background: $success;

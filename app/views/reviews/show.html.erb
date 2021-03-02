@@ -1,7 +1,19 @@
-<div class=background-review>
+
 <div class=avatar-review>
-  <img src="<%= @review.user.avatar_url  %>" alt="" style="width:200px;height:200px; border-radius:50%;margin-top:10px">
+    <img src="<%= @review.user.avatar_url  %>" alt="" style="width:200px;height:200px; border-radius:50%;margin-top:10px">
 </div>
+
+<div class=container-reviews>
+  <div class=avatar-review></div>
+    <div class="review-show-header-main-content">
+      <h1><%= @spot.name %></h1>
+      <p class="date"><em><%= @review.date %></em></p>
+      <p class="rating"><em><%= @review.rating %></em></p>
+      <p class="tips"><em>tips: <%= @review.tips %></em></p>
+      <p><%= @review.content %></p>
+    </div>
+
+
 <div class=container-reviews>
 
   <div class="text-review">
@@ -95,4 +107,3 @@
   </div>
 </div>
 
-  </div>
