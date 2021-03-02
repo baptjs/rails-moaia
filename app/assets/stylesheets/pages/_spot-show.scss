@@ -148,17 +148,46 @@
       align-items: center;
       justify-content: space-between;
     }
-
-
   }
+}
 
 
+.container-review-cards {
+  width: 80%;
+  margin: 0 auto;
+  // border:solid;
 }
 
 .review-cards {
+  // border:solid;
+  // width: 100%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: left;
+  // margin-left: 200px;
+
+  .card-comment {
+    width: 550px;
+  }
+
+  .user-profile-link {
+    text-decoration: none;
+    color: $success;
+
+    &:hover {
+      font-weight: 900;
+    }
+  }
+
+  .full-review-link {
+    text-decoration: none;
+    color: $success;
+    font-style: italic;
+
+    &:hover {
+      font-weight: 900;
+    }
+  }
 }
 
 

@@ -123,12 +123,13 @@
       </div>
     </div>
 
+    <div class="container-review-cards">
       <div class="review-cards">
         <% @spot.reviews.each do |review| %>
           <div class="card-comment">
             <div class="top-part">
               <img src=" <%= review.user.avatar_url %> " alt="" class="avatar">
-              <%= link_to user_path(review.user), style: 'text-decoration: none !important;' do %>
+              <%= link_to user_path(review.user), class: 'user-profile-link' do %>
                 <h3><%= review.user.first_name %></h3>
               <% end %>
             </div>
@@ -136,20 +137,16 @@
             <p> <%= review.content %></p>
             <div class="date"> <%= review.date %>  </div>
             <div class="link-review">
-              <%= link_to spot_review_path(@spot, review), style: 'text-decoration: none' do %>
+              <%= link_to spot_review_path(@spot, review), class: 'full-review-link' do %>
                   See full review
               <% end %>
             </div>
 
           </div>
-
-
-
-
-
         <% end %>
 
       </div>
+    </div>
 
 
   </div>
