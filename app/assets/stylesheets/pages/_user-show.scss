@@ -29,10 +29,12 @@
     }
   }
   .send-message {
-    width: 200px;
+    max-width: 250px;
+    min-width: 250px;
+    flex-grow: 0;
     height : 40px;
     text-align: center;
-    margin-left: 200px;
+
 
     &:hover {
       opacity: 80%;

@@ -16,21 +16,16 @@
             <hr style="height: 2px; color:  #2a9d8f; background-color:  #2a9d8f; width: 80%; border: none;">
             <div style="height: 10px"></div>
             <p><%=@user.description%></p>
-            <% if user_signed_in? %>
-            <% else %>
-              <p class="btn-submit send-message">Send a message</p>
-            <% end %>
           </div>
-
-          <% if user_signed_in? %>
+          <% if current_user.id == @user.id %>
             <%= link_to "Edit profile", edit_user_registration_path, class:"btn-submit user-edit-link"%>
           <% else %>
+            <p class="btn-submit send-message">Send a message</p>
           <% end %>
           <div style="height: 30px"></div>
         </div>
     </div>
   </div>
-
 
 
   <div class="species_left">
