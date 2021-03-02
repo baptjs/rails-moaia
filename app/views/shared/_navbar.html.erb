@@ -29,7 +29,11 @@
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to current_user.first_name, users_show_path(current_user), class: "nav-link" %>
+
+          <%= link_to current_user.first_name, user_path(current_user), class: "nav-link" %>
+          <%=# link_to current_user.first_name, users_show_path(current_user), class: "nav-link" %>      
+
+                                   
         </li>
         <li class="nav-item dropdown">
           <%= image_tag current_user.avatar_url, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
