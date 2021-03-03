@@ -22,7 +22,7 @@
           <% else %>
 
           <%= link_to "Send a message", conversations_path(@user.id), method: :post , class:"btn-submit user-edit-link"%>
-          <p class="btn-submit send-message">Add friend</p>         
+          <p class="btn-submit send-message">Add friend</p>
 
           <% end %>
           </div>
@@ -61,7 +61,10 @@
                     <div class="fish-properties">
                       <div>
                         <% spottings = Spotting.includes(:review).where(fish_id: fish)%>
-                        <%= review.spot.name %>
+                        <% day = review.date.strftime("%d-%m-%Y")[0,2] %>
+                        <% month = Date::MONTHNAMES[review.date.strftime("%d-%m-%Y")[3,2].to_i] %>
+                        <% year = review.date.strftime("%d-%m-%Y")[6,4] %>
+                        <p>Last seen by <%= @user.first_name %> at <%= review.spot.name %> on <%= month %> <%= day %>, <%= year %></p>
                       </div>
                     </div>
                   </div>
