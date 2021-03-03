@@ -1,18 +1,25 @@
-.conv-show {
+.wrapper-conv{
   flex-grow: 1;
-  display: inline-block;
+  display: flex;
   flex-direction: column;
-  padding: 8px;
-  position: relative;
-  align-self: flex-end;
+  justify-content: space-between;
+  padding: 0px 8px;
 
 }
 
 .container-conv {
   flex-wrap: nowrap;
   overflow: auto;
-  height: 100%
+
+
 }
+.conv-show {
+ 
+  
+
+}
+
+
 
 
 .receiver {
@@ -81,5 +88,9 @@
   border-radius: 18px;
   margin: 16px;
 
+
+}
+
+#chat-with {
 
 }
