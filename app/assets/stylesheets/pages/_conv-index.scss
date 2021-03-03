@@ -15,6 +15,9 @@
   width: 35%;
   border-right: 0.3px solid rgba(100, 100, 100 , 0.3);
   border-bottom: 0.3px solid rgba(100, 100, 100 , 0.3);
+  h2 {
+    margin-left: 16px;
+  }
 }
 
 .c-panel {
@@ -67,5 +70,10 @@
   height: 100% ;
 }
 
+
+#title-conv {
+  font-family: Gloria Hallelujah;
+  color: rgb(42, 157, 143);
+}
 
 
