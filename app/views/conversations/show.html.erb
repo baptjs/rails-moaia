@@ -31,8 +31,15 @@
 
   <div class="conv-show">
     <div class="container-conv">
+
       
       <% unless @conversation.messages.last.nil?  %>
+
+      <div class="conversation-name">
+        <p><%= "Chat with Thomas"%></p>
+      </div>
+      <div class="messages-container" data-number-of-messages="<%= @conversation.messages.count %>">
+
         <% @conversation.messages.each_with_index do |message,index|  %>
           <% day = message.created_at.strftime("%d-%m-%Y")[0,2] %>
           <% month = Date::MONTHNAMES[message.created_at.strftime("%d-%m-%Y")[3,2].to_i] %>
@@ -62,10 +69,11 @@
             </div>
 
           <% end %>
-        <% end %>
-      <% else %>
+        <% end %>      
+        <% else %>
         <h3>Send a message !</h3>
       <% end %>
+    </div>
     <div class="messages-form">
       <%= simple_form_for @message do |f| %>
         <%= f.input :content, as: :string, placeholder: "Aa", label: false, :input_html => {:style=> 'border-radius: 18px; height:40px', :id=> 'conv-form'} %>
@@ -73,6 +81,7 @@
         <%= f.input :conversation, :as => :hidden, :input_html => { :value => @conversation.id } %>
       <% end %>
     </div>
+
 
     </div>
   </div>
