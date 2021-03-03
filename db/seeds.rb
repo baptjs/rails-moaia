@@ -56,10 +56,12 @@ AREAS.each do |area|
   end
 end
 
+
 # For demoday
 tulamben = Spot.find_by(name: "Tulamben")
 tulamben.description = "Tulamben is a small fishing village on the northeast coast of Bali. It's one of Bali's most popular dive sites since the wreck of the Liberty, a US Army transport vessel torpedoed by a Japanese submarine in 1942 is just offshore. If you are a novice diver this is a unique opportunity to dive a world class wreck. If you are an experienced diver, explore the deeper part of the wreck, around 35 meters, and admire the wonderful bow cannon covered in corals. Perfect for photographers! In addition, macro enthusiasts may also encounter the rare pygmy seahorse in the area."
 tulamben.save!
+
 
 # # --------------- REVIEWS ---------------
 file = URI.open('https://i.pinimg.com/564x/a2/02/49/a202498ee42f8f99ae5fb4128e444c4a.jpg')
@@ -161,7 +163,6 @@ DIFFICULTY_TAGS.each { |tag| DifficultyTag.create!(name: tag)}
 ATTRACTIONS_TAGS.each { |tag| AttractionsTag.create!(name: tag)}
 
 
-
 # # --------------- TAGGINGS ---------------
 
 puts "Cleaning TAGGINGS databases..."
@@ -212,7 +213,9 @@ puts "Cleaning MESSAGE databases..."
 Conversation.destroy_all
 
 puts "Creating conversations..."
-Conversation.create!(name: "Conversation with Cyrielle")
+
+Conversation.create!(name: "Conversation with Cyrielle", people: [2,3])
+
 
 puts "Creating messages..."
 Message.create!(content: "salut", user_id: 2, conversation_id: 1)

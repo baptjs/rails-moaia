@@ -5,7 +5,9 @@
   display: flex;
   border-top: 0.3px solid rgba(100, 100, 100 , 0.3);
   flex-grow: 1;
-  height: 85vh;
+  height: 516px;
+  width: 80%;
+  margin: 30px auto;
 
 }
 
@@ -13,6 +15,9 @@
   width: 35%;
   border-right: 0.3px solid rgba(100, 100, 100 , 0.3);
   border-bottom: 0.3px solid rgba(100, 100, 100 , 0.3);
+  h2 {
+    margin-left: 16px;
+  }
 }
 
 .c-panel {
@@ -42,6 +47,37 @@
 
 .selected-conv {
   background-color: #EAF3FF;
-} 
+}
 
 
+.conversation-name {
+  font-family: 'Gloria Hallelujah', cursive;
+  text-align: center;
+  font-size: 24px;
+
+  // border: solid;
+
+  p {
+    padding-top: 8px;
+  }
+}
+
+.messages-container {
+  z-index: -5;
+  // border: solid;
+  max-height: 370px;
+  overflow-y: auto;
+
+}
+
+
+#title-conv {
+  font-family: Gloria Hallelujah;
+  color: rgb(42, 157, 143);
+}
+
+#chat-with {
+  font-family: Gloria Hallelujah;
+  text-align: center;
+  font-size: 24px;
+}

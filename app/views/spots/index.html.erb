@@ -3,7 +3,7 @@
     <div class="spots-filter">
       <div id="search-bar"> <%= f.input :search, label: "Search by dive site or country", required: false, value: params.dig(:spots_filter, :search) %> </div>
 
-      <div id="tags-filters">
+      <div id="tags-filters" class="index-filters">
         <!-- Dive Type -->
         <div id="dive-type-filters">
           <%= f.input :dive_type, label: "Type of dive", required: false, collection: DiveTypeTag.all, input_html: {class: "select2", multiple: ""} %>
@@ -15,13 +15,11 @@
         </div>
 
         <!-- Attractions -->
-        <!-- Dive Type -->
         <div id="attractions-filters">
           <%= f.input :attractions, label: "Attractions", required: false, collection: AttractionsTag.all, input_html: {class: "select2", multiple: ""} %>
         </div>
 
         <!-- Species -->
-        <!-- Dive Type -->
         <div id="species-filters">
           <%= f.input :species, label: "Search by species", required: false, collection: Fish.all, input_html: {class: "select2", multiple: ""} %>
         </div>
