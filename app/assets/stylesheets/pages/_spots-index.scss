@@ -1,3 +1,15 @@
+.spots-filter-container {
+  // border: solid;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 58px;
+  z-index: 10;
+  background-color: #F4F4F4;
+  margin: 0;
+  padding-top: 1px;
+
+}
+
 .spots-filter {
   // border: dotted;
   margin: 20px 20px 0px 20px;
@@ -11,6 +23,7 @@
       height: 48px;
       border-radius: 4px;
       border: 1px solid #aaa;
+
     }
   }
 }
@@ -99,15 +112,20 @@
   display: flex;
 }
 
+#map {
+  border-radius: 4px;
+}
+
 .mapp{
   width: 50%;
   margin-right: 16px;
-  margin-top: 16px;
   height: 75vh;
   position: -webkit-sticky;
   position: sticky;
-  top: 20px;
-
+  top: 189px;
+  margin-top: 58px;
+  // position: fixed;
+  // right:-10px;
 }
 
 .no-favs {

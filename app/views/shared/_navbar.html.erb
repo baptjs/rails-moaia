@@ -49,4 +49,6 @@
   </div>
 </div>
 
-<div style="height: 60px;"></div>
+<% unless current_page?(spots_path) %>
+  <div style="height: 60px;"></div>
+<% end %>
