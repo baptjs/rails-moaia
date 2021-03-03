@@ -3,6 +3,7 @@
   padding: 20px;
   display: flex;
   width: 90%;
+  // border: dotted;
   margin: 20px auto;
   border-radius: 15px;
   box-shadow: 0 0.5px 1px #777;
@@ -24,6 +25,7 @@
     border-radius: 50%;
     object-fit: cover;
 }
+
 
 #review-photos {
   margin-top: 16px;
@@ -77,11 +79,29 @@
 }
 
 .text-review-show {
+  // border: dashed;
+  flex-grow: 1;
+  max-width: 70%;
   margin-left: 16px;
   a {
     color: #2a9d8f;
     text-decoration: none;
   }
+  .review-content {
+    font-style: italic;
+    // border: solid;
+    width: 100%;
+    height: 200px;
+    overflow-y: auto;
+    margin-top: 16px;
+  }
+  .tips {
+    height: 100px;
+    overflow-y: auto;
+    font-style: italic;
+    // border: solid;
+  }
+
 }
 
 .contenant-carousel {

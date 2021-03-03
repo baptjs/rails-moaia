@@ -115,7 +115,7 @@
 }
 
 .card-comment-user {
-  margin: 10px;
+  margin: 0 10px 10px 10px;
   background-color: white;
   height: 200px;
   color: black;
@@ -126,20 +126,30 @@
   position: relative;
   top: 0px;
   left: 40px;
+  // border: solid;
 }
 
 .reviews-header-user {
+
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 90%;
 
+
   p.review-content {
+    margin-top: 8px;
     font-style: italic;
+    // border:solid;
+    height: 80px;
+    overflow-y: auto;
   }
 
   p.full-rev {
     text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
   }
 }
 

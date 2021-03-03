@@ -17,13 +17,14 @@
             <div style="height: 10px"></div>
             <p><%=@user.description%></p>
           </div>
-          <% if current_user.id == @user.id %>
-            <%= link_to "Edit profile", edit_user_registration_path, class:"btn-submit user-edit-link"%>
-          <% else %>
 
-          <%= link_to "Send a message", conversations_path(@user.id), method: :post , class:"btn-submit user-edit-link"%>
-          <p class="btn-submit send-message">Add friend</p>
-
+          <% if user_signed_in? %>  <!-- Necessary because current_user doesn't exist when user not logged in -->
+            <% if current_user.id == @user.id %>
+              <%= link_to "Edit profile", edit_user_registration_path, class:"btn-submit user-edit-link"%>
+            <% else %>
+              <%= link_to "Send a message", conversations_path(@user.id), method: :post , class:"btn-submit user-edit-link"%>
+            <!-- <p class="btn-submit send-message">Add friend</p> -->
+            <% end %>
           <% end %>
           </div>
           <div style="height: 10px"></div>
@@ -33,7 +34,7 @@
 
 
   <div class="species_left">
-    <h4 class="">Observed species:</h4>
+    <h4 class="">Species observed by <%= user_signed_in? ? (@user == current_user ? "me" : @user.first_name) : @user.first_name %>:</h4>
     <div class="container-spotted-species">
       <div class="spotted-species">
         <% spotted_fishes = [] %>
@@ -81,19 +82,19 @@
 
 
    <div class="review-spotted-user">
-     <h4>My last reviews :</h4>
+     <h4><%= user_signed_in? ? (@user == current_user ? "My last reviews:" : "Last reviews by #{@user.first_name}:") : "Last reviews by #{@user.first_name}:" %></h4>
       <div class="reviews-header-user">
-        <% @user.reviews.limit(3).each do |review| %>
+        <% @user.reviews.last(3).each do |review| %>
             <div class="card-comment-user">
-              <div class="top-part" style="padding-left: 0 !important">
+              <div class="top-part" style="padding-left: 0 !important; padding-top: 0;">
                 <%= link_to spot_path(review.spot), class:"spot-name-link" do %>
                   <h3 style="margin-left: 0 !important"><%= review.spot.name %></h3>
                 <% end %>
               </div>
 
-              <p class="review-content"> <%= review.content %></p>
+              <p class="review-content"> <%= review.content.truncate(100) %></p>
               <div class="link-review">
-                <%= link_to spot_review_path(review), style: 'text-decoration: none' do %>
+                <%= link_to spot_review_path(review.spot, review), style: 'text-decoration: none' do %>
                     <p class="full-rev">See full review</p>
                 <% end %>
               </div>
