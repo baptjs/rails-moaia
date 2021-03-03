@@ -15,12 +15,12 @@ class MessagesController < ApplicationController
       render 'new'
     end
   end
-  
+
   private
 
   def message_params
     params.require(:message).permit(:content, :user_id, :conversation_id)
   end
-  
-  
+
+
 end

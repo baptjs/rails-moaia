@@ -52,6 +52,7 @@ AREAS.each do |area|
   end
 end
 
+
 # # --------------- REVIEWS ---------------
 file = URI.open('https://i.pinimg.com/564x/a2/02/49/a202498ee42f8f99ae5fb4128e444c4a.jpg')
 file1 = URI.open('https://i.pinimg.com/564x/a7/0b/d2/a70bd22e3f039e3831f1a31ec04f6074.jpg')
@@ -112,7 +113,6 @@ ATTRACTIONS_TAGS = ["Caves/Mines", "Ruins", "Wrecks", "Walls", "Natural Reefs", 
 DIVE_TYPE_TAGS.each { |tag| DiveTypeTag.create!(name: tag)}
 DIFFICULTY_TAGS.each { |tag| DifficultyTag.create!(name: tag)}
 ATTRACTIONS_TAGS.each { |tag| AttractionsTag.create!(name: tag)}
-
 
 # # --------------- TAGGINGS ---------------
 
