@@ -7,7 +7,7 @@
   flex-grow: 1;
   height: 516px;
   width: 80%;
-  margin: 40px auto;
+  margin: 30px auto;
 
 }
 
@@ -67,7 +67,7 @@
   // border: solid;
   max-height: 370px;
   overflow-y: auto;
-  height: 100% ;
+
 }
 
 
@@ -76,4 +76,8 @@
   color: rgb(42, 157, 143);
 }
 
-
+#chat-with {
+  font-family: Gloria Hallelujah;
+  text-align: center;
+  font-size: 24px;
+}
