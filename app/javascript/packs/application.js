@@ -64,13 +64,13 @@ document.addEventListener('turbolinks:load', () => {
 
 
   // To scroll down to the bottom of messages
-  var ready;
-  ready = function() {
-    var messages = document.querySelector(".messages-container");
-    messages.scrollTop=messages.scrollHeight;
-  };
-  $(document).ready(ready);
-  $(document).on('page:load', ready);
+  // var ready;
+  // ready = function() {
+  //   var messages = document.querySelector(".messages-container");
+  //   messages.scrollTop=messages.scrollHeight;
+  // };
+  // $(document).ready(ready);
+  // $(document).on('page:load', ready);
 
 
 

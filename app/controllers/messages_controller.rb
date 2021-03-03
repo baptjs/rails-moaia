@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
     @message.conversation_id = params[:message][:conversation]
     if @message.save
       flash[:success] = "Message successfully created"
-      redirect_to conversation_path(@message.conversation_id)
+      redirect_to conversation_path(@message.conversation_id, anchor:"message-#{@message.id}")
     else
       flash[:error] = "Something went wrong"
       render 'new'

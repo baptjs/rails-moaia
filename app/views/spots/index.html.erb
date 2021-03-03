@@ -1,7 +1,7 @@
 <div class="spots-filter-container">
   <%= simple_form_for :spots_filter, url: spots_path, method: :get do |f| %>
     <div class="spots-filter">
-      <div id="search-bar"> <%= f.input :search, label: "Search by dive site or country", required: false, value: params.dig(:spots_filter, :search) %> </div>
+      <div id="search-bar"> <%= f.input :search, label: "Search by dive site or country", required: false, value: params.dig(:spots_filter, :search), autocomplete: 'off' %> </div>
 
       <div id="tags-filters" class="index-filters">
         <!-- Dive Type -->

@@ -35,14 +35,14 @@
         <p id="chat-with" ><%= "Chat with #{@friend.first_name}"%></p>
   <div class="conv-show">
   <%# @friend = @conversation.users.where.not(id: current_user) %>
-        
+
     <div class="container-conv">
 
 
       <% unless @conversation.messages.last.nil?  %>
 
       <div class="conversation-name">
-        
+
       </div>
       <div class="messages-container" data-number-of-messages="<%= @conversation.messages.count %>">
 
@@ -58,7 +58,7 @@
                   <img src="<%= message.user.avatar_url%>" alt="" class="avatar">
                 </div>
               <% end %>
-              <div class="message-content-receiver"><p> <%= message.content %> </p> </div>
+              <div class="message-content-receiver" id="message-<%= @conversation.messages.last.id %>"><p> <%= message.content %> </p> </div>
             </div>
           <% else %>
 
@@ -71,7 +71,7 @@
                   <div class="header-text"><%=month%> <%= day %>, <%= year %> at  <%= message.created_at.strftime("%I:%M %p") %> </div>
                 </div>
               <% end %>
-              <div class="message-content-sender"><p> <%= message.content %> </p> </div>
+              <div class="message-content-sender" id="message-<%= @conversation.messages.last.id %>"><p> <%= message.content %> </p> </div>
             </div>
 
           <% end %>
@@ -82,7 +82,7 @@
     </div>
     <div class="messages-form">
       <%= simple_form_for @message do |f| %>
-        <%= f.input :content, as: :string, placeholder: "Aa", label: false, :input_html => {:style=> 'border-radius: 18px; height:40px', :id=> 'conv-form'} %>
+        <%= f.input :content, as: :string, placeholder: "Aa", label: false, :input_html => {:style=> 'border-radius: 18px; height:40px', :id=> 'conv-form', autocomplete: 'off', autofocus: 'on'} %>
         <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
         <%= f.input :conversation, :as => :hidden, :input_html => { :value => @conversation.id } %>
       <% end %>
