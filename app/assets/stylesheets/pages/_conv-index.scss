@@ -5,7 +5,9 @@
   display: flex;
   border-top: 0.3px solid rgba(100, 100, 100 , 0.3);
   flex-grow: 1;
-  height: 85vh;
+  height: 516px;
+  width: 80%;
+  margin: 40px auto;
 
 }
 
@@ -45,7 +47,29 @@
 
 .selected-conv {
   background-color: #EAF3FF;
-} 
+}
+
+
+.conversation-name {
+  font-family: 'Gloria Hallelujah', cursive;
+  text-align: center;
+  font-size: 24px;
+
+  // border: solid;
+
+  p {
+    padding-top: 8px;
+  }
+}
+
+.messages-container {
+  z-index: -5;
+  // border: solid;
+  max-height: 370px;
+  overflow-y: auto;
+  height: 100% ;
+}
+
 
 #title-conv {
   font-family: Gloria Hallelujah;

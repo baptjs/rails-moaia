@@ -11,6 +11,7 @@
 .container-conv {
   flex-wrap: nowrap;
   overflow: auto;
+  height: 100%
 }
 
 
@@ -60,7 +61,7 @@
     margin-bottom: 6px;
 
   }
-  
+
 }
 
 .message-header-sender {
