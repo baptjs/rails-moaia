@@ -1,6 +1,6 @@
 .spots-filter {
   // border: dotted;
-  margin: 20px;
+  margin: 20px 20px 0px 20px;
   display: flex;
   align-items: start;
   justify-content: space-between;
@@ -8,7 +8,7 @@
   #search-bar {
     width: 300px;
     .form-control.string {
-      height: 40px;
+      height: 48px;
       border-radius: 4px;
       border: 1px solid #aaa;
     }
@@ -27,8 +27,8 @@
     display:none;
   }
   .select2-selection__choice{
+    margin-top: 8px;
     color: white;
-
   }
 
   #dive-type-filters {
@@ -39,7 +39,7 @@
 
     }
     .select2-selection.select2-selection--multiple {
-      min-height: 40px;
+      min-height: 48px;
       position: relative;
 
     }
@@ -49,10 +49,10 @@
     width: 230px;
     .select2-selection__choice{
       background-color: #FFA500;
-      z-index: 10;
+      margin-top: 8px;
     }
     .select2-selection.select2-selection--multiple {
-      min-height: 40px;
+      min-height: 48px;
     }
   }
 
@@ -60,9 +60,10 @@
     width: 230px;
     .select2-selection__choice{
       background-color: #8FEE8F;
+      margin-top: 8px;
     }
     .select2-selection.select2-selection--multiple {
-      min-height: 40px;
+      min-height: 48px;
 
     }
   }
@@ -71,9 +72,10 @@
     width: 230px;
     .select2-selection__choice{
       background-color: $success;
+      margin-top: 8px;
     }
     .select2-selection.select2-selection--multiple {
-      height: 40px;
+      height: 48px;
     }
   }
 

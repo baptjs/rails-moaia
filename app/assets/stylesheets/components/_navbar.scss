@@ -32,8 +32,8 @@
 
 
 
-.nav-item:hover {
-  color: white !important;
+.nav-item.active:hover {
+  color: white;
   opacity: 0.40;
 }
 

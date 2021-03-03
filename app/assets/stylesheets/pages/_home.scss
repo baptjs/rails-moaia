@@ -1,45 +1,72 @@
-// Specific CSS for your home-page
+
 .container-home {
-    height: 100vh;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+  background-image: url(https://images.pexels.com/photos/2170473/pexels-photo-2170473.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-image: linear-gradient(rgba(0,0,0,0.0),rgba(0,0,0,.6)), url(https://images.pexels.com/photos/2404369/pexels-photo-2404369.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-image-size: 5000px;
+  background-size: cover;
+  background-position-y: 60%;
+  // border:solid;
+  height: 92.8vh;
+  width: 100%;
+  margin-top: -2px;
+  padding: 0;
+  // position: relative;
 
-    h1 {
-        margin-top: -220px;
-      }
-
-}
-
-.name-website{
-font-family: 'Gloria Hallelujah', cursive;
-margin-top: -250px;
-font-size: 100px;
-}
-
-.background{
-    // background-image: url(https://images.unsplash.com/photo-1467723992728-4b36889da56d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2262&q=80);
-    // background-image: url(https://images.pexels.com/photos/1631677/pexels-photo-1631677.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-    background-image: url(https://images.pexels.com/photos/2170473/pexels-photo-2170473.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-    background-image: url(https://images.pexels.com/photos/2404369/pexels-photo-2404369.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-    background-image-size: 5000px;
-    background-position: center;
-    background-size: cover;
-}
-
-    .find {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        padding-bottom: 10px;
-        border: 1px none #000;
-        font-family: 'Frank Ruhl Libre', serif;
-        color: white;
-        font-size: 20px;
-        line-height: 6px;
-        font-weight: 800;
-
+  h2{
+    text-align: center;
+      margin-top: 320px;
+      color: white;
     }
+
+  // .container-search {
+  //   position: absolute;
+  //   margin-top: 260px;
+  //   margin-left: 35%;
+  // }
+
+  .spacing {
+    height: 260px;
+    width: 200px;
+    border:solid;
+    background-color: red;
+  }
+
+  .input-group-btn {
+    // position: relative;
+    // border:solid;
+    // width: 100px;
+    // margin: 0 auto;
+
+  }
+}
+
+.website-name{
+  width: 100%;
+  text-align: center;
+  font-family: 'Gloria Hallelujah', cursive;
+  font-size: 170px;
+  color: white;
+  padding-top: 40px;
+  // margin-top: 50px;
+  text-shadow: 2px 2px 5px rgba(42,157,143,0.3);
+  // text-shadow: -.1px 0 black, 0 .1px black, .1px 0 black, 0 -.1px black;
+  letter-spacing: 20px;
+}
+
+
+.container-find {
+  display: flex;
+  // padding-top: 100px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-bottom: 10px;
+  border: 1px none #000;
+  font-family: 'Frank Ruhl Libre', serif;
+  color: white;
+  font-size: 20px;
+  line-height: 6px;
+  font-weight: 800;
+}
 
 

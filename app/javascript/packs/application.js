@@ -30,6 +30,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { dynamicRating } from "../plugins/stars_in_review_form"; // for reviews rating with stars
 import { ajaxLikes } from "../plugins/ajax_likes";
 import { initSelect2 } from '../plugins/init_select2';
+import { selectSpecies} from '../plugins/select_species';
 
 document.addEventListener('turbolinks:load', () => {
 
@@ -54,7 +55,10 @@ document.addEventListener('turbolinks:load', () => {
   // enterSubmit()
 
   ajaxLikes();
+
   initSelect2();
+
+  selectSpecies();
 
 
 }); // turbolinks closing

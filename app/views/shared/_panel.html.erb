@@ -28,7 +28,9 @@
       </div>
     </div>
   <% end %>
-  <% if current_user %>
+
+
+  <% if user_signed_in? %>
     <% like = Like.find_by(user_id: current_user.id, spot_id: spot.id) %>
 
     <% if like.nil? %>
