@@ -20,7 +20,7 @@
           <% if current_user.id == @user.id %>
             <%= link_to "Edit profile", edit_user_registration_path, class:"btn-submit user-edit-link"%>
           <% else %>
-            <p class="btn-submit send-message">Send a message</p>
+          <%= link_to "Send a message", conversations_path(@user.id), method: :post , class:"btn-submit user-edit-link"%>
           <% end %>
           <div style="height: 30px"></div>
         </div>
@@ -97,19 +97,21 @@
 </div>
 
 
-<div class="card-photo-user" style="padding: 0; margin-top: 20px;">
-  <div id="review-photos-user" class="carousel slide" data-ride="carousel" >
+<div class="contenant-carousel">
+  <div id="review-photos" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
       <% @user.photos.each_with_index do |photo, index| %>
         <li data-target="#review-photos" data-slide-to="<%= index %>" class=<%= index.zero? ? "active" : '' %> ></li>
       <% end %>
     </ol>
-
+    .
     <div class="carousel-inner">
       <% @user.photos.each_with_index do |photo, index| %>
         <div class="carousel-item <%= index.zero? ? "active" : '' %>">
-          <%= cl_image_tag(photo.key, :class => "carousel-img d-block w-100") %></div>
+          <%= cl_image_tag(photo.key, :class => "carousel-img d-block w-100") %>
+        </div>
       <% end %>
+
       <a class="carousel-control-prev" href="#review-photos" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
@@ -121,4 +123,3 @@
     </div>
   </div>
 </div>
-

@@ -1,8 +1,8 @@
-<h1 class="text-center">My conversations</h1>
+<h1 class="text-center" id="title-conv">MOAI'A Messenger</h1>
 
 <div class="messagerie">
   <div class="conv-panels">
-    <h2 class="text-center">Discussions</h2>
+    <h2 id="title-conv">Discussions</h2>
     <%current_user.conversations.group("id").each do |conversation|%>
       <% @contact = conversation.users.where.not(id: current_user) %>
       <%= link_to conversation_path(conversation), style: 'text-decoration: none; color: black;' do %>
