@@ -2,16 +2,25 @@
 <div class="messagerie">
   <div class="conv-panels">
     <h2 id="title-conv">Discussions</h2>
-    <%current_user.conversations.group("id").each do |conversation|%>
-      <% @contact = conversation.users.where.not(id: current_user) %>
+
+    <%#current_user.conversations.group("id").each do |conversation|%>
+    <%selected_conversations = Conversation.all.select do |conversation|%>
+      <% conversation.people.include?(current_user.id) %>
+    <% end %>
+    <% selected_conversations.each do |conversation| %>
+      <% @contact_id = conversation.people %>
+      <% @contact_id.delete(current_user.id) %>
+      <% @contact = User.find(@contact_id[0]) %>
       <%= link_to conversation_path(conversation), style: 'text-decoration: none; color: black;' do %>
         <div class="c-panel">
-          <img src=" <%= @contact.first.avatar_url%> " alt="" class="avatar-large">
+          <img src=" <%= @contact.avatar_url%> " alt="" class="avatar-large">
           <div class="text-panel">
-            <h3><%= @contact.first.first_name%></h3>
+            <h3><%= @contact.first_name%></h3>
             <div class="preview">
+              <% unless conversation.messages.last.nil?  %>
+                <p><%=conversation.messages.last.content%><span> · <%=conversation.messages.last.created_at.strftime("%H:%M")%></span> </p>
+              <% end %>
 
-              <p><%=conversation.messages.last.content%><span> · <%=conversation.messages.last.created_at.strftime("%H:%M")%></span> </p>
             </div>
           </div>
         </div>
@@ -21,10 +30,15 @@
 
   <div class="conv-show">
     <div class="container-conv">
+
+
+      <% unless @conversation.messages.last.nil?  %>
+
       <div class="conversation-name">
         <p><%= "Chat with Thomas"%></p>
       </div>
       <div class="messages-container" data-number-of-messages="<%= @conversation.messages.count %>">
+
         <% @conversation.messages.each_with_index do |message,index|  %>
           <% day = message.created_at.strftime("%d-%m-%Y")[0,2] %>
           <% month = Date::MONTHNAMES[message.created_at.strftime("%d-%m-%Y")[3,2].to_i] %>
@@ -55,15 +69,18 @@
 
           <% end %>
         <% end %>
-      </div>
+        <% else %>
+        <h3>Send a message !</h3>
+      <% end %>
+    </div>
+    <div class="messages-form">
+      <%= simple_form_for @message do |f| %>
+        <%= f.input :content, as: :string, placeholder: "Aa", label: false, :input_html => {:style=> 'border-radius: 18px; height:40px', :id=> 'conv-form'} %>
+        <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+        <%= f.input :conversation, :as => :hidden, :input_html => { :value => @conversation.id } %>
+      <% end %>
+    </div>
 
-      <div class="messages-form">
-        <%= simple_form_for @message do |f| %>
-          <%= f.input :content, as: :string, placeholder: "Aa", label: false, :input_html => {:style=> 'border-radius: 18px; height:40px', :id=> 'conv-form'} %>
-          <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-          <%= f.input :conversation, :as => :hidden, :input_html => { :value => @conversation.id } %>
-        <% end %>
-      </div>
 
     </div>
   </div>
