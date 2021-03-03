@@ -1,4 +1,6 @@
 class SpotsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :index, :show ]
+
   def index
     # Search (from home page)
 
@@ -137,6 +139,8 @@ class SpotsController < ApplicationController
         spotId: spot.id
       }
     end
+
+    redirect_to spots_path if @spots.empty?
   end
 
   def show

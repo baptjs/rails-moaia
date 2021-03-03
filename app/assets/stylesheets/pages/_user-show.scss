@@ -8,7 +8,8 @@
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
+  margin-top: 20px;
   // align-items: center;
 
   .profile-description {
@@ -34,6 +35,7 @@
     flex-grow: 0;
     height : 40px;
     text-align: center;
+
 
 
     &:hover {
@@ -149,11 +151,6 @@
 //   width: 9%;
 
 // }
-
-
-.spot-show-header-main-content {
-  display: flex;
-}
 
 
 .avatar-large-bordered-user {

@@ -145,6 +145,11 @@ Spot.all.each do |spot|
 
 end
 
+# # --------------- MESSAGES ---------------
+
+puts "Cleaning MESSAGE databases..."
+Conversation.destroy_all
+
 puts "Creating conversations..."
 Conversation.create!(name: "Conversation with Baptiste")
 Conversation.create!(name: "Conversation with Cyrielle")

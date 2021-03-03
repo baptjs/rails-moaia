@@ -23,17 +23,20 @@
   <div class="conv-show">
     <div class="container-conv">
       <% @conversation.messages.each_with_index do |message,index|  %>
+        <% day = message.created_at.strftime("%d-%m-%Y")[0,2] %>
+        <% month = Date::MONTHNAMES[message.created_at.strftime("%d-%m-%Y")[3,2].to_i] %>
+        <% year = message.created_at.strftime("%d-%m-%Y")[6,4] %>
         <% if message.user_id == current_user.id %>
           <div class="receiver">
             <% if index == 0 || message.user_id != @conversation.messages[index-1].user_id %>
               <div class="message-header-receiver">
-                <div class="header-text"><%= message.user.first_name%>, le <%=message.created_at.strftime("%d-%m-%Y")%>  à  <%= message.created_at.strftime("%H:%M") %> </div>
+                <div class="header-text"><%=month%> <%= day %>, <%= year %> at  <%= message.created_at.strftime("%I:%M %p") %> </div>
                 <img src="<%= message.user.avatar_url%>" alt="" class="avatar">
               </div>
             <% end %>
             <div class="message-content-receiver"><p> <%= message.content %> </p> </div>
           </div>
-        <% else %>    
+        <% else %>
 
 
 
@@ -41,22 +44,22 @@
             <% if index == 0 || message.user_id != @conversation.messages[index-1].user_id %>
               <div class="message-header-sender">
                 <img src="<%= message.user.avatar_url%>" alt="" class="avatar">
-                <div class="header-text"><%= message.user.first_name%>, le <%=message.created_at.strftime("%d-%m-%Y")%>  à  <%= message.created_at.strftime("%H:%M") %> </div>
+                <div class="header-text"><%=month%> <%= day %>, <%= year %> at  <%= message.created_at.strftime("%I:%M %p") %> </div>
               </div>
             <% end %>
             <div class="message-content-sender"><p> <%= message.content %> </p> </div>
           </div>
 
-        <% end %>  
+        <% end %>
       <% end %>
-    <div class="messages-form">    
+    <div class="messages-form">
       <%= simple_form_for @message do |f| %>
         <%= f.input :content, as: :string, placeholder: "Aa", label: false, :input_html => {:style=> 'border-radius: 18px; height:40px', :id=> 'conv-form'} %>
         <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
         <%= f.input :conversation, :as => :hidden, :input_html => { :value => @conversation.id } %>
       <% end %>
     </div>
-    
+
     </div>
   </div>
 
