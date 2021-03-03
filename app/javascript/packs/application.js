@@ -30,7 +30,9 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { dynamicRating } from "../plugins/stars_in_review_form"; // for reviews rating with stars
 import { ajaxLikes } from "../plugins/ajax_likes";
 import { initSelect2 } from '../plugins/init_select2';
-import { selectSpecies} from '../plugins/select_species';
+import { selectSpecies } from '../plugins/select_species';
+import { scrollDownMessages } from '../plugins/scroll_down_messages';
+// import { initConversationCable } from '../plugins/conversation_channel';
 
 document.addEventListener('turbolinks:load', () => {
 
@@ -60,18 +62,8 @@ document.addEventListener('turbolinks:load', () => {
 
   selectSpecies();
 
+  scrollDownMessages();
 
-
-
-  // To scroll down to the bottom of messages
-  var ready;
-  ready = function() {
-    var messages = document.querySelector(".messages-container");
-    messages.scrollTop=messages.scrollHeight;
-  };
-  $(document).ready(ready);
-  $(document).on('page:load', ready);
-
-
+  // initConversationCable();
 
 }); // turbolinks closing

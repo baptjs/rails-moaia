@@ -2,30 +2,34 @@
 
 <div class="messagerie">
   <div class="conv-panels">
-    <h2 id="title-conv">Discussions</h2>
-
+    <h2 id="title-conv">All chats</h2>
+    <hr>
     <%#current_user.conversations.group("id").each do |conversation|%>
     <%selected_conversations = Conversation.all.select do |conversation|%>
       <% conversation.people.include?(current_user.id) %>
     <% end %>
-    <% selected_conversations.each do |conversation| %>
-      <% @contact_id = conversation.people %>
-      <% @contact_id.delete(current_user.id) %>
-      <% @contact = User.find(@contact_id[0]) %>
-      <%= link_to conversation_path(conversation), style: 'text-decoration: none; color: black;' do %>
-        <div class="c-panel">
-          <img src=" <%= @contact.avatar_url%> " alt="" class="avatar-large">
-          <div class="text-panel">
-            <h3><%= @contact.first_name%></h3>
-            <div class="preview">
-              <% unless conversation.messages.last.nil?  %>
-                <p><%=conversation.messages.last.content%><span> · <%=conversation.messages.last.created_at.strftime("%H:%M")%></span> </p>
-              <% end %>
 
+    <% selected_conversations.each do |conversation| %>
+      <div class="panel-container">
+        <% @contact_id = conversation.people %>
+        <% @contact_id.delete(current_user.id) %>
+        <% @contact = User.find(@contact_id[0]) %>
+        <%= link_to conversation_path(conversation), style: 'text-decoration: none; color: black; width: 100%;' do %>
+          <div class="c-panel <%= "active-msg" if current_page?(conversation_path(conversation))  %> ">
+            <img src=" <%= @contact.avatar_url%> " alt="" class="avatar-large">
+            <div class="text-panel">
+              <h3><%= @contact.first_name%></h3>
+              <div class="preview">
+                <% unless conversation.messages.last.nil?  %>
+                  <p><%=conversation.messages.last.content.truncate(16)%></p>
+                  <p><%=conversation.messages.last.created_at.strftime("%H:%M")%></p>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
+      <!-- <hr style="margin-top:0"> -->
     <% end %>
   </div>
   <div class="wrapper-conv">
@@ -44,9 +48,10 @@
       <div class="conversation-name">
 
       </div>
-      <div class="messages-container" data-number-of-messages="<%= @conversation.messages.count %>">
+      <div class="messages-container" id="messages-container" data-conversation-id="<%= @conversation.id %>">
 
         <% @conversation.messages.each_with_index do |message,index|  %>
+
           <% day = message.created_at.strftime("%d-%m-%Y")[0,2] %>
           <% month = Date::MONTHNAMES[message.created_at.strftime("%d-%m-%Y")[3,2].to_i] %>
           <% year = message.created_at.strftime("%d-%m-%Y")[6,4] %>
@@ -61,9 +66,6 @@
               <div class="message-content-receiver" id="message-<%= @conversation.messages.last.id %>"><p> <%= message.content %> </p> </div>
             </div>
           <% else %>
-
-
-
             <div class="sender">
               <% if index == 0 || message.user_id != @conversation.messages[index-1].user_id %>
                 <div class="message-header-sender">
@@ -73,18 +75,19 @@
               <% end %>
               <div class="message-content-sender" id="message-<%= @conversation.messages.last.id %>"><p> <%= message.content %> </p> </div>
             </div>
-
           <% end %>
+
         <% end %>
         <% else %>
         <h3  id="title-conv" class="text-center my-5">Send a message !</h3>
       <% end %>
     </div>
     <div class="messages-form">
-      <%= simple_form_for @message do |f| %>
+      <%= simple_form_for @message, remote: true do |f| %>
         <%= f.input :content, as: :string, placeholder: "Aa", label: false, :input_html => {:style=> 'border-radius: 18px; height:40px', :id=> 'conv-form', autocomplete: 'off', autofocus: 'on'} %>
         <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
         <%= f.input :conversation, :as => :hidden, :input_html => { :value => @conversation.id } %>
+        <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
       <% end %>
     </div>
 
