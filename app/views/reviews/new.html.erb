@@ -1,6 +1,6 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path "auelvkeqlturd553avr1", cloud_name: "djngsqazo" , crop: :fill %>'); background-size: cover; background-position: 50% 45%;">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/5289883/pexels-photo-5289883.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); background-size: cover; background-position: 50% 45%;">
 
-  <div class="spot-new-container">
+  <div class="spot-new-container" style="height: 1200px !important;">
     <h1>How was <%= @spot.name %>? </h1>
     <h5>Share your experience here</h5>
 
@@ -16,24 +16,26 @@
       </div>
       <%= f.input :content, label: "Your review" %>
 
+      <hr>
 
+      <div class="species-select-container">
+        <div class="species-select-container2">
 
-      <%= f.association :spottings,
-                        :as => :check_boxes,
-                        item_wrapper_tag: :div,
-                        item_wrapper_class: "image-select",
-                        :collection => Fish.all,
-                        :label => false,
-                        :inline_label => false,
-                        :include_blank => false,
-                        :input_html => {multiple: true, style: "display:none",},
-                        :label_method => lambda { |fish| image_tag(fish.photo_url) },
-                        value_method: :id
-      %>
-
-
-
-
+          <%= f.association :fishes,
+                            :as => :check_boxes,
+                            item_wrapper_tag: :div,
+                            item_wrapper_class: "image-select",
+                            :collection => Fish.all,
+                            :label => "What did you see?",
+                            :inline_label => false,
+                            :include_blank => false,
+                            :selected => "selected",
+                            :input_html => {multiple: true, style: "display:none", selected:"selected"},
+                            :label_method => lambda { |fish| "<p>#{fish.name}</p>#{image_tag(fish.photo_url)}".html_safe },
+                            value_method: :id
+          %>
+        </div>
+      </div>
 
 
 
@@ -44,8 +46,6 @@
         <%= f.button :submit, "Submit you review!", class: 'btn-submit' %>
       </div>
     <% end %>
-
   </div>
-
-
 </div>
+
