@@ -151,8 +151,8 @@ puts "Cleaning MESSAGE databases..."
 Conversation.destroy_all
 
 puts "Creating conversations..."
-Conversation.create!(name: "Conversation with Baptiste")
-Conversation.create!(name: "Conversation with Cyrielle")
+Conversation.create!(name: "Conversation with Baptiste", people: [1,2])
+Conversation.create!(name: "Conversation with Cyrielle", people: [2,3])
 
 puts "Creating messages..."
 Message.create!(content: "salut", user_id: 1, conversation_id: 1)
