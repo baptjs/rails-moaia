@@ -24,15 +24,15 @@ class Spot < ApplicationRecord
 
   def init_taggings
     self.init_dive_type_tags.each do |tag_id|
-      DiveTypeTagging.create(tag: DiveTypeTag.find(tag_id), spot: self)
+      DiveTypeTagging.create(dive_type_tag_id: tag_id, spot: self)
     end
 
     self.init_difficulty_tags.each do |tag_id|
-      DifficultyTagging.create(tag: DifficultyTag.find(tag_id), spot: self)
+      DifficultyTagging.create(difficulty_tag_id: tag_id, spot: self)
     end
 
     self.init_attractions_tags.each do |tag_id|
-      AttractionsTagging.create(tag: AttractionsTag.find(tag_id), spot: self)
+      AttractionsTagging.create(attractions_tag_id: tag_id, spot: self)
     end
   end
 

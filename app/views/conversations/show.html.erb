@@ -21,7 +21,7 @@
               <% unless conversation.messages.last.nil?  %>
                 <p><%=conversation.messages.last.content%><span> · <%=conversation.messages.last.created_at.strftime("%H:%M")%></span> </p>
               <% end %>
-              
+
             </div>
           </div>
         </div>
@@ -38,7 +38,7 @@
         
     <div class="container-conv">
 
-      
+
       <% unless @conversation.messages.last.nil?  %>
 
       <div class="conversation-name">
@@ -75,7 +75,7 @@
             </div>
 
           <% end %>
-        <% end %>      
+        <% end %>
         <% else %>
         <h3>Send a message !</h3>
       <% end %>
