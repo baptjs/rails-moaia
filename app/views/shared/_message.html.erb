@@ -1,8 +1,10 @@
 <% day = message.created_at.strftime("%d-%m-%Y")[0,2] %>
 <% month = Date::MONTHNAMES[message.created_at.strftime("%d-%m-%Y")[3,2].to_i] %>
 <% year = message.created_at.strftime("%d-%m-%Y")[6,4] %>
-<% if message.user_id == current_user.id %>
-  <div class="receiver">
+
+<% if message.user_id != current_user.id %>
+
+  <div class="receiver sender-js">
     <% if index == 0 || message.user_id != conversation.messages[index-1].user_id %>
       <div class="message-header-receiver">
         <div class="header-text"><%=month%> <%= day %>, <%= year %> at  <%= message.created_at.strftime("%I:%M %p") %> </div>
@@ -11,10 +13,13 @@
     <% end %>
     <div class="message-content-receiver" id="message-<%= conversation.messages.last.id %>"><p> <%= message.content %> </p> </div>
   </div>
+
 <% else %>
-  <div class="sender">
+
+  <div class="sender sender-js">
     <% if index == 0 || message.user_id != conversation.messages[index-1].user_id %>
-      <div class="message-header-sender">
+
+      <div class="message-header-sender message-header-sender-js">
         <img src="<%= message.user.avatar_url%>" alt="" class="avatar">
         <div class="header-text"><%=month%> <%= day %>, <%= year %> at  <%= message.created_at.strftime("%I:%M %p") %> </div>
       </div>

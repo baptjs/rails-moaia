@@ -24,7 +24,7 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(like_params)
     @like.user_id = current_user.id
-    @like.save! if Like.find_by(user: current_user, spot: @like.spot).nil?
+    Like.find_or_create_by(user: current_user, spot: @like.spot)
     render json: { success: true, like_id: @like.id}
     # if params[:whereami] == "spots"
     #   redirect_to spots_path

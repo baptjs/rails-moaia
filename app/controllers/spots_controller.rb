@@ -3,7 +3,7 @@ class SpotsController < ApplicationController
 
   def index
     # Search (from home page)
-
+# raise
     if params[:query].present?
       sql_query = " \
         spots.name @@ :query \

@@ -1,6 +1,6 @@
 <h1 class="text-center mt-3" id="title-conv">MOAI'A Messenger</h1>
 
-<div class="messagerie">
+<div class="messagerie" data-user-id="<%= current_user.id %>" data-first-msg="yes">
   <div class="conv-panels">
     <h2 id="title-conv">All chats</h2>
     <hr>
@@ -49,9 +49,8 @@
 
       </div>
       <div class="messages-container" id="messages-container" data-conversation-id="<%= @conversation.id %>">
-
-        <% @conversation.messages.each_with_index do |message,index|  %>
-
+        <% index = 0 %>
+        <% @conversation.messages.each do |message|  %>
           <% day = message.created_at.strftime("%d-%m-%Y")[0,2] %>
           <% month = Date::MONTHNAMES[message.created_at.strftime("%d-%m-%Y")[3,2].to_i] %>
           <% year = message.created_at.strftime("%d-%m-%Y")[6,4] %>
@@ -76,16 +75,17 @@
               <div class="message-content-sender" id="message-<%= @conversation.messages.last.id %>"><p> <%= message.content %> </p> </div>
             </div>
           <% end %>
-
+          <% index += 1 %>
         <% end %>
         <% else %>
         <h3  id="title-conv" class="text-center my-5">Send a message !</h3>
       <% end %>
     </div>
     <div class="messages-form">
-      <%= simple_form_for @message, remote: true do |f| %>
+      <%= simple_form_for @message do |f| %>
         <%= f.input :content, as: :string, placeholder: "Aa", label: false, :input_html => {:style=> 'border-radius: 18px; height:40px', :id=> 'conv-form', autocomplete: 'off', autofocus: 'on'} %>
         <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+        <%= f.input :index, :as => :hidden, :input_html => { :value => index } %>
         <%= f.input :conversation, :as => :hidden, :input_html => { :value => @conversation.id } %>
         <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
       <% end %>

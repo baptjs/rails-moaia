@@ -32,7 +32,9 @@ import { ajaxLikes } from "../plugins/ajax_likes";
 import { initSelect2 } from '../plugins/init_select2';
 import { selectSpecies } from '../plugins/select_species';
 import { scrollDownMessages } from '../plugins/scroll_down_messages';
-// import { initConversationCable } from '../plugins/conversation_channel';
+import { initConversationCable } from '../channels/conversation_channel';
+
+var senders = [];
 
 document.addEventListener('turbolinks:load', () => {
 
@@ -64,6 +66,9 @@ document.addEventListener('turbolinks:load', () => {
 
   scrollDownMessages();
 
-  // initConversationCable();
+
+  senders = initConversationCable(senders);
+
+
 
 }); // turbolinks closing

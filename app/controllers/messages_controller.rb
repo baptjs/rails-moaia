@@ -5,14 +5,30 @@ class MessagesController < ApplicationController
   end
 
   def create
+    # raise
     @message = Message.new(message_params)
     @message.conversation_id = params[:message][:conversation]
+
+      # raise
     if @message.save
       # Websocket
-      # ConversationChannel.broadcast_to(
-      #   @conversation,
-      #   render_to_string(partial: "message", locals: { message: @message, index: 1, conversation: @message.conversation })
-      # ) #
+      day = @message.created_at.strftime("%d-%m-%Y")[0,2]
+      month = Date::MONTHNAMES[@message.created_at.strftime("%d-%m-%Y")[3,2].to_i]
+      year = @message.created_at.strftime("%d-%m-%Y")[6,4]
+      time = @message.created_at.strftime("%I:%M %p")
+
+      ConversationChannel.broadcast_to(
+        @message.conversation, {
+          content: render_to_string(partial: "shared/message.html", locals: { message: @message, index: params[:message][:index].to_i, conversation: @message.conversation }, sender_user: current_user),
+          sender_id: current_user.id,
+          sender_avatar_url: current_user.avatar_url,
+          day: day,
+          month: month,
+          year: year,
+          time: time
+      }
+
+      ) #
 
       flash[:success] = "Message successfully created"
       # redirect_to conversation_path(@message.conversation_id, anchor:"message-#{@message.id}")
