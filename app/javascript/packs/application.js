@@ -31,6 +31,7 @@ import { dynamicRating } from "../plugins/stars_in_review_form"; // for reviews 
 import { ajaxLikes } from "../plugins/ajax_likes";
 import { initSelect2 } from '../plugins/init_select2';
 import { selectSpecies} from '../plugins/select_species';
+import { previewImageOnFileSelect } from '../components/photos_preview';
 
 document.addEventListener('turbolinks:load', () => {
 
@@ -60,5 +61,6 @@ document.addEventListener('turbolinks:load', () => {
 
   selectSpecies();
 
+  previewImageOnFileSelect();
 
 }); // turbolinks closing
