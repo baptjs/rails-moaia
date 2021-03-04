@@ -10,6 +10,8 @@
 .panels {
   width: 50%;
   margin: 16px;
+  margin-top: 72px;
+  z-index: 0;
 
 }
 
@@ -19,6 +21,7 @@
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   transition: transform .2s;
   position: relative;
+  border-radius: 4px;
 }
 
 .panel:hover {

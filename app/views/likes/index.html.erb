@@ -1,6 +1,6 @@
 <div class="index-container">
 
-  <div class="panels">
+  <div class="panels" style="margin-top: 22px !important">
     <% if @spots.empty? %>
       <div class="no-favs"><p>Your favorite dive sites will appear here!</p></div>
     <% else %>
@@ -11,7 +11,7 @@
       <% end %>
     <% end %>
   </div>
-  <div class="mapp">
+  <div class="mapp" style="top: 80px !important; height:616px; margin-top:22px;">
     <div id="map"
       style="width: 100%; height: 100%;"
       data-markers="<%= @markers.to_json %>"
