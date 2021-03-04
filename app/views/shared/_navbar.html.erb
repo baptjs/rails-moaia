@@ -34,8 +34,11 @@
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
             <%= link_to "My profile", user_path(current_user), class: "dropdown-item" %>
-            <% unless current_user.conversations.last.nil? %>
-              <%= link_to "My messages", conversation_path(current_user.conversations.last), class: "dropdown-item" %>
+            <%selected_conversations = Conversation.all.select do |conversation|%>
+              <% conversation.people.include?(current_user.id) %>
+            <% end %>
+            <% unless selected_conversations.empty? %>
+              <%= link_to "My messages", conversation_path(selected_conversations.last), class: "dropdown-item" %>
               <% end %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
