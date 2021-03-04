@@ -1,13 +1,13 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://images.pexels.com/photos/5289883/pexels-photo-5289883.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'); background-size: cover; background-position: 50% 45%;">
 
-  <div class="spot-new-container" style="height: 1200px !important;">
+  <div class="spot-new-container" style="height: 1250px !important;">
     <h1>How was <%= @spot.name %>? </h1>
     <h5>Share your experience here</h5>
 
     <%= simple_form_for [@spot, @review] do |f| %>
       <div class="container-date-rating">
         <%= f.input :date, class: "date", label: "Date of your dive" %>
-        <%= f.input :rating, input_html: { min: '0', max: '5' }, as: :hidden %>
+        <%= f.input :rating, input_html: { min: '0', max: '5', autocomplete: 'off' }, as: :hidden %>
         <div class="form-rating my-3">
           <% 5.times do |index| %>
             <i id="<%= index + 1 %>" class="review-rating far fa-star"></i>
@@ -40,8 +40,12 @@
 
 
       <%= f.input :tips %>
-      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
+      <div class="uploaded-photos">
+        <%= f.input :photos, as: :file, input_html: { multiple: true, hidden: true, id: 'photo-input' }, label_html: { class: 'upload-photo' }, label: '📷 Upload photos' %>
+    <%# <%= image_tag "", width: 300, class: "hidden", id: "photo-preview" %>
+        <div class="gallery-review"></div>
+      </div>
       <div class="btn-container">
         <%= f.button :submit, "Submit you review!", class: 'btn-submit' %>
       </div>
@@ -49,3 +53,9 @@
   </div>
 </div>
 
+      <%# <label class="btn btn-primary">
+        Upload a pics
+        <span style="display :none">
+        <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+        <%# </span>
+      </label> %>
