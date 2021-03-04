@@ -112,7 +112,7 @@
         <li data-target="#review-photos" data-slide-to="<%= index %>" class=<%= index.zero? ? "active" : '' %> ></li>
       <% end %>
     </ol>
-    .
+
     <div class="carousel-inner">
       <% @user.photos.each_with_index do |photo, index| %>
         <div class="carousel-item <%= index.zero? ? "active" : '' %>">

@@ -1,16 +1,23 @@
 <div class=container-reviews>
-
-  <img src="<%= @review.user.avatar_url  %>" class=avatar-review>
+  <div class="avatar-and-btn">
+    <img src="<%= @review.user.avatar_url  %>" class="avatar-review">
+    <% if user_signed_in? %>  <!-- Necessary because current_user doesn't exist when user not logged in -->
+      <% unless current_user.id == @review.user.id %>
+        <% name = "#{@review.user.first_name}#{@review.user.first_name.last == 's' ? "'" : "'s"}"%>
+        <%= link_to "See #{name} profile", user_path(@review.user), class:"btn-submit user-edit-link"%>
+      <% end %>
+    <% end %>
+  </div>
 
   <div class="text-review-show">
-    <h3>Review from <%= link_to @review.user.first_name, user_path(@review.user) %> : </h3>
+    <h3><%= @review.user.first_name %><%= @review.user.first_name.last == 's' ? "'" : "'s" %> feedback on <%= @review.spot.name %>: </h3>
     <% day = @review.date.strftime("%d-%m-%Y")[0,2] %>
     <% month = Date::MONTHNAMES[@review.date.strftime("%d-%m-%Y")[3,2].to_i] %>
     <% year = @review.date.strftime("%d-%m-%Y")[6,4] %>
     <p class="date-review"><em>Posted on <%= month %> <%= day %>, <%= year %></em></p>
 
     <div class= "review-content">
-      <%= @review.content %>
+      <%= @review.content %> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ipsam soluta doloremque praesentium illo nostrum error esse blanditiis nisi et, porro molestias perspiciatis natus! Commodi debitis ex earum dolore minus.
     </div>
     <p class="rating-review">
         <% (1..5).each do |n| %>
@@ -23,7 +30,7 @@
     </p>
     <% unless @review.tips.nil? %>
       <div class="tips">
-        <p><em>Tips: <%= @review.tips %></em></p>
+        <p><em> <span style="border-bottom: solid 1px;">Tips:</span> <%= @review.tips %> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ipsam soluta doloremque praesentium illo nostrum error esse blanditiis nisi et, porro molestias perspiciatis natus! Commodi debitis ex earum dolore minus. </em></p>
       </div>
     <% end %>
   </div>
@@ -86,7 +93,7 @@
         <li data-target="#review-photos" data-slide-to="<%= index %>" class=<%= index.zero? ? "active" : '' %> ></li>
       <% end %>
     </ol>
-    .
+
     <div class="carousel-inner">
       <% @review.photos.each_with_index do |photo, index| %>
         <div class="carousel-item <%= index.zero? ? "active" : '' %>">
