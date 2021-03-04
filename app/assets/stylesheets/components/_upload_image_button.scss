@@ -1,0 +1,21 @@
+.upload-photo {
+  border: 1px solid #d3d3d3;
+  padding: 16px 24px;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 2px;
+}
+
+.gallery-review {
+  display: flex;
+}
+
+.gallery-review img {
+  width: 150px;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+.uploaded-photos {
+  display: flex;
+}
