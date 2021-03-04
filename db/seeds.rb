@@ -102,12 +102,12 @@ review1.photos.attach(io: review_tulamben3, filename: 'tul.png', content_type: '
 review1.photos.attach(io: review_tulamben4, filename: 'tul.png', content_type: 'image/jpg')
 
 r1 = Review.create!(spot: tulamben, user_id: 3, date: Time.local(2020, 7, 12), content: "First dive at Liberty, everything was perfect!", rating: 5)
-r2 =Review.create!(spot: tulamben, user_id: 5, date: Time.local(2020, 10, 1), content: "Very beautiful wreck covered with corals and surrounded by magnificent fish.", rating: 4, tips: "the wreckage is easily accessible and visibility is often very good.")
-r3 =Review.create!(spot: tulamben, user_id: 7, date: Time.local(2020, 9, 7), content: "Pebble beach but ideal for snorkeling just a few meters from the shore. Multicolored fish, very rich flora and fauna", rating: 5)
-r4 =Review.create!(spot: tulamben, user_id:2, date: Time.local(2020, 7, 1), content: "The beach is very clean, quiet and the best beach for snorkeling and diving even a bit far from the Kuta area", rating: 5, tips: "many multicolored and varied fish")
-r5 =Review.create!(spot: tulamben, user_id: 4, date: Time.local(2020, 5, 11), content: "The beach is made of pebbles so you have to tread carefully on it, but it is worth it! The waves are so relaxing and if you walk to the beach there are small waves so it's easier to get into the water!", rating: 4, tips: "Proximity to wildlife is an advantage")
-r6 =Review.create!(spot: tulamben, user_id: 6, date: Time.local(2020, 4, 15), content: "if you like to swim with a mask, once in the water, you can admire lots of fish, corals and even the wreck of the ship USS Liberty, 120 m long, visible from the surface, 30 m from the shore. An atypical beach!", rating: 4)
-r7 =Review.create!(spot: tulamben, user_id: 8, date: Time.local(2020, 4, 20), content: "Very beautiful dives are to be done in Tulamben. Whether with a bottle or snorkeling, you will find your pleasure.", rating: 5)
+r2 = Review.create!(spot: tulamben, user_id: 5, date: Time.local(2020, 10, 1), content: "Very beautiful wreck covered with corals and surrounded by magnificent fish.", rating: 4, tips: "The wreckage is easily accessible and visibility is often very good.")
+r3 = Review.create!(spot: tulamben, user_id: 7, date: Time.local(2020, 9, 7), content: "Pebble beach but ideal for snorkeling just a few meters from the shore. Multicolored fish, very rich flora and fauna", rating: 5)
+r4 = Review.create!(spot: tulamben, user_id:2, date: Time.local(2020, 7, 1), content: "The beach is very clean, quiet and the best beach for snorkeling and diving even a bit far from the Kuta area", rating: 5, tips: "Many multicolored and varied fish")
+r5 = Review.create!(spot: tulamben, user_id: 4, date: Time.local(2020, 5, 11), content: "The beach is made of pebbles so you have to tread carefully on it, but it is worth it! The waves are so relaxing and if you walk to the beach there are small waves so it's easier to get into the water!", rating: 4, tips: "Proximity to wildlife is an advantage")
+r6 = Review.create!(spot: tulamben, user_id: 6, date: Time.local(2020, 4, 15), content: "if you like to swim with a mask, once in the water, you can admire lots of fish, corals and even the wreck of the ship USS Liberty, 120 m long, visible from the surface, 30 m from the shore. An atypical beach!", rating: 4)
+r7 = Review.create!(spot: tulamben, user_id: 8, date: Time.local(2020, 4, 20), content: "Very beautiful dives are to be done in Tulamben. Whether with a bottle or snorkeling, you will find your pleasure.", rating: 5)
 
 
 # # --------------- FISHES ---------------
