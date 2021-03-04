@@ -62,11 +62,13 @@ tulamben = Spot.find_by(name: "Tulamben")
 tulamben.description = "Tulamben is a small fishing village on the northeast coast of Bali. It's one of Bali's most popular dive sites since the wreck of the Liberty, a US Army transport vessel torpedoed by a Japanese submarine in 1942 is just offshore. If you are a novice diver this is a unique opportunity to dive a world class wreck. If you are an experienced diver, explore the deeper part of the wreck, around 35 meters, and admire the wonderful bow cannon covered in corals. Perfect for photographers! In addition, macro enthusiasts may also encounter the rare pygmy seahorse in the area."
 tulamben.save!
 
-
+manta = Spot.find_by(name: "Manta point")
+manta.description = "Which scuba diver does not dream of spending time underwater with these gracious giants? With an average length of 3m to 5m from tip to tip, meeting a manta ray is not a scary experience but a breathtaking one. The best chance to observe them for the time of a dive is to go to a cleaning station where they come to get their skin cleaned by tiny lipp fish. This is what Manta Point is at the south tip of Nusa Penida. There, 5 to 6 manta ray can join in an elegant and powerful ballet. Even if this dive is quite shallow, with 10 to 12m deep on average, because of the currents in the area, it is recommended only for scuba divers with experience of currents. Sometimes, the boat captain can call the dive if he thinks the currents are too strong. If you are lucky enough to get there and spend an hour with these fabulous creatures, please be advised not to touch them, and approach them not too fast, very gently. They are afraid of scuba divers’ bubbles, hence, relax and breathe slowly."
+manta.save!
 # # --------------- REVIEWS ---------------
 file = URI.open('https://i.pinimg.com/564x/a2/02/49/a202498ee42f8f99ae5fb4128e444c4a.jpg')
 file1 = URI.open('https://i.pinimg.com/564x/a7/0b/d2/a70bd22e3f039e3831f1a31ec04f6074.jpg')
-review = Review.create!(spot_id: 1, user_id: 1, date: Time.local(2020, 6, 11), content: "Wow, what an amazing spot !! ", rating: 5)
+review = Review.create!(spot_id: 1, user_id: 2, date: Time.local(2020, 6, 11), content: "Wow, what an amazing spot !! ", rating: 5)
 review.photos.attach(io: file, filename: 'nes.png', content_type: 'image/jpg')
 review.photos.attach(io: file1, filename: 'nes.png', content_type: 'image/jpg')
 
@@ -82,20 +84,20 @@ Spot.all.each do |spot|
     Review.create!(spot_id: spot.id, user_id: 3, date: Time.local(2021, 1, 10), content: "I recomment this spot if, like me, you looove starfishes", rating: rand(1..5))
 
   end
-    Review.create!(spot_id: spot.id, user_id: 1, date: Time.local(2020, 6, 11), content: "Amazing spot! I saw tens of species, including turtles <3", rating: 5, tips: "Plusieurs couples de murènes sont nichés dans les rochers !! ")
-    Review.create!(spot_id: spot.id, user_id: 2, date: Time.local(2020, 12, 4), content: "Awful! A shark tried to attack me, I almost died!!! (although my friends say it was a goldfish...)", rating: 1, tips: "Ya des poulpes près des falaises")
-    Review.create!(spot_id: spot.id, user_id: 4, date: Time.local(2021, 1, 10), content: "I recomment this spot if, like me, you looove starfishes", rating: 4, tips: "Attention à la mouuusse !")
+    Review.create!(spot_id: spot.id, user_id: 1, date: Time.local(2020, 6, 11), content: "Amazing spot! I saw tens of species, including turtles <3", rating: 5)
+    Review.create!(spot_id: spot.id, user_id: 2, date: Time.local(2020, 12, 4), content: "Awful! A shark tried to attack me, I almost died!!! (although my friends say it was a goldfish...)", rating: 1)
+    Review.create!(spot_id: spot.id, user_id: 4, date: Time.local(2021, 1, 10), content: "I recomment this spot if, like me, you looove starfishes", rating: 4)
 end
 
 # For demoday
 tulamben.reviews.destroy_all
-review_tulamben = URI.open('https://media-cdn.tripadvisor.com/media/attractions-splice-spp-720x480/06/71/11/b0.jpg')
+review_tulamben = URI.open('https://images.pexels.com/photos/3626111/pexels-photo-3626111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
 review_tulamben1 = URI.open('https://media-cdn.tripadvisor.com/media/photo-w/1a/dc/bc/90/photo0jpg.jpg')
 review_tulamben2 = URI.open('https://media-cdn.tripadvisor.com/media/photo-w/1a/86/be/dd/img-20200107-wa0002-largejpg.jpg')
 review_tulamben3 = URI.open('https://media-cdn.tripadvisor.com/media/photo-o/18/df/41/f2/photo5jpg.jpg')
 review_tulamben4 = URI.open('https://media-cdn.tripadvisor.com/media/photo-o/18/df/41/f0/photo3jpg.jpg')
-review1 = Review.create!(spot: tulamben, user_id: 1, date: Time.local(2020, 5, 12), content: "This experience remains one of the most beautiful in bali.", rating: 4)
-review1.photos.attach(io: review_tulamben, filename: 'tul.png', content_type: 'image/jpg')
+review1 = Review.create!(spot: tulamben, user_id: 2, date: Time.local(2020, 5, 12), content: "This experience remains one of the most beautiful in bali.", rating: 4)
+review1.photos.attach(io: review_tulamben, filename: 'tul.png', content_type: 'image/jpeg')
 review1.photos.attach(io: review_tulamben1, filename: 'tul.png', content_type: 'image/jpg')
 review1.photos.attach(io: review_tulamben2, filename: 'tul.png', content_type: 'image/jpg')
 review1.photos.attach(io: review_tulamben3, filename: 'tul.png', content_type: 'image/jpg')
