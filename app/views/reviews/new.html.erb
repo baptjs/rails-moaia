@@ -7,7 +7,7 @@
     <%= simple_form_for [@spot, @review] do |f| %>
       <div class="container-date-rating">
         <%= f.input :date, class: "date", label: "Date of your dive" %>
-        <%= f.input :rating, input_html: { min: '0', max: '5' }, as: :hidden %>
+        <%= f.input :rating, input_html: { min: '0', max: '5', autocomplete: 'off' }, as: :hidden %>
         <div class="form-rating my-3">
           <% 5.times do |index| %>
             <i id="<%= index + 1 %>" class="review-rating far fa-star"></i>
