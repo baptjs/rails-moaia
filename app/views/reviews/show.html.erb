@@ -1,13 +1,17 @@
 <div class=container-reviews>
 
-    <img src="<%= @review.user.avatar_url  %>" class=avatar-review>
-
+  <img src="<%= @review.user.avatar_url  %>" class=avatar-review>
 
   <div class="text-review-show">
     <h3>Review from <%= link_to @review.user.first_name, user_path(@review.user) %> : </h3>
-    <p class="date-review"><em><%= @review.date %></em></p>
+    <% day = @review.date.strftime("%d-%m-%Y")[0,2] %>
+    <% month = Date::MONTHNAMES[@review.date.strftime("%d-%m-%Y")[3,2].to_i] %>
+    <% year = @review.date.strftime("%d-%m-%Y")[6,4] %>
+    <p class="date-review"><em>Posted on <%= month %> <%= day %>, <%= year %></em></p>
 
-    <p>"<%= @review.content %>"</p>
+    <div class= "review-content">
+      <%= @review.content %>
+    </div>
     <p class="rating-review">
         <% (1..5).each do |n| %>
       <% if n <= @review.rating %>
@@ -17,7 +21,11 @@
       <% end %>
     <% end %>
     </p>
-    <p class="tips"><em>tips: <%= @review.tips %></em></p>
+    <% unless @review.tips.nil? %>
+      <div class="tips">
+        <p><em>Tips: <%= @review.tips %></em></p>
+      </div>
+    <% end %>
   </div>
 
 

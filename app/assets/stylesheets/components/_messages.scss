@@ -1,17 +1,24 @@
-.conv-show {
+.wrapper-conv{
   flex-grow: 1;
-  display: inline-block;
+  display: flex;
   flex-direction: column;
-  padding: 8px;
-  position: relative;
-  align-self: flex-end;
-
+  justify-content: space-between;
+  padding: 0px 8px;
+  border: solid 1px;
 }
 
 .container-conv {
   flex-wrap: nowrap;
   overflow: auto;
+
+
+
 }
+.conv-show {
+
+}
+
+
 
 
 .receiver {
@@ -19,7 +26,7 @@
 
 
   p {
-    background-color:#0084FF;
+    background-color:rgb(42 ,157, 143);
     color:white;
     border-radius: 18px;
     padding: 8px 12px;
@@ -60,7 +67,7 @@
     margin-bottom: 6px;
 
   }
-  
+
 }
 
 .message-header-sender {
@@ -80,5 +87,9 @@
   border-radius: 18px;
   margin: 16px;
 
+
+}
+
+#chat-with {
 
 }

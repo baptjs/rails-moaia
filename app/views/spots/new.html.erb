@@ -13,10 +13,23 @@
       </div>
       <%= f.input :description %>
       <%= f.input :spot, :as => :hidden, :input_html => { :value => @spot }  %>
-      <div class="tags">
-        <%= f.input :init_dive_type_tags, label: "Type of dive", required: true, collection: DiveTypeTag.all, input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
-        <%= f.input :init_difficulty_tags, label: "Difficulty", required: true, collection: DifficultyTag.all, input_html: { multiple: true, class: 'multiple-select'  }, include_hidden: false %>
-        <%= f.input :init_attractions_tags, label: "Attractions", required: true, collection: AttractionsTag.all, input_html: { multiple: true, class: 'multiple-select' }, include_hidden: false %>
+      <div class="tags new-spot-filters" id="tags-filters">
+
+        <!-- Dive Type -->
+        <div id="dive-type-filters">
+          <%= f.input :init_dive_type_tags, label: "Type of dive", required: true, collection: DiveTypeTag.all, input_html: {class: "select2", multiple: ""} %>
+        </div>
+
+        <!-- Difficulty -->
+        <div id="difficulty-filters">
+          <%= f.input :init_difficulty_tags, label: "Difficulty", required: true, collection: DifficultyTag.all, input_html: {class: "select2", multiple: ""} %>
+        </div>
+
+        <!-- Attractions -->
+        <div id="attractions-filters">
+          <%= f.input :init_attractions_tags, label: "Attractions", required: true, collection: AttractionsTag.all, input_html: {class: "select2", multiple: ""} %>
+        </div>
+
       </div>
       <%= f.input :photos, as: :file, input_html: { multiple: true } %>
 
