@@ -134,8 +134,23 @@
               <% end %>
             </div>
 
-            <p> <%= review.content %></p>
-            <div class="date"> <%= review.date %>  </div>
+            <p class="rating-review">
+                <% (1..5).each do |n| %>
+              <% if n <= review.rating %>
+              <i class="fas fa-star"></i>
+              <% else  %>
+              <i class="far fa-star"></i>
+              <% end %>
+            <% end %>
+            </p>
+
+            <p> <%= review.content.truncate(190) %></p>
+
+            <% day = review.date.strftime("%d-%m-%Y")[0,2] %>
+            <% month = Date::MONTHNAMES[review.date.strftime("%d-%m-%Y")[3,2].to_i] %>
+            <% year = review.date.strftime("%d-%m-%Y")[6,4] %>
+
+            <div class="date"> <%= month %> <%= day %>, <%= year %>  </div>
             <div class="link-review">
               <%= link_to spot_review_path(@spot, review), class: 'full-review-link' do %>
                   See full review

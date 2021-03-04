@@ -9,14 +9,14 @@ puts "Cleaning USERS database..."
 User.destroy_all
 
 puts "Creating users..."
-User.create!(first_name: "Baptiste", last_name: "Josse", age: 29 , city: "Paris", email: "baptiste@gmail.com", password: "secret", description: "Hi, I'm Baptiste ! I love adventure and snorkeling. I'm currently in Bali, so if you cherche someone to dive, it's a pleasure ! ", avatar_url:"https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/20292681_10211935177968045_3900832542794430335_n.jpg?_nc_cat=101&ccb=3&_nc_sid=0debeb&_nc_ohc=LepZDhv_flQAX9gRpzk&_nc_ht=scontent-cdt1-1.xx&oh=bcc447badba35e3684d3e335af05e112&oe=60524335", nickname: "Baptou")
-User.create!(first_name: "Thomas", last_name: "Moessner", age: 28, city: "Bordeaux", email: "thomas@gmail.com", password: "secret", description: "Hello, I'm Thomas. I'm love traveling and discoverd new diving spot. I already done a lot of spot, so if you want advise you can send me a message.", avatar_url:"https://ca.slack-edge.com/T02NE0241-U01JASARRND-2749c28ba94d-512", nickname: "Thom")
-User.create!(first_name: "Cyrielle", last_name: "Gout", age: 25, city: "Bordeaux", email: "cyrielle@gmail.com", password: "secret", description: "I'm Cyrielle, I live in France and I'm passionate of snorkeling. I am always looking for a new spot to discoverd !", avatar_url:"https://ca.slack-edge.com/T02NE0241-U01J4HUUB6G-4bd88b49390d-512", nickname: "Cycy")
-User.create!(first_name: "Alexandre", last_name: "Madeleine", age: 21, city: "Bordeaux", email: "alex@gmail.com", password: "secret", description: "Hi, I'm Alex, I love snorkeling and I love exchange about it. If you are passionate about snorkeling too, it's a pleasure to exchange.", avatar_url: "https://ca.slack-edge.com/T02NE0241-U01JD3D89CH-c479e937dfeb-512", nickname: "Alex")
+User.create!(first_name: "Baptiste", last_name: "Josse", age: 29 , city: "Paris", email: "baptiste@gmail.com", password: "secret", description: "Hi, I'm Baptiste ! I love adventure and snorkeling.", avatar_url:"https://scontent-cdt1-1.xx.fbcdn.net/v/t1.0-9/20292681_10211935177968045_3900832542794430335_n.jpg?_nc_cat=101&ccb=3&_nc_sid=0debeb&_nc_ohc=LepZDhv_flQAX9gRpzk&_nc_ht=scontent-cdt1-1.xx&oh=bcc447badba35e3684d3e335af05e112&oe=60524335", nickname: "Baptou")
+User.create!(first_name: "Thomas", last_name: "Moessner", age: 28, city: "Bordeaux", email: "thomas@gmail.com", password: "secret", description: "Hello, I'm Thomas. I love traveling, mainly for snorkeling and diving ! I'm currently in Bali, so if you're looking for someone to dive with, feel free to drop me a message...", avatar_url:"https://ca.slack-edge.com/T02NE0241-U01JASARRND-2749c28ba94d-512", nickname: "Thom")
+User.create!(first_name: "Cyrielle", last_name: "Gout", age: 25, city: "Bordeaux", email: "cyrielle@gmail.com", password: "secret", description: "I'm Cyrielle, I live in France and I'm passionate about snorkeling. I am always looking for a new spot to discover !", avatar_url:"https://ca.slack-edge.com/T02NE0241-U01J4HUUB6G-4bd88b49390d-512", nickname: "Cycy")
+User.create!(first_name: "Alexandre", last_name: "Madeleine", age: 21, city: "Bordeaux", email: "alex@gmail.com", password: "secret", description: "Hi, I'm Alex. If you are passionate about snorkeling like me, let me konw", avatar_url: "https://ca.slack-edge.com/T02NE0241-U01JD3D89CH-c479e937dfeb-512", nickname: "Alex")
 User.create!(first_name: "Laura", last_name: "Clegueur", age: 21, city: "Bordeaux", email: "laura@gmail.com", password: "secret", description: "Hi, I'm Laura, I like traveling and diving.", avatar_url:"https://images.unsplash.com/photo-1605406575185-776fb76c9319?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80", nickname: "Laura")
-User.create!(first_name: "Maxime", last_name: "Auger", age: 21, city: "Lyon", email: "maxime@gmail.com", password: "secret", description: "I'm Maxime, I'm here for discoverd new diving spot and for exchange about it :).", avatar_url:"https://images.unsplash.com/photo-1614537064776-45908d16d5aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80", nickname: "Max")
-User.create!(first_name: "Camille", last_name: "Devigne", age: 30, city: "Marseille", email: "camille@gmail.com", password: "secret", description: "Hello everyone, I'm Camille. I'm in love with clownfish, i'm alway looking for spot where i can found this species", avatar_url:"https://images.unsplash.com/photo-1511946021155-54ce502fe9a6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1340&q=80", nickname: "Cam")
-User.create!(first_name: "Laurent", last_name: "Smith", age: 30, city: "Paris", email: "laurent@gmail.com", password: "secret", description: "Hi everyone ! I alway looking for Common balloonfish, these are my favorites :).", avatar_url:"https://images.unsplash.com/photo-1568648801431-a7be13ee3a03?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80", nickname: "Laurent")
+User.create!(first_name: "Maxime", last_name: "Auger", age: 21, city: "Lyon", email: "maxime@gmail.com", password: "secret", description: "I'm Maxime, I'm here to discover new diving spots :).", avatar_url:"https://images.unsplash.com/photo-1614537064776-45908d16d5aa?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80", nickname: "Max")
+User.create!(first_name: "Camille", last_name: "Devigne", age: 30, city: "Marseille", email: "camille@gmail.com", password: "secret", description: "Hello everyone, I'm Camille. I'm in love with clownfish, I'm alway looking for spots where I can see them", avatar_url:"https://images.unsplash.com/photo-1511946021155-54ce502fe9a6?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1340&q=80", nickname: "Cam")
+User.create!(first_name: "Laurent", last_name: "Smith", age: 30, city: "Paris", email: "laurent@gmail.com", password: "secret", description: "Hi everyone ! I'm alway looking for balloonfish, these are my favorites :).", avatar_url:"https://images.unsplash.com/photo-1568648801431-a7be13ee3a03?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80", nickname: "Laurent")
 
 # --------------- SPOTS ---------------
 
@@ -81,13 +81,22 @@ Spot.all.each do |spot|
   number_of_packs_of_reviews.times do
     Review.create!(spot_id: spot.id, user_id: 1, date: Time.local(2020, 6, 11), content: "Amazing spot! I saw tens of species, including turtles <3", rating: rand(1..5))
     Review.create!(spot_id: spot.id, user_id: 2, date: Time.local(2020, 12, 4), content: "Awful! A shark tried to attack me, I almost died!!! (although my friends say it was a goldfish...)", rating: rand(1..5))
-    Review.create!(spot_id: spot.id, user_id: 3, date: Time.local(2021, 1, 10), content: "I recomment this spot if, like me, you looove starfishes", rating: rand(1..5))
+    Review.create!(spot_id: spot.id, user_id: 3, date: Time.local(2021, 1, 10), content: "I recommend this spot if, like me, you looove starfishes", rating: rand(1..5))
 
   end
     Review.create!(spot_id: spot.id, user_id: 1, date: Time.local(2020, 6, 11), content: "Amazing spot! I saw tens of species, including turtles <3", rating: 5)
     Review.create!(spot_id: spot.id, user_id: 2, date: Time.local(2020, 12, 4), content: "Awful! A shark tried to attack me, I almost died!!! (although my friends say it was a goldfish...)", rating: 1)
-    Review.create!(spot_id: spot.id, user_id: 4, date: Time.local(2021, 1, 10), content: "I recomment this spot if, like me, you looove starfishes", rating: 4)
+    Review.create!(spot_id: spot.id, user_id: 4, date: Time.local(2021, 1, 10), content: "I recommend this spot if, like me, you looove starfishes", rating: 4)
 end
+
+r1 = Review.create!(spot: tulamben, user_id: 3, date: Time.local(2020, 7, 12), content: "I saw a starfish! My favorite!!", rating: 5)
+r2 = Review.create!(spot: tulamben, user_id: 5, date: Time.local(2020, 10, 1), content: "Amazing wreck covered with corals and surrounded by tons of fish.", rating: 4, tips: "Get as close to the wreck as possible... It's truly amazing")
+r3 = Review.create!(spot: tulamben, user_id: 7, date: Time.local(2020, 9, 7), content: "Pebble beach but ideal for snorkeling just a few meters from the shore. Multicolored fish, very rich flora and fauna", rating: 3)
+r5 = Review.create!(spot: tulamben, user_id: 4, date: Time.local(2020, 5, 11), content: "The beach is made of pebbles so you have to tread carefully on it, but it is worth it! The waves are so relaxing and if you walk to the beach there are small waves so it's easier to get into the water!", rating: 3, tips: "Choose Amed dive center, you won't regret it")
+r6 = Review.create!(spot: tulamben, user_id: 6, date: Time.local(2020, 4, 15), content: "if you like to swim with a mask, once in the water, you can admire lots of fish, corals and even the wreck of the ship USS Liberty, 120 m long, visible from the surface, 30 m from the shore. An atypical beach!", rating: 4)
+r7 = Review.create!(spot: tulamben, user_id: 8, date: Time.local(2020, 4, 20), content: "Very beautiful dives are to be done in Tulamben. Whether with a bottle or snorkeling, you will find your pleasure.", rating: 5)
+
+ Review.create!(spot_id: 7, user_id: 2, date: Time.local(2020, 4, 20), content: "This is a nice place for beginners", rating: 5)
 
 # For demoday
 tulamben.reviews.destroy_all
@@ -96,20 +105,12 @@ review_tulamben1 = URI.open('https://media-cdn.tripadvisor.com/media/photo-w/1a/
 review_tulamben2 = URI.open('https://media-cdn.tripadvisor.com/media/photo-w/1a/86/be/dd/img-20200107-wa0002-largejpg.jpg')
 review_tulamben3 = URI.open('https://media-cdn.tripadvisor.com/media/photo-o/18/df/41/f2/photo5jpg.jpg')
 review_tulamben4 = URI.open('https://media-cdn.tripadvisor.com/media/photo-o/18/df/41/f0/photo3jpg.jpg')
-review1 = Review.create!(spot: tulamben, user_id: 2, date: Time.local(2020, 5, 12), content: "This experience remains one of the most beautiful in bali.", rating: 4)
+review1 = Review.create!(spot: tulamben, user_id: 2, date: Time.local(2020, 6, 11), content: "Tulamben is a breathtaking place to dive! I've always had it on my bucket list and I can say I was not disappointed. The wreck on its own makes the site worth traveling for. Then there are also tons of fish and corals. If you're lucky, you even get to see manta rays, turtles, and... sharks! Stay calm, they're (supposedly) harmless. No doubt this will remain one of the best experiences in my life...", tips:"Go early in the morning if you want to see turtles", rating: 5)
 review1.photos.attach(io: review_tulamben, filename: 'tul.png', content_type: 'image/jpeg')
 review1.photos.attach(io: review_tulamben1, filename: 'tul.png', content_type: 'image/jpg')
 review1.photos.attach(io: review_tulamben2, filename: 'tul.png', content_type: 'image/jpg')
 review1.photos.attach(io: review_tulamben3, filename: 'tul.png', content_type: 'image/jpg')
 review1.photos.attach(io: review_tulamben4, filename: 'tul.png', content_type: 'image/jpg')
-
-r1 = Review.create!(spot: tulamben, user_id: 3, date: Time.local(2020, 7, 12), content: "First dive at Liberty, everything was perfect!", rating: 5)
-r2 = Review.create!(spot: tulamben, user_id: 5, date: Time.local(2020, 10, 1), content: "Very beautiful wreck covered with corals and surrounded by magnificent fish.", rating: 4, tips: "The wreckage is easily accessible and visibility is often very good.")
-r3 = Review.create!(spot: tulamben, user_id: 7, date: Time.local(2020, 9, 7), content: "Pebble beach but ideal for snorkeling just a few meters from the shore. Multicolored fish, very rich flora and fauna", rating: 5)
-r5 = Review.create!(spot: tulamben, user_id: 4, date: Time.local(2020, 5, 11), content: "The beach is made of pebbles so you have to tread carefully on it, but it is worth it! The waves are so relaxing and if you walk to the beach there are small waves so it's easier to get into the water!", rating: 4, tips: "Proximity to wildlife is an advantage")
-r6 = Review.create!(spot: tulamben, user_id: 6, date: Time.local(2020, 4, 15), content: "if you like to swim with a mask, once in the water, you can admire lots of fish, corals and even the wreck of the ship USS Liberty, 120 m long, visible from the surface, 30 m from the shore. An atypical beach!", rating: 4)
-r7 = Review.create!(spot: tulamben, user_id: 8, date: Time.local(2020, 4, 20), content: "Very beautiful dives are to be done in Tulamben. Whether with a bottle or snorkeling, you will find your pleasure.", rating: 5)
-
 
 # # --------------- FISHES ---------------
 
@@ -216,11 +217,19 @@ Conversation.destroy_all
 puts "Creating conversations..."
 
 Conversation.create!(name: "Conversation with Cyrielle", people: [2,3])
+Conversation.create!(name: "Conversation with Cyrielle", people: [1,5])
+Conversation.create!(name: "Conversation with Cyrielle", people: [1,8])
 
 
 puts "Creating messages..."
 Message.create!(content: "salut", user_id: 2, conversation_id: 1)
 Message.create!(content: "ça va ?", user_id: 3, conversation_id: 1)
+
+Message.create!(content: "Hey", user_id: 1, conversation_id: 2)
+Message.create!(content: "What's up mate ?", user_id: 5, conversation_id: 2)
+
+Message.create!(content: "Hey, still up for a dive in Bali? I'm working this weekend though...", user_id: 1, conversation_id: 3)
+Message.create!(content: "Alright then, let's go next week", user_id: 8, conversation_id: 3)
 
 
 puts "Done ! :)"

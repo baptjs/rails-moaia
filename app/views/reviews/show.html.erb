@@ -17,7 +17,7 @@
     <p class="date-review"><em>Posted on <%= month %> <%= day %>, <%= year %></em></p>
 
     <div class= "review-content">
-      <%= @review.content %> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ipsam soluta doloremque praesentium illo nostrum error esse blanditiis nisi et, porro molestias perspiciatis natus! Commodi debitis ex earum dolore minus.
+      <%= @review.content %>
     </div>
     <p class="rating-review">
         <% (1..5).each do |n| %>
@@ -30,7 +30,7 @@
     </p>
     <% unless @review.tips.nil? %>
       <div class="tips">
-        <p><em> <span style="border-bottom: solid 1px;">Tips:</span> <%= @review.tips %> Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit ipsam soluta doloremque praesentium illo nostrum error esse blanditiis nisi et, porro molestias perspiciatis natus! Commodi debitis ex earum dolore minus. </em></p>
+        <p><em> <span style="border-bottom: solid 1px;">Tips:</span> <%= @review.tips %> </em></p>
       </div>
     <% end %>
   </div>

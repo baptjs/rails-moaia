@@ -34,7 +34,7 @@
 
 
   <div class="species_left">
-    <h4 class="">Species observed by <%= user_signed_in? ? (@user == current_user ? "me" : @user.first_name) : @user.first_name %>:</h4>
+    <h4 class="">Species <%= user_signed_in? ? (@user == current_user ? "me" : @user.first_name) : @user.first_name %> has seen:</h4>
     <div class="container-spotted-species">
       <div class="spotted-species">
         <% spotted_fishes = [] %>
