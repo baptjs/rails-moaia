@@ -89,17 +89,9 @@ Spot.all.each do |spot|
     Review.create!(spot_id: spot.id, user_id: 4, date: Time.local(2021, 1, 10), content: "I recommend this spot if, like me, you looove starfishes", rating: 4)
 end
 
-r1 = Review.create!(spot: tulamben, user_id: 3, date: Time.local(2020, 7, 12), content: "I saw a starfish! My favorite!!", rating: 5)
-r2 = Review.create!(spot: tulamben, user_id: 5, date: Time.local(2020, 10, 1), content: "Amazing wreck covered with corals and surrounded by tons of fish.", rating: 4, tips: "Get as close to the wreck as possible... It's truly amazing")
-r3 = Review.create!(spot: tulamben, user_id: 7, date: Time.local(2020, 9, 7), content: "Pebble beach but ideal for snorkeling just a few meters from the shore. Multicolored fish, very rich flora and fauna", rating: 3)
-r5 = Review.create!(spot: tulamben, user_id: 4, date: Time.local(2020, 5, 11), content: "The beach is made of pebbles so you have to tread carefully on it, but it is worth it! The waves are so relaxing and if you walk to the beach there are small waves so it's easier to get into the water!", rating: 3, tips: "Choose Amed dive center, you won't regret it")
-r6 = Review.create!(spot: tulamben, user_id: 6, date: Time.local(2020, 4, 15), content: "if you like to swim with a mask, once in the water, you can admire lots of fish, corals and even the wreck of the ship USS Liberty, 120 m long, visible from the surface, 30 m from the shore. An atypical beach!", rating: 4)
-r7 = Review.create!(spot: tulamben, user_id: 8, date: Time.local(2020, 4, 20), content: "Very beautiful dives are to be done in Tulamben. Whether with a bottle or snorkeling, you will find your pleasure.", rating: 5)
-
- Review.create!(spot_id: 7, user_id: 2, date: Time.local(2020, 4, 20), content: "This is a nice place for beginners", rating: 5)
-
 # For demoday
 tulamben.reviews.destroy_all
+
 review_tulamben = URI.open('https://images.pexels.com/photos/3626111/pexels-photo-3626111.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940')
 review_tulamben1 = URI.open('https://media-cdn.tripadvisor.com/media/photo-w/1a/dc/bc/90/photo0jpg.jpg')
 review_tulamben2 = URI.open('https://media-cdn.tripadvisor.com/media/photo-w/1a/86/be/dd/img-20200107-wa0002-largejpg.jpg')
@@ -111,6 +103,15 @@ review1.photos.attach(io: review_tulamben1, filename: 'tul.png', content_type: '
 review1.photos.attach(io: review_tulamben2, filename: 'tul.png', content_type: 'image/jpg')
 review1.photos.attach(io: review_tulamben3, filename: 'tul.png', content_type: 'image/jpg')
 review1.photos.attach(io: review_tulamben4, filename: 'tul.png', content_type: 'image/jpg')
+
+r1 = Review.create!(spot: tulamben, user_id: 3, date: Time.local(2020, 7, 12), content: "I saw a starfish! My favorite!!", rating: 5)
+r2 = Review.create!(spot: tulamben, user_id: 5, date: Time.local(2020, 10, 1), content: "Amazing wreck covered with corals and surrounded by tons of fish.", rating: 4, tips: "Get as close to the wreck as possible... It's truly amazing")
+r3 = Review.create!(spot: tulamben, user_id: 7, date: Time.local(2020, 9, 7), content: "Pebble beach but ideal for snorkeling just a few meters from the shore. Multicolored fish, very rich flora and fauna", rating: 3)
+r5 = Review.create!(spot: tulamben, user_id: 4, date: Time.local(2020, 5, 11), content: "The beach is made of pebbles so you have to tread carefully on it, but it is worth it! The waves are so relaxing and if you walk to the beach there are small waves so it's easier to get into the water!", rating: 3, tips: "Choose Amed dive center, you won't regret it")
+r6 = Review.create!(spot: tulamben, user_id: 6, date: Time.local(2020, 4, 15), content: "if you like to swim with a mask, once in the water, you can admire lots of fish, corals and even the wreck of the ship USS Liberty, 120 m long, visible from the surface, 30 m from the shore. An atypical beach!", rating: 4)
+r7 = Review.create!(spot: tulamben, user_id: 8, date: Time.local(2020, 4, 20), content: "Very beautiful dives are to be done in Tulamben. Whether with a bottle or snorkeling, you will find your pleasure.", rating: 5)
+
+Review.create!(spot_id: 7, user_id: 2, date: Time.local(2020, 4, 20), content: "This is a nice place for beginners", rating: 5)
 
 # # --------------- FISHES ---------------
 
