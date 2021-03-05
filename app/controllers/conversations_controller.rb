@@ -8,7 +8,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
     @message = Message.new
   end
-  
+
   def create
     @conversation = Conversation.new()
     @conversation.people << params[:format].to_i
@@ -21,6 +21,6 @@ class ConversationsController < ApplicationController
       render 'new'
     end
   end
-  
-  
+
+
 end
