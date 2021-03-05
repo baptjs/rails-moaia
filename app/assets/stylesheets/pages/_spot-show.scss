@@ -183,6 +183,12 @@
 
   .card-comment {
     width: 550px;
+    position: relative;
+  }
+
+  .rating-review {
+    position: absolute;
+    top: 32px;
   }
 
   // .avatar:hover {
