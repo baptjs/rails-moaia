@@ -138,14 +138,15 @@ end
 
 # For demoday
 tulamben.reviews.each do |review|
-  review.spottings.destroy_all
+  Spotting.find_by(review: review).destroy_all
 end
+
 Spotting.create!(fish_id: 28, review: review1)
 Spotting.create!(fish_id: 16, review: review1)
 Spotting.create!(fish_id: 21, review: review1)
 Spotting.create!(fish_id: 93, review: review1)
 Spotting.create!(fish_id: 50, review: review1)
-Spotting.create!(fish_id:  6, review: review1)
+Spotting.create!(fish_id:  4, review: review1)
 Spotting.create!(fish_id: 42, review: review1)
 Spotting.create!(fish_id: 33, review: review1)
 
