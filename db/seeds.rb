@@ -113,6 +113,8 @@ r7 = Review.create!(spot: tulamben, user_id: 8, date: Time.local(2020, 4, 20), c
 
 Review.create!(spot_id: 7, user_id: 2, date: Time.local(2020, 4, 20), content: "This is a nice place for beginners", rating: 5)
 
+Review.find_by(spot: manta, user_id: 1).destroy_all
+
 # # --------------- FISHES ---------------
 
 puts "Cleaning FISHES database..."
@@ -183,6 +185,15 @@ Spot.all.each do |spot|
   number_of_dive_type_tags.times do
     tag_id = dive_type_tags_ids[rand(0..dive_type_tags_ids.count - 1)]
     dive_type_tags_ids.delete(tag_id)
+    if tag_id == 3
+      dive_type_tags_ids.delete(4)
+    elsif tag_id == 4
+      dive_type_tags_ids.delete(3)
+    elsif tag_id == 0
+      dive_type_tags_ids.delete(1)
+    elsif tag_id == 1
+      dive_type_tags_ids.delete(0)
+    end
     DiveTypeTagging.create!(spot_id: spot.id, dive_type_tag_id: tag_id)
   end
 
