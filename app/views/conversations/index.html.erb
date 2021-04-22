@@ -6,7 +6,8 @@
     <%@conversations.each do |conversation|%>
       <% @contact = conversation.users.where.not(id: current_user) %>
       <div class="c-panel">
-        <img src=" <%= @contact.first.avatar_url%> " alt="" class="avatar-large">
+        <% profile_picture = @contact.first.avatar_url == nil ? "emptyprofile.png" : @contact.first.avatar_url %>
+        <%= image_tag profile_picture, class: "avatar-large" %>
         <div class="text-panel">
           <h3><%= @contact.first.first_name%></h3>
           <div class="preview">
