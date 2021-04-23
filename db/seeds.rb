@@ -97,7 +97,7 @@ review_tulamben1 = URI.open('https://media-cdn.tripadvisor.com/media/photo-w/1a/
 review_tulamben2 = URI.open('https://media-cdn.tripadvisor.com/media/photo-w/1a/86/be/dd/img-20200107-wa0002-largejpg.jpg')
 review_tulamben3 = URI.open('https://media-cdn.tripadvisor.com/media/photo-o/18/df/41/f2/photo5jpg.jpg')
 review_tulamben4 = URI.open('https://media-cdn.tripadvisor.com/media/photo-o/18/df/41/f0/photo3jpg.jpg')
-review1 = Review.create!(spot: tulamben, user_id: 2, date: Time.local(2020, 6, 11), content: "Tulamben is a breathtaking place to dive! I've always had it on my bucket list and I can say I was not disappointed. The wreck on its own makes the site worth traveling for. Then there are also tons of fish and corals. If you're lucky, you even get to see manta rays, turtles, and... sharks! Stay calm, they're (supposedly) harmless. No doubt this will remain one of the best experiences in my life...", tips:"Go early in the morning if you want to see turtles", rating: 5)
+review1 = Review.create!(spot: tulamben, user_id: 2, date: Time.local(2021, 3, 4), content: "Tulamben is a breathtaking place to dive! I've always had it on my bucket list and I can say I was not disappointed. The wreck on its own makes the site worth traveling for. Then there are also tons of fish and corals. If you're lucky, you even get to see manta rays, turtles, and... sharks! Stay calm, they're (supposedly) harmless. No doubt this will remain one of the best experiences in my life...", tips:"Go early in the morning if you want to see turtles", rating: 5)
 review1.photos.attach(io: review_tulamben, filename: 'tul.png', content_type: 'image/jpeg')
 review1.photos.attach(io: review_tulamben1, filename: 'tul.png', content_type: 'image/jpg')
 review1.photos.attach(io: review_tulamben2, filename: 'tul.png', content_type: 'image/jpg')
@@ -138,14 +138,15 @@ end
 
 # For demoday
 tulamben.reviews.each do |review|
-  review.spottings.destroy_all
+  Spotting.find_by(review: review).destroy_all
 end
+
 Spotting.create!(fish_id: 28, review: review1)
 Spotting.create!(fish_id: 16, review: review1)
 Spotting.create!(fish_id: 21, review: review1)
 Spotting.create!(fish_id: 93, review: review1)
 Spotting.create!(fish_id: 50, review: review1)
-Spotting.create!(fish_id:  6, review: review1)
+Spotting.create!(fish_id:  4, review: review1)
 Spotting.create!(fish_id: 42, review: review1)
 Spotting.create!(fish_id: 33, review: review1)
 
