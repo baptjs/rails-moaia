@@ -1,6 +1,7 @@
 <div class=container-reviews>
   <div class="avatar-and-btn">
-    <img src="<%= @review.user.avatar_url  %>" class="avatar-review">
+    <% profile_picture = @review.user.avatar_url == nil ? "emptyprofile.png" : @review.user.avatar_url %>
+    <%= image_tag profile_picture, class: "avatar-review" %>
     <% if user_signed_in? %>  <!-- Necessary because current_user doesn't exist when user not logged in -->
       <% unless current_user.id == @review.user.id %>
         <% name = "#{@review.user.first_name}#{@review.user.first_name.last == 's' ? "'" : "'s"}"%>

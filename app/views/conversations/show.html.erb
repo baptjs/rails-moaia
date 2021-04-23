@@ -16,7 +16,8 @@
         <% @contact = User.find(@contact_id[0]) %>
         <%= link_to conversation_path(conversation), style: 'text-decoration: none; color: black; width: 100%;' do %>
           <div class="c-panel <%= "active-msg" if current_page?(conversation_path(conversation))  %> ">
-            <img src=" <%= @contact.avatar_url%> " alt="" class="avatar-large">
+            <% profile_picture = @contact.avatar_url == nil ? "emptyprofile.png" : @contact.avatar_url %>
+            <%= image_tag profile_picture, class: "avatar-large" %>
             <div class="text-panel">
               <h3><%= @contact.first_name%></h3>
               <div class="preview">
@@ -60,7 +61,8 @@
               <% if index == 0 || message.user_id != @conversation.messages[index-1].user_id %>
                 <div class="message-header-receiver">
                   <div class="header-text"><%=month%> <%= day %>, <%= year %> at  <%= message.created_at.strftime("%I:%M %p") %> </div>
-                  <img src="<%= message.user.avatar_url%>" alt="" class="avatar">
+                  <% profile_picture = message.user.avatar_url == nil ? "emptyprofile.png" : message.user.avatar_url %>
+                  <%= image_tag profile_picture, class: "avatar" %>
                 </div>
               <% end %>
               <div class="message-content-receiver" id="message-<%= @conversation.messages.last.id %>"><p> <%= message.content %> </p> </div>
@@ -69,7 +71,8 @@
             <div class="sender">
               <% if index == 0 || message.user_id != @conversation.messages[index-1].user_id %>
                 <div class="message-header-sender">
-                  <img src="<%= message.user.avatar_url%>" alt="" class="avatar">
+                  <% profile_picture = message.user.avatar_url == nil ? "emptyprofile.png" : message.user.avatar_url %>
+                  <%= image_tag profile_picture, class: "avatar" %>
                   <div class="header-text"><%=month%> <%= day %>, <%= year %> at  <%= message.created_at.strftime("%I:%M %p") %> </div>
                 </div>
               <% end %>

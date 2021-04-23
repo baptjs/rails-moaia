@@ -7,7 +7,8 @@
     </div> -->
     <div class="row-header-user">
         <div class="user_show">
-          <img class="avatar-large-bordered-user" src="<%=@user.avatar_url%>"  alt="user avatar">
+          <% profile_picture = @user.avatar_url == nil ? "emptyprofile.png" : @user.avatar_url %>
+          <%= image_tag profile_picture, class: "avatar-large-bordered-user" %>
           <div class="profile-description">
             <h2> <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %> </h2>
             <h6> <%=@user.age%> years old</h6>

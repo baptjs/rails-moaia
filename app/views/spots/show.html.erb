@@ -98,7 +98,8 @@
           <% @spot.reviews.each do |review| %>
             <% unless review.tips.blank? %>
               <div class="tips-panel">
-                <img src=" <%= review.user.avatar_url %> " alt="" class="avatar">
+                <% profile_picture = review.user.avatar_url == nil ? "emptyprofile.png" : review.user.avatar_url %>
+                <%= image_tag profile_picture, class: "avatar" %>
                 <div class="tips-text-panel">
                   <%= link_to user_path(review.user), class: 'user-profile-link' do %>
                     <h3><%= review.user.first_name %></h3>
@@ -128,7 +129,8 @@
         <% @spot.reviews.each do |review| %>
           <div class="card-comment">
             <div class="top-part">
-              <img src=" <%= review.user.avatar_url %> " alt="" class="avatar">
+              <% profile_picture = review.user.avatar_url == nil ? "emptyprofile.png" : review.user.avatar_url %>
+              <%= image_tag profile_picture, class: "avatar" %>
               <%= link_to user_path(review.user), class: 'user-profile-link' do %>
                 <h3><%= review.user.first_name %></h3>
               <% end %>
